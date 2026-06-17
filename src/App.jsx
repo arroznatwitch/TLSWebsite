@@ -45,7 +45,7 @@ function Inner() {
   return (
     <div className="app">
       <header className="header">
-        <img src="/logo.png" alt="The Last Survivor" className="header-logo" />
+        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="The Last Survivor" className="header-logo" />
         <button className="gear-btn" onClick={() => setSettingsOpen(true)} aria-label={t("settings")}>
           <GearIcon />
         </button>

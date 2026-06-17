@@ -86,7 +86,7 @@ export default function TeamsLeaderboard({ season }) {
                   {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
                 </span>
                 <span className="c-name player-name">
-                  <img src={team.icon} alt={team.name} className="team-icon-img" loading="lazy"/>
+                  <img src={`${import.meta.env.BASE_URL}${team.icon.replace(/^\//, "")}`} alt={team.name} className="team-icon-img" loading="lazy"/>
                   <span>{team.name}</span>
                 </span>
                 <span className="c-twitches">
