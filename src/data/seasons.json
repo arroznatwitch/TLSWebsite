@@ -11,11 +11,16 @@
         "Hoyuro",
         "GrysHGG"
       ],
+      "casters": [
+        {
+          "nick": "ArrozNaTwitch",
+          "twitch": "twitch.tv/arroznatwitch"
+        }
+      ],
       "players": [
         {
           "nick": "Nunorr",
           "twitch": "twitch.tv/nunorr13",
-          "points": 11,
           "kills": 1,
           "deaths": 0,
           "assists": 0,
@@ -28,7 +33,6 @@
         {
           "nick": "Hoyuro",
           "twitch": "twitch.tv/hoyuro",
-          "points": 15,
           "kills": 2,
           "deaths": 2,
           "assists": 0,
@@ -41,7 +45,9 @@
         {
           "nick": "GrysHGG",
           "twitch": "twitch.tv/gryshgg",
-          "points": 10,
+          "tag": {
+            "type": "gaveslot"
+          },
           "kills": 2,
           "deaths": 0,
           "assists": 0,
@@ -54,7 +60,6 @@
         {
           "nick": "Rick0PT",
           "twitch": "twitch.tv/rick0_pt",
-          "points": 8,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -67,7 +72,6 @@
         {
           "nick": "Mirandappt",
           "twitch": "twitch.tv/mirandappt",
-          "points": 8,
           "kills": 1,
           "deaths": 1,
           "assists": 0,
@@ -80,7 +84,9 @@
         {
           "nick": "Brine16",
           "twitch": "twitch.tv/brine16",
-          "points": 7,
+          "tag": {
+            "type": "gaveslot"
+          },
           "kills": 1,
           "deaths": 0,
           "assists": 0,
@@ -93,7 +99,6 @@
         {
           "nick": "KenanX",
           "twitch": "twitch.tv/kenanlives",
-          "points": 5,
           "kills": 0,
           "deaths": 2,
           "assists": 0,
@@ -106,7 +111,6 @@
         {
           "nick": "Miguel_31",
           "twitch": "twitch.tv/lideude",
-          "points": 4,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -119,7 +123,6 @@
         {
           "nick": "Morgadinho",
           "twitch": "youtube.com/@MorgadinhoPT",
-          "points": 3,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -132,7 +135,6 @@
         {
           "nick": "FieryFox653",
           "twitch": "twitch.tv/fieryfox653",
-          "points": 3,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -145,7 +147,6 @@
         {
           "nick": "Peter_PT",
           "twitch": "twitch.tv/mrpeter_pt",
-          "points": 2,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -158,7 +159,6 @@
         {
           "nick": "Jo4na_",
           "twitch": "twitch.tv/jo4na",
-          "points": 1,
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -180,6 +180,12 @@
         "Equipa Vermelha",
         "Equipa Amarela",
         "Equipa Azul"
+      ],
+      "casters": [
+        {
+          "nick": "ArrozNaTwitch",
+          "twitch": "twitch.tv/arroznatwitch"
+        }
       ],
       "teams": [
         {
@@ -358,7 +364,14 @@
       "type": "solo",
       "showDmg": true,
       "autoPoints": true,
+      "eventDate": "2026-07-25T15:00:00",
       "podium": [],
+      "casters": [
+        {
+          "nick": "ArrozNaTwitch",
+          "twitch": "twitch.tv/arroznatwitch"
+        }
+      ],
       "players": [
         {
           "nick": "Mirandappt",

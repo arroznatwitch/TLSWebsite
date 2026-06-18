@@ -3,6 +3,8 @@ import { useLang } from "../hooks/useLang";
 import { SwordIcon, ArrowIcon, ClockIcon, StrengthIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
+import PlayerTag from "./PlayerTag";
+import CastersList from "./CastersList";
 
 const medals = ["🥇","🥈","🥉"];
 
@@ -52,7 +54,7 @@ export default function SoloLeaderboard({ season }) {
 
   return (
     <>
-      <div className="lb-wrap">
+<div className="lb-wrap">
         <div className="lb-toolbar">
           <button className={`sort-btn ${sortMode==="points"?"active":""}`} onClick={() => setSortMode("points")}>{t("points")}</button>
           <button className={`sort-btn ${sortMode==="death"?"active":""}`}  onClick={() => setSortMode("death")}>{t("deathOrder")}</button>
@@ -78,10 +80,9 @@ export default function SoloLeaderboard({ season }) {
               <span className="c-name player-name">
                 <img src={`https://mc-heads.net/avatar/${p.nick}/32`} alt={p.nick} className="mc-head" loading="lazy"/>
                 <span>{p.nick}</span>
+                <PlayerTag tag={p.tag} />
               </span>
-              <span className="c-val twitch-col">
-                <StreamMini channel={p.twitch} />
-              </span>
+              <span className="c-val twitch-col"><StreamMini channel={p.twitch} /></span>
               <span className="c-val pts">{p._points}</span>
               <span className="c-val">{p.kills   ?? 0}</span>
               <span className="c-val">{p.deaths  ?? 0}</span>
@@ -92,6 +93,10 @@ export default function SoloLeaderboard({ season }) {
           );
         })}
       </div>
+
+      {/* Casters */}
+      <CastersList casters={season.casters} />
+
       <PointsLegend showRevives={false} showDmg={showDmg} />
     </>
   );

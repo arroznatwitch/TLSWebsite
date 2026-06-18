@@ -6,6 +6,7 @@ import SoloLeaderboard from "./components/SoloLeaderboard";
 import TeamsLeaderboard from "./components/TeamsLeaderboard";
 import AllTime from "./components/AllTime";
 import data from "./data/seasons.json";
+import EventCountdown from "./components/EventCountdown";
 import "./App.css";
 
 function GearIcon() {
@@ -36,7 +37,7 @@ function TikTokIcon() {
 }
 
 function Inner() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [tab, setTab] = useState("alltime");
   const seasons = data.seasons;
@@ -63,14 +64,30 @@ function Inner() {
         </button>
       </nav>
 
-      <main className="main">
-        {tab === "alltime"
-          ? <AllTime seasons={seasons} />
-          : active?.type === "solo"
-            ? <SoloLeaderboard season={active} />
-            : <TeamsLeaderboard season={active} />
-        }
-      </main>
+      <div className="content-with-sidebar">
+        <main className="main">
+          {tab === "alltime"
+            ? <AllTime seasons={seasons} />
+            : active?.type === "solo"
+              ? <SoloLeaderboard season={active} />
+              : <TeamsLeaderboard season={active} />
+          }
+        </main>
+        <aside className="sidebar">
+          {seasons.some(s => s.eventDate && new Date(s.eventDate) > new Date()) &&
+            seasons.filter(s => s.eventDate && new Date(s.eventDate) > new Date()).map(s => (
+              <EventCountdown key={s.id} eventDate={s.eventDate} label={s.label} />
+            ))
+          }
+          <a href="https://craftandhelps.com" target="_blank" rel="noopener noreferrer" className="partnership-banner">
+            <img
+              src={`${import.meta.env.BASE_URL}partnership_${lang}.png`}
+              alt="Parceria CAH x TLS"
+              className="partnership-img"
+            />
+          </a>
+        </aside>
+      </div>
 
       <footer className="footer">
         <p className="footer-text">{t("footer")}</p>

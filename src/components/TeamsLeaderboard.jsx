@@ -3,6 +3,8 @@ import { useLang } from "../hooks/useLang";
 import { SwordIcon, ArrowIcon, ClockIcon, GoldenAppleIcon, StrengthIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
+import PlayerTag from "./PlayerTag";
+import CastersList from "./CastersList";
 
 const medals = ["🥇","🥈","🥉"];
 
@@ -152,6 +154,7 @@ export default function TeamsLeaderboard({ season }) {
                           <span className="player-name" style={{ gap: 8 }}>
                             <img src={`https://mc-heads.net/avatar/${p.nick}/24`} alt={p.nick} className="mc-head-sm" loading="lazy"/>
                             <span style={{ fontSize: 13, fontWeight: 500 }}>{p.nick}</span>
+                          <PlayerTag tag={p.tag} />
                           </span>
                           <span className="c-val twitch-col"><StreamMini channel={p.twitch} /></span>
                           <span className="c-val pts" style={{ fontSize: 13 }}>{ppts}</span>
@@ -171,6 +174,7 @@ export default function TeamsLeaderboard({ season }) {
           );
         })}
       </div>
+      <CastersList casters={season.casters} />
       <PointsLegend showRevives={true} showDmg={showDmg} />
     </>
   );
