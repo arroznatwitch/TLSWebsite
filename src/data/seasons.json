@@ -208,8 +208,8 @@
       "autoPoints": true,
       "podium": [
         "Equipa Vermelha",
-        "Equipa Amarela",
-        "Equipa Azul"
+        "Equipa Azul",
+        "Equipa Amarela"
       ],
       "casters": [
         {
@@ -235,27 +235,27 @@
               "nick": "Rick0PT",
               "twitch": "twitch.tv/rick0_pt",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 39,
               "revives": 0
             },
             {
               "nick": "Blubxxx",
               "twitch": "twitch.tv/blubxxx",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 39,
               "revives": 0
             },
             {
               "nick": "GhostedMK_",
               "twitch": "twitch.tv/ghostedmk_",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 40,
               "revives": 0
             }
           ]
@@ -277,9 +277,9 @@
               "nick": "Mcaeiroo",
               "twitch": "twitch.tv/mcaeiro",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 100,
               "revives": 0
             },
             {
@@ -288,16 +288,16 @@
               "kills": 0,
               "deaths": 0,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 54,
               "revives": 0
             },
             {
               "nick": "elParreira",
               "twitch": "twitch.tv/mrparreirinha",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 54,
               "revives": 0
             }
           ]
@@ -318,28 +318,28 @@
             {
               "nick": "Peter_PT",
               "twitch": "twitch.tv/mrpeter_pt",
-              "kills": 0,
+              "kills": 1,
               "deaths": 0,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 100,
               "revives": 0
             },
             {
               "nick": "ysn00p",
               "twitch": "twitch.tv/ysn00p",
-              "kills": 0,
+              "kills": 2,
               "deaths": 0,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 100,
               "revives": 0
             },
             {
               "nick": "Mirandappt",
               "twitch": "twitch.tv/mirandappt",
-              "kills": 0,
+              "kills": 1,
               "deaths": 0,
-              "assists": 0,
-              "timeLive": 0,
+              "assists": 1,
+              "timeLive": 100,
               "revives": 0
             }
           ]
@@ -361,27 +361,27 @@
               "nick": "Hoyuro",
               "twitch": "twitch.tv/hoyuro",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 90,
               "revives": 0
             },
             {
               "nick": "Jo4na_",
               "twitch": "twitch.tv/jo4na",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 90,
               "revives": 0
             },
             {
               "nick": "Nunorr",
               "twitch": "twitch.tv/nunorr13",
               "kills": 0,
-              "deaths": 0,
+              "deaths": 1,
               "assists": 0,
-              "timeLive": 0,
+              "timeLive": 90,
               "revives": 0
             }
           ]
