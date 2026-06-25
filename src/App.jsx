@@ -7,6 +7,7 @@ import TeamsLeaderboard from "./components/TeamsLeaderboard";
 import AllTime from "./components/AllTime";
 import data from "./data/seasons.json";
 import EventCountdown from "./components/EventCountdown";
+import WatchParty from "./components/WatchParty";
 import "./App.css";
 
 function GearIcon() {
@@ -42,6 +43,8 @@ function Inner() {
   const [tab, setTab] = useState("alltime");
   const seasons = data.seasons;
   const active = seasons.find(s => s.id === tab);
+  // Season com Watch Party = a mais recente com data de evento (TLS III)
+  const wpSeason = seasons.find(s => s.eventDate) || seasons[seasons.length - 1];
 
   return (
     <div className="app">
@@ -62,15 +65,23 @@ function Inner() {
         <button className={`nav-tab ${tab==="alltime"?"active":""}`} onClick={() => setTab("alltime")} style={{marginLeft:"auto"}}>
           {t("allTime")}
         </button>
+        {wpSeason && (
+          <button className={`nav-tab nav-tab-wp ${tab==="watchparty"?"active":""}`} onClick={() => setTab("watchparty")}>
+            {t("watchParty")}
+            <span className="nav-sub">{wpSeason.label}</span>
+          </button>
+        )}
       </nav>
 
       <div className="content-with-sidebar">
         <main className="main">
           {tab === "alltime"
             ? <AllTime seasons={seasons} />
-            : active?.type === "solo"
-              ? <SoloLeaderboard season={active} />
-              : <TeamsLeaderboard season={active} />
+            : tab === "watchparty"
+              ? <WatchParty season={wpSeason} />
+              : active?.type === "solo"
+                ? <SoloLeaderboard season={active} />
+                : <TeamsLeaderboard season={active} />
           }
         </main>
         <aside className="sidebar">

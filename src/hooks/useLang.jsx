@@ -30,6 +30,12 @@ const T = {
     seconds:"Segs",
     eventCountdown:"A começar em",
     manualPointsNote:"Nesta época os pontos foram definidos manualmente pelo organizador.",
+    watchParty:"Watch Party",
+    wpSub:"Vê o POV de todos os streamers da TLS III ao mesmo tempo.",
+    wpAllPovs:"Todos os POVs",
+    wpOpenChannel:"Abrir canal",
+    wpNote:"Clica num POV para o ver em grande no leitor principal. As transmissões só aparecem quando os streamers estiverem ao vivo.",
+    wpEmpty:"Ainda não há streamers definidos para esta época.",
   },
   en: {
     allTime:"All-Time", settings:"Settings", darkMode:"Dark Mode", lightMode:"Light Mode",
@@ -60,6 +66,12 @@ const T = {
     seconds:"Secs",
     eventCountdown:"Starting in",
     manualPointsNote:"Points in this season were manually set by the organizer.",
+    watchParty:"Watch Party",
+    wpSub:"Watch every TLS III streamer's POV at the same time.",
+    wpAllPovs:"All POVs",
+    wpOpenChannel:"Open channel",
+    wpNote:"Click a POV to watch it large in the main player. Streams only appear when the streamers are live.",
+    wpEmpty:"No streamers set for this season yet.",
   },
 };
 

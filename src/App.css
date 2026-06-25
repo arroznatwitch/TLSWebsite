@@ -823,3 +823,71 @@ body {
   height: auto;
   display: block;
 }
+
+/* ── Watch Party ── */
+.wp { width: 100%; }
+.wp-head { margin-bottom: 18px; }
+.wp-title {
+  font-size: 22px; font-weight: 800; color: var(--txt);
+  margin: 0 0 4px; letter-spacing: -.3px;
+}
+.wp-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+
+.wp-main { margin-bottom: 22px; }
+.wp-main-frame {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  background: #000; border-radius: var(--rl); overflow: hidden;
+  border: 1px solid var(--bdr2);
+}
+.wp-main-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.wp-main-info {
+  display: flex; align-items: center; gap: 8px; margin-top: 10px;
+}
+.wp-main-nick { font-size: 15px; font-weight: 700; color: var(--txt); }
+.wp-open {
+  margin-left: auto; font-size: 12px; font-weight: 600;
+  color: #9146ff; text-decoration: none; padding: 5px 10px;
+  border: 1px solid rgba(145,70,255,.4); border-radius: var(--r);
+  transition: background .15s;
+}
+.wp-open:hover { background: rgba(145,70,255,.12); }
+
+.wp-grid-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .6px; color: var(--txt2); margin: 0 0 10px;
+}
+.wp-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.wp-cell {
+  display: flex; flex-direction: column; padding: 0; background: none;
+  border: 1px solid var(--bdr); border-radius: var(--rl); overflow: hidden;
+  cursor: pointer; text-align: left; transition: border-color .15s, transform .15s;
+}
+.wp-cell:hover { transform: translateY(-2px); border-color: var(--bdr2); }
+.wp-cell.active { border-color: var(--gold); }
+.wp-cell-frame {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000;
+}
+.wp-cell-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* overlay invisível para o clique ir para o botão e não para o iframe */
+.wp-cell-overlay { position: absolute; inset: 0; z-index: 2; }
+.wp-cell.active .wp-cell-overlay { pointer-events: none; }
+.wp-cell-info {
+  display: flex; align-items: center; gap: 7px; padding: 8px 10px;
+  background: var(--surface);
+}
+.wp-cell-nick {
+  font-size: 13px; font-weight: 600; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.wp-note {
+  font-size: 11px; color: var(--txt3); margin: 16px 0 0; line-height: 1.5;
+}
+.wp-empty { color: var(--txt2); font-size: 14px; }
+.nav-tab-wp .nav-sub { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .wp-grid { grid-template-columns: 1fr; }
+}
