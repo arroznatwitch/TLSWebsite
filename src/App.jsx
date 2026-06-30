@@ -97,6 +97,13 @@ function Inner() {
               className="partnership-img"
             />
           </a>
+          <a href="https://ko-fi.com/playtls" target="_blank" rel="noopener noreferrer" className="kofi-banner">
+            <img
+              src={`${import.meta.env.BASE_URL}support_me_on_kofi_beige.webp`}
+              alt={t("kofiSupportLine")}
+              className="kofi-img"
+            />
+          </a>
         </aside>
       </div>
 
@@ -112,7 +119,7 @@ function Inner() {
         </div>
         <p className="footer-copy">© 2024 – 2026 · The Last Survivor</p>
         <p className="footer-disclaimer">
-          The Last Survivor não é afiliado, associado ou de qualquer forma ligado à Mojang Studios ou Microsoft Corporation. Minecraft® é uma marca registada da Mojang Synergies AB.
+          {t("footerDisclaimer")}
         </p>
       </footer>
 

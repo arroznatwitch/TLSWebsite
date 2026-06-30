@@ -36,6 +36,8 @@ const T = {
     wpOpenChannel:"Abrir canal",
     wpNote:"Clica num POV para o ver em grande no leitor principal. As transmissões só aparecem quando os streamers estiverem ao vivo.",
     wpEmpty:"Ainda não há streamers definidos para esta época.",
+    footerDisclaimer:"The Last Survivor não é afiliado, associado ou de qualquer forma ligado à Mojang Studios ou Microsoft Corporation. Minecraft® é uma marca registada da Mojang Synergies AB.",
+    kofiSupportLine:"Buy The Last Survivor a Coffee",
   },
   en: {
     allTime:"All-Time", settings:"Settings", darkMode:"Dark Mode", lightMode:"Light Mode",
@@ -72,6 +74,8 @@ const T = {
     wpOpenChannel:"Open channel",
     wpNote:"Click a POV to watch it large in the main player. Streams only appear when the streamers are live.",
     wpEmpty:"No streamers set for this season yet.",
+    footerDisclaimer:"The Last Survivor is not affiliated, associated, or in any way connected to Mojang Studios or Microsoft Corporation. Minecraft® is a trademark of Mojang Synergies AB.",
+    kofiSupportLine:"Buy The Last Survivor a Coffee",
   },
 };
 

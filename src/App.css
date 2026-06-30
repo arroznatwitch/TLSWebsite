@@ -824,6 +824,25 @@ body {
   display: block;
 }
 
+.kofi-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rl);
+  overflow: hidden;
+  padding: 14px;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.kofi-banner:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+.kofi-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── Watch Party ── */
 .wp { width: 100%; }
 .wp-head { margin-bottom: 18px; }
