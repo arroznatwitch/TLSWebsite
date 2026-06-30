@@ -806,22 +806,41 @@ body {
   .sidebar-countdown { flex-direction: row; flex-wrap: wrap; justify-content: center; }
 }
 
-/* ── Partnership banner ── */
-.partnership-banner {
-  display: block;
+/* ── CAH banner ── */
+.cah-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--bdr2);
   border-radius: var(--rl);
-  overflow: hidden;
-  border: 1px solid var(--bdr);
+  padding: 8px 18px;
+  text-decoration: none;
+  color: var(--txt);
   transition: opacity 0.15s, transform 0.15s;
 }
-.partnership-banner:hover {
+.cah-banner:visited,
+.cah-banner:hover,
+.cah-banner:active {
+  text-decoration: none;
+  color: var(--txt);
+}
+.cah-banner:hover {
   opacity: 0.9;
   transform: scale(1.01);
 }
-.partnership-img {
-  width: 100%;
-  height: auto;
-  display: block;
+.cah-logo {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+.cah-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--txt);
+  letter-spacing: 1px;
 }
 
 .kofi-banner {

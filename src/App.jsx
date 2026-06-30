@@ -90,12 +90,13 @@ function Inner() {
               <EventCountdown key={s.id} eventDate={s.eventDate} label={s.label} />
             ))
           }
-          <a href="https://craftandhelps.com" target="_blank" rel="noopener noreferrer" className="partnership-banner">
+          <a href="https://craftandhelps.com" target="_blank" rel="noopener noreferrer" className="cah-banner">
             <img
-              src={`${import.meta.env.BASE_URL}partnership_${lang}.png`}
-              alt="Parceria CAH x TLS"
-              className="partnership-img"
+              src={`${import.meta.env.BASE_URL}Logo_CAH.png`}
+              alt="Craft and Helps"
+              className="cah-logo"
             />
+            <span className="cah-title">CRAFT AND HELPS</span>
           </a>
           <a href="https://ko-fi.com/playtls" target="_blank" rel="noopener noreferrer" className="kofi-banner">
             <img
