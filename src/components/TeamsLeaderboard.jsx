@@ -34,7 +34,6 @@ export default function TeamsLeaderboard({ season }) {
 
   const podium = season.podium ?? [];
 
-  // Calcula pontos de cada equipa se autoPoints
   const teams = season.teams.map(team => ({
     ...team,
     players: team.players.map(p => ({
@@ -55,8 +54,7 @@ export default function TeamsLeaderboard({ season }) {
     return b._points - a._points;
   });
 
-  const statCols = showDmg ? 8 : 7;
-  const memberGrid = `1fr 28px 60px repeat(${statCols - 1}, 52px)`;
+  const memberGridClass = showDmg ? "member-grid-dmg" : "member-grid-nodmg";
 
   return (
     <>
@@ -103,7 +101,6 @@ export default function TeamsLeaderboard({ season }) {
 
               {open && (
                 <div className="team-expanded">
-                  {/* Totais da equipa */}
                   <div className="team-stats-row">
                     <div className="team-stat">
                       <span className="ts-label">{t("points")}</span>
@@ -133,9 +130,8 @@ export default function TeamsLeaderboard({ season }) {
                     )}
                   </div>
 
-                  {/* Stats individuais */}
                   <div className="team-members-table">
-                    <div className="tm-head" style={{ gridTemplateColumns: memberGrid }}>
+                    <div className={`tm-head ${memberGridClass}`}>
                       <span>{t("player")}</span>
                       <span></span>
                       <span className="c-val">{t("points")}</span>
@@ -150,7 +146,7 @@ export default function TeamsLeaderboard({ season }) {
                       const pdiff = (p.damageDealt ?? 0) - (p.damageTaken ?? 0);
                       const ppts  = autoPoints ? p._points : "—";
                       return (
-                        <div key={p.nick} className="tm-row" style={{ gridTemplateColumns: memberGrid }}>
+                        <div key={p.nick} className={`tm-row ${memberGridClass}`}>
                           <span className="player-name" style={{ gap: 8 }}>
                             <img src={`https://mc-heads.net/avatar/${p.nick}/24`} alt={p.nick} className="mc-head-sm" loading="lazy"/>
                             <span style={{ fontSize: 13, fontWeight: 500 }}>{p.nick}</span>

@@ -49,8 +49,7 @@ export default function SoloLeaderboard({ season }) {
     return b._points - a._points;
   });
 
-  const extraCols = showDmg ? 6 : 5;
-  const grid = `40px 1fr 32px 70px repeat(${extraCols}, 62px)`;
+  const gridClass = showDmg ? "lb-grid-dmg" : "lb-grid-nodmg";
 
   return (
     <>
@@ -59,7 +58,7 @@ export default function SoloLeaderboard({ season }) {
           <button className={`sort-btn ${sortMode==="points"?"active":""}`} onClick={() => setSortMode("points")}>{t("points")}</button>
           <button className={`sort-btn ${sortMode==="death"?"active":""}`}  onClick={() => setSortMode("death")}>{t("deathOrder")}</button>
         </div>
-        <div className="lb-head" style={{ gridTemplateColumns: grid }}>
+        <div className={`lb-head ${gridClass}`}>
           <span className="c-pos">#</span>
           <span className="c-name">{t("player")}</span>
           <span className="c-val"></span>
@@ -73,7 +72,7 @@ export default function SoloLeaderboard({ season }) {
         {rows.map((p, i) => {
           const diff = (p.damageDealt ?? 0) - (p.damageTaken ?? 0);
           return (
-            <div key={p.nick} className={`lb-row solo-row rank-${i+1}`} style={{ gridTemplateColumns: grid }}>
+            <div key={p.nick} className={`lb-row solo-row rank-${i+1} ${gridClass}`}>
               <span className="c-pos">
                 {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
               </span>

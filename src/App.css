@@ -37,6 +37,8 @@
 
 *,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
 
+html, body { overflow-x: hidden; }
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
@@ -161,6 +163,10 @@ body {
 .pts { color: var(--txt); font-weight: 600; font-size: 14px; }
 .dmg.pos { color: var(--pos); }
 .dmg.neg { color: var(--neg); }
+
+/* ── Grids da leaderboard solo (via classe, não inline) ── */
+.lb-grid-nodmg { grid-template-columns: 40px 1fr 32px 70px repeat(5, 62px); }
+.lb-grid-dmg   { grid-template-columns: 40px 1fr 32px 70px repeat(6, 62px); }
 
 /* Teams */
 .team-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -329,15 +335,6 @@ body {
 
 .footer-copy { font-size: 11px; color: var(--txt3); }
 
-/* ── Responsive ── */
-@media (max-width: 660px) {
-  .lb-head, .lb-row { grid-template-columns: 36px 1fr repeat(3, 62px); }
-  .lb-head .c-val:nth-child(n+6),
-  .lb-row  .c-val:nth-child(n+6) { display: none; }
-  .main { padding: 14px; }
-  .nav { padding: 0 14px; }
-}
-
 /* ── Team icon img ── */
 .team-icon-img {
   width: 28px;
@@ -374,45 +371,6 @@ body {
 
 .mc-icon-wrap::after {
   content: attr(data-tooltip);
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--sur2);
-  color: var(--txt);
-  border: 1px solid var(--bdr2);
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 11px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s;
-  z-index: 10;
-}
-
-.mc-icon-wrap:hover::after {
-  opacity: 1;
-}
-
-/* ── Header logo ── */
-.header-logo {
-  height: 52px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* ── Tooltip para BAIXO ── */
-.mc-icon-wrap {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: default;
-}
-.mc-icon-wrap::after {
-  content: attr(data-tooltip);
   position: fixed;
   top: auto;
   left: auto;
@@ -429,7 +387,18 @@ body {
   transition: opacity 0.15s;
   z-index: 999;
 }
-.mc-icon-wrap:hover::after { opacity: 1; }
+
+.mc-icon-wrap:hover::after {
+  opacity: 1;
+}
+
+/* ── Header logo ── */
+.header-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 
 /* ── Tab ativo com linha accent ── */
 .nav-tab.active { color: var(--txt); border-bottom-color: var(--accent); }
@@ -546,6 +515,10 @@ body {
   transition: background .1s;
 }
 .tm-row:hover { background: var(--sur2); }
+
+/* ── Grid dos membros da equipa (via classe, não inline) ── */
+.member-grid-nodmg { grid-template-columns: 1fr 28px 60px repeat(6, 52px); }
+.member-grid-dmg   { grid-template-columns: 1fr 28px 60px repeat(7, 52px); }
 
 /* ── YouTube link colour ── */
 .stream-link { display: flex; align-items: center; justify-content: center; opacity: .65; transition: opacity .15s; }
@@ -800,12 +773,6 @@ body {
   margin-top: 2px;
 }
 
-@media (max-width: 700px) {
-  .content-with-sidebar { flex-direction: column; }
-  .sidebar { width: 100%; padding: 0 16px 16px; flex-direction: row; flex-wrap: wrap; }
-  .sidebar-countdown { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-}
-
 /* ── CAH banner ── */
 .cah-banner {
   display: flex;
@@ -925,6 +892,42 @@ body {
 }
 .wp-empty { color: var(--txt2); font-size: 14px; }
 .nav-tab-wp .nav-sub { color: var(--gold); }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .content-with-sidebar { flex-direction: column; }
+  .sidebar { width: 100%; padding: 0 16px 16px; flex-direction: row; flex-wrap: wrap; }
+  .sidebar-countdown { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 660px) {
+  .main { padding: 14px; }
+  .nav { padding: 0 14px; }
+  .header { padding: 14px 16px; }
+  .header-logo { height: 40px; }
+  .gear-btn { right: 14px; width: 32px; height: 32px; }
+
+  .at-grid { grid-template-columns: 1fr; }
+
+  .cah-logo { width: 120px; height: 120px; }
+
+  .wp-main-info { flex-wrap: wrap; }
+  .wp-open { margin-left: 0; }
+
+  /* Leaderboard solo: só pos, nome, pontos, kills */
+  .lb-grid-nodmg, .lb-grid-dmg { grid-template-columns: 32px 1fr 56px 44px; }
+  .lb-grid-nodmg .twitch-col, .lb-grid-dmg .twitch-col { display: none; }
+  .lb-grid-nodmg .c-val:nth-child(n+6), .lb-grid-dmg .c-val:nth-child(n+6) { display: none; }
+
+  /* Cabeçalho/linha da equipa */
+  .teams-lb-head, .teams-lb-row { grid-template-columns: 36px 1fr 60px 26px; }
+  .teams-lb-head .mc-head-sm, .teams-lb-row .mc-head-sm { width: 18px; height: 18px; }
+
+  /* Stats individuais da equipa: só nome, pontos, kills */
+  .member-grid-nodmg, .member-grid-dmg { grid-template-columns: 1fr 56px 44px; }
+  .member-grid-nodmg .twitch-col, .member-grid-dmg .twitch-col { display: none; }
+  .member-grid-nodmg .c-val:nth-child(n+5), .member-grid-dmg .c-val:nth-child(n+5) { display: none; }
+}
 
 @media (max-width: 600px) {
   .wp-grid { grid-template-columns: 1fr; }
