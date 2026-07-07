@@ -1,9 +1,7 @@
-const base = import.meta.env.BASE_URL;
-
 function McIcon({ src, alt, label, size = 18, tooltipDir = "down" }) {
   return (
     <span className={`mc-icon-wrap tooltip-${tooltipDir}`} data-tooltip={label} title={label}>
-      <img src={`${base}${src}`} alt={alt} width={size} height={size} style={{ imageRendering: "pixelated", display: "block" }} />
+      <img src={`/${src}`} alt={alt} width={size} height={size} style={{ imageRendering: "pixelated", display: "block" }} />
     </span>
   );
 }

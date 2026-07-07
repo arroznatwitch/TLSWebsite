@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useLang } from "../hooks/useLang";
+import McHead from "./McHead";
 
 // Domínio(s) pai exigidos pelo embed da Twitch.
 // Funciona em localhost, GitHub Pages e domínio próprio.
@@ -15,28 +16,31 @@ function getParents() {
   return [...hosts];
 }
 
-// Extrai o canal/handle a partir do link guardado no seasons.json
-function parseStream(twitch) {
+// Extrai o canal/handle a partir do link guardado no seasons.json.
+// Para o YouTube, um embed ao vivo fiável exige o ID do canal (UC...),
+// por isso aceitamos um "youtubeChannelId" opcional no seasons.json.
+function parseStream(twitch, youtubeChannelId) {
   if (!twitch) return null;
   const clean = twitch.replace(/^https?:\/\//, "").replace(/\/+$/, "");
 
   if (clean.includes("youtube.com") || clean.includes("youtu.be")) {
-    // youtube.com/@Handle  -> embed do canal ao vivo
     const m = clean.match(/@([^/?]+)/);
-    return { type: "youtube", id: m ? m[1] : null, url: `https://${clean}` };
+    return { type: "youtube", id: m ? m[1] : null, channelId: youtubeChannelId || null, url: `https://${clean}` };
   }
   // twitch.tv/canal
   const m = clean.match(/twitch\.tv\/([^/?]+)/i);
   return { type: "twitch", id: m ? m[1] : null, url: `https://${clean}` };
 }
 
-function StreamFrame({ stream }) {
+// muted=true  -> arranca em simultâneo, sem som (POVs da grelha)
+// muted=false -> stream em destaque, com som (player principal)
+function StreamFrame({ stream, muted }) {
   const parents = useMemo(() => getParents(), []);
-  if (!stream?.id) return null;
+  if (!stream?.id && !stream?.channelId) return null;
 
   if (stream.type === "twitch") {
     const parentParams = parents.map(p => `parent=${p}`).join("&");
-    const src = `https://player.twitch.tv/?channel=${stream.id}&${parentParams}&muted=true&autoplay=false`;
+    const src = `https://player.twitch.tv/?channel=${stream.id}&${parentParams}&autoplay=true&muted=${muted ? "true" : "false"}`;
     return (
       <iframe
         title={stream.id}
@@ -44,22 +48,30 @@ function StreamFrame({ stream }) {
         allowFullScreen
         frameBorder="0"
         scrolling="no"
+        allow="autoplay; fullscreen"
       />
     );
   }
 
-  // YouTube: embed do live stream do canal através do handle
-  const src = `https://www.youtube.com/embed/live_stream?channel=&user=${stream.id}`;
-  // Fallback fiável: abrir o canal ao vivo num iframe via query do handle
-  const ytSrc = `https://www.youtube.com/embed?listType=user_uploads&list=${stream.id}`;
+  // YouTube ao vivo: só é fiável com o ID do canal (UC...).
+  if (stream.channelId) {
+    const src = `https://www.youtube.com/embed/live_stream?channel=${stream.channelId}&autoplay=1&mute=${muted ? 1 : 0}`;
+    return (
+      <iframe
+        title={stream.id || stream.channelId}
+        src={src}
+        allowFullScreen
+        frameBorder="0"
+        allow="autoplay; encrypted-media; fullscreen"
+      />
+    );
+  }
+
+  // Sem channelId não dá para incorporar o live: mostra cartão a apontar ao canal.
   return (
-    <iframe
-      title={stream.id}
-      src={ytSrc || src}
-      allowFullScreen
-      frameBorder="0"
-      allow="autoplay; encrypted-media"
-    />
+    <div className="wp-yt-fallback">
+      <span className="wp-yt-badge">YouTube</span>
+    </div>
   );
 }
 
@@ -75,7 +87,7 @@ export default function WatchParty({ season }) {
       if (!p.twitch || seen.has(key)) return false;
       seen.add(key);
       return true;
-    }).map(p => ({ ...p, stream: parseStream(p.twitch) }));
+    }).map(p => ({ ...p, stream: parseStream(p.twitch, p.youtubeChannelId) }));
   }, [season]);
 
   const [active, setActive] = useState(streamers[0]?.nick || null);
@@ -92,18 +104,13 @@ export default function WatchParty({ season }) {
         <p className="wp-sub">{t("wpSub")}</p>
       </div>
 
-      {/* Player principal grande */}
+      {/* Player principal grande — o único com som */}
       <div className="wp-main">
         <div className="wp-main-frame">
-          <StreamFrame stream={activeStreamer?.stream} />
+          <StreamFrame key={`main-${activeStreamer?.nick}`} stream={activeStreamer?.stream} muted={false} />
         </div>
         <div className="wp-main-info">
-          <img
-            src={`https://mc-heads.net/avatar/${activeStreamer?.nick}/32`}
-            alt={activeStreamer?.nick}
-            className="mc-head"
-            loading="lazy"
-          />
+          <McHead nick={activeStreamer?.nick} uuid={activeStreamer?.uuid} size={32} className="mc-head" />
           <span className="wp-main-nick">{activeStreamer?.nick}</span>
           <a
             href={activeStreamer?.stream?.url}
@@ -116,7 +123,7 @@ export default function WatchParty({ season }) {
         </div>
       </div>
 
-      {/* Grelha com todos os POVs em simultâneo */}
+      {/* Grelha com todos os POVs em simultâneo (mudos) */}
       <p className="wp-grid-label">{t("wpAllPovs")}</p>
       <div className="wp-grid">
         {streamers.map(s => (
@@ -126,16 +133,12 @@ export default function WatchParty({ season }) {
             onClick={() => setActive(s.nick)}
           >
             <div className="wp-cell-frame">
-              <StreamFrame stream={s.stream} />
+              {/* A grelha arranca sempre muda; o destaque (acima) é que tem som */}
+              <StreamFrame stream={s.stream} muted={true} />
               <span className="wp-cell-overlay" aria-hidden="true" />
             </div>
             <div className="wp-cell-info">
-              <img
-                src={`https://mc-heads.net/avatar/${s.nick}/32`}
-                alt={s.nick}
-                className="mc-head-sm"
-                loading="lazy"
-              />
+              <McHead nick={s.nick} uuid={s.uuid} size={32} className="mc-head-sm" />
               <span className="wp-cell-nick">{s.nick}</span>
             </div>
           </button>

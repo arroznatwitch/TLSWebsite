@@ -5,6 +5,7 @@ import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
 import PlayerTag from "./PlayerTag";
 import CastersList from "./CastersList";
+import McHead from "./McHead";
 
 const medals = ["🥇","🥈","🥉"];
 
@@ -86,13 +87,13 @@ export default function TeamsLeaderboard({ season }) {
                   {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
                 </span>
                 <span className="c-name player-name">
-                  <img src={`${import.meta.env.BASE_URL}${team.icon.replace(/^\//, "")}`} alt={team.name} className="team-icon-img" loading="lazy"/>
-                  <span>{team.name}</span>
+                  <img src={team.icon} alt={team.nameKey ? t(team.nameKey) : team.name} className="team-icon-img" loading="lazy"/>
+                  <span>{team.nameKey ? t(team.nameKey) : team.name}</span>
                 </span>
                 <span className="c-twitches">
                   {team.players.map(p => (
                     <span key={p.nick} title={p.nick} className="twitch-avatar-wrap">
-                      <img src={`https://mc-heads.net/avatar/${p.nick}/24`} alt={p.nick} className="mc-head-sm" loading="lazy"/>
+                      <McHead nick={p.nick} uuid={p.uuid} size={24} className="mc-head-sm" />
                     </span>
                   ))}
                 </span>
@@ -148,7 +149,7 @@ export default function TeamsLeaderboard({ season }) {
                       return (
                         <div key={p.nick} className={`tm-row ${memberGridClass}`}>
                           <span className="player-name" style={{ gap: 8 }}>
-                            <img src={`https://mc-heads.net/avatar/${p.nick}/24`} alt={p.nick} className="mc-head-sm" loading="lazy"/>
+                            <McHead nick={p.nick} uuid={p.uuid} size={24} className="mc-head-sm" />
                             <span style={{ fontSize: 13, fontWeight: 500 }}>{p.nick}</span>
                           <PlayerTag tag={p.tag} />
                           </span>

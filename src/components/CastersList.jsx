@@ -1,5 +1,6 @@
 import { useLang } from "../hooks/useLang";
 import { StreamLink } from "./StreamIcon";
+import McHead from "./McHead";
 
 export default function CastersList({ casters }) {
   const { t } = useLang();
@@ -11,12 +12,7 @@ export default function CastersList({ casters }) {
       <div className="casters-list">
         {casters.map(c => (
           <div key={c.nick} className="caster-item">
-            <img
-              src={`https://mc-heads.net/avatar/${c.nick}/32`}
-              alt={c.nick}
-              className="mc-head"
-              loading="lazy"
-            />
+            <McHead nick={c.nick} uuid={c.uuid} size={32} className="mc-head" />
             <span className="caster-nick">{c.nick}</span>
             <StreamLink channel={c.twitch} size={14} />
           </div>

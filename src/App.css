@@ -18,6 +18,7 @@
   --pos:     #4cbb7a;
   --neg:     #d05555;
   --accent:  #015d4e;
+  --accent-dim: rgba(1,93,78,0.18);
   --r:       6px;
   --rl:      10px;
 }
@@ -427,7 +428,7 @@ body {
 .sort-btn.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(1,93,78,0.1);
+  background: var(--accent-dim);
 }
 
 /* ── Twitch mini icon na row ── */
@@ -638,7 +639,7 @@ body {
   padding: 6px 12px;
   border: 1px solid var(--accent);
   border-radius: var(--r);
-  background: rgba(1,93,78,0.08);
+  background: var(--accent-dim);
   gap: 3px;
 }
 
@@ -932,3 +933,213 @@ body {
 @media (max-width: 600px) {
   .wp-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Loading screen (logo + barra azul)
+   ══════════════════════════════════════════════════════════════ */
+.loading-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 30px;
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+.loading-screen.leaving { opacity: 0; pointer-events: none; }
+.loading-logo {
+  width: min(260px, 58vw); height: auto; object-fit: contain;
+  animation: loading-pulse 1.4s ease-in-out infinite;
+}
+@keyframes loading-pulse {
+  0%, 100% { opacity: .85; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.03); }
+}
+.loading-bar {
+  width: min(280px, 68vw); height: 6px;
+  background: var(--sur2);
+  border-radius: 999px; overflow: hidden;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: #015d4e;
+  border-radius: 999px;
+  transition: width .08s linear;
+  box-shadow: 0 0 12px rgba(1,93,78,0.75);
+}
+
+/* ── Watch Party: fallback quando não dá para incorporar o live do YouTube ── */
+.wp-yt-fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 45%, #2a0d0d, #120a0a);
+}
+.wp-yt-badge {
+  font-size: 12px; font-weight: 700; color: #fff;
+  background: #ff0000; padding: 4px 12px; border-radius: 5px;
+  letter-spacing: .5px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Design "Moderno" — visual escuro/preto, minimalista e monocromático
+   (sem azul). Ativa-se com data-design="mcc" no <html>. Cartões
+   arredondados, títulos mais fortes e destaques a branco/cinza.
+   O design "classic" é o que está acima e não é tocado.
+   ══════════════════════════════════════════════════════════════ */
+:root[data-design="mcc"] {
+  --bg:      #0a0a0a;
+  --bg2:     #0f0f0f;
+  --bg3:     #151515;
+  --surface: #131313;
+  --sur2:    #1e1e1e;
+  --bdr:     rgba(255,255,255,0.07);
+  --bdr2:    rgba(255,255,255,0.16);
+  --txt:     #f4f4f5;
+  --txt2:    #a1a1aa;
+  --txt3:    #5a5a5f;
+  --accent:  #e5e5e7;               /* accent neutro claro, sem azul */
+  --accent-dim: rgba(255,255,255,0.10);
+  --gold:    #ffd23f;
+  --r:       9px;
+  --rl:      14px;
+}
+:root[data-design="mcc"][data-theme="light"] {
+  --bg:      #f4f4f5;
+  --bg2:     #ececee;
+  --bg3:     #e2e2e5;
+  --surface: #ffffff;
+  --sur2:    #f1f1f3;
+  --bdr:     rgba(0,0,0,0.08);
+  --bdr2:    rgba(0,0,0,0.18);
+  --txt:     #121214;
+  --txt2:    #52525b;
+  --txt3:    #9a9aa2;
+  --accent:  #18181b;               /* preto para os destaques no modo claro */
+  --accent-dim: rgba(0,0,0,0.08);
+}
+
+/* Fundo com vinheta subtil (sem cor) */
+[data-design="mcc"] body {
+  background:
+    radial-gradient(1100px 600px at 50% -10%, rgba(255,255,255,0.04), transparent 60%),
+    var(--bg);
+}
+
+/* Header + logo com destaque neutro */
+[data-design="mcc"] .header {
+  border-bottom: 1px solid var(--bdr2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+}
+[data-design="mcc"] .header-logo { filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55)); }
+
+/* Nav: separador ativo em "pill" elevado, em vez de underline fino */
+[data-design="mcc"] .nav { border-bottom: 1px solid var(--bdr2); gap: 4px; padding: 8px 20px; }
+[data-design="mcc"] .nav-tab {
+  border-bottom: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .6px;
+  padding: 9px 14px 8px;
+}
+[data-design="mcc"] .nav-tab:hover { background: var(--sur2); }
+[data-design="mcc"] .nav-tab.active {
+  color: var(--txt);
+  background: var(--sur2);
+  box-shadow: inset 0 0 0 1px var(--bdr2);
+}
+[data-design="mcc"] .nav-tab.active .nav-sub { color: var(--txt2); }
+
+/* Títulos de secção mais fortes */
+[data-design="mcc"] .wp-title,
+[data-design="mcc"] .pl-title,
+[data-design="mcc"] .casters-title,
+[data-design="mcc"] .wp-grid-label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+[data-design="mcc"] .wp-title { letter-spacing: .4px; }
+
+/* Cartões / leaderboards arredondados com sombra no hover */
+[data-design="mcc"] .lb-wrap,
+[data-design="mcc"] .points-legend,
+[data-design="mcc"] .casters-wrap,
+[data-design="mcc"] .countdown-wrap,
+[data-design="mcc"] .settings-panel {
+  border-radius: var(--rl);
+  border: 1px solid var(--bdr2);
+  box-shadow: 0 10px 30px -18px rgba(0,0,0,0.9);
+}
+[data-design="mcc"] .lb-row { transition: background .12s, box-shadow .12s; }
+[data-design="mcc"] .lb-row:hover,
+[data-design="mcc"] .tm-row:hover { background: var(--sur2); }
+
+/* Top-3 com faixa de destaque (medalhas) */
+[data-design="mcc"] .lb-row.rank-1 { box-shadow: inset 3px 0 0 var(--gold); }
+[data-design="mcc"] .lb-row.rank-2 { box-shadow: inset 3px 0 0 var(--silver); }
+[data-design="mcc"] .lb-row.rank-3 { box-shadow: inset 3px 0 0 var(--bronze); }
+
+/* Toolbar/pills coerentes (monocromático) */
+[data-design="mcc"] .lang-pill.on,
+[data-design="mcc"] .sort-btn.active {
+  border-color: var(--bdr2);
+  color: var(--txt);
+  background: var(--sur2);
+}
+
+/* Countdown lateral: caixa escura em vez do fundo accent (evita texto invisível) */
+[data-design="mcc"] .sidebar-countdown {
+  background: var(--surface);
+  border: 1px solid var(--bdr2);
+}
+[data-design="mcc"] .scd-label,
+[data-design="mcc"] .scd-num,
+[data-design="mcc"] .scd-sep { color: var(--txt); }
+[data-design="mcc"] .scd-sub { color: var(--txt2); }
+
+/* Watch Party: célula ativa com contorno neutro brilhante */
+[data-design="mcc"] .wp-cell { border-radius: var(--rl); }
+[data-design="mcc"] .wp-cell.active {
+  border-color: var(--txt2);
+  box-shadow: 0 0 0 1px var(--txt2), 0 8px 24px -12px rgba(0,0,0,0.9);
+}
+[data-design="mcc"] .wp-main-frame { border: 1px solid var(--bdr2); box-shadow: 0 12px 34px -20px rgba(0,0,0,0.9); }
+
+/* Botão de definições com contorno neutro */
+[data-design="mcc"] .gear-btn:hover { border-color: var(--bdr2); color: var(--txt); }
+
+/* ══════════════════════════════════════════════════════════════
+   Página de manutenção
+   ══════════════════════════════════════════════════════════════ */
+.maintenance {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(1,93,78,0.16), transparent 60%),
+    #0a0a0a;
+  color: #f4f4f5;
+}
+.maintenance-card {
+  max-width: 460px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.maintenance-logo { width: min(240px, 62vw); height: auto; }
+.maintenance-bar {
+  width: 180px; height: 5px; border-radius: 999px;
+  background: rgba(255,255,255,0.10); overflow: hidden;
+}
+.maintenance-bar span {
+  display: block; height: 100%; width: 40%; border-radius: 999px;
+  background: #015d4e; box-shadow: 0 0 12px rgba(1,93,78,0.75);
+  animation: maint-slide 1.4s ease-in-out infinite;
+}
+@keyframes maint-slide {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%); }
+}
+.maintenance-title { font-size: 22px; font-weight: 800; margin: 0; }
+.maintenance-text { font-size: 15px; color: #d4d4d8; margin: 0; }
+.maintenance-text-sub { font-size: 12px; color: #8a8a92; margin: 0; line-height: 1.6; }
+
+/* Crédito no footer (API Minecraft Heads) */
+.footer-credit { font-size: 10px; color: var(--txt3); opacity: 0.7; }

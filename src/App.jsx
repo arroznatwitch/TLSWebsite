@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { ThemeProvider } from "./hooks/useTheme";
+import { DesignProvider } from "./hooks/useDesign";
 import { LangProvider, useLang } from "./hooks/useLang";
+import LoadingScreen from "./components/LoadingScreen";
+import MaintenanceScreen from "./components/MaintenanceScreen";
+import { MAINTENANCE } from "./config";
 import SettingsPanel from "./components/SettingsPanel";
 import SoloLeaderboard from "./components/SoloLeaderboard";
 import TeamsLeaderboard from "./components/TeamsLeaderboard";
@@ -49,7 +53,7 @@ function Inner() {
   return (
     <div className="app">
       <header className="header">
-        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="The Last Survivor" className="header-logo" />
+        <img src="/logo.png" alt="The Last Survivor" className="header-logo" />
         <button className="gear-btn" onClick={() => setSettingsOpen(true)} aria-label={t("settings")}>
           <GearIcon />
         </button>
@@ -85,6 +89,7 @@ function Inner() {
           }
         </main>
         <aside className="sidebar">
+          {data.nextEvent && <EventCountdown eventDate={data.nextEvent.date} label={data.nextEvent.label} />}
           {seasons.some(s => s.eventDate && new Date(s.eventDate) > new Date()) &&
             seasons.filter(s => s.eventDate && new Date(s.eventDate) > new Date()).map(s => (
               <EventCountdown key={s.id} eventDate={s.eventDate} label={s.label} />
@@ -92,7 +97,7 @@ function Inner() {
           }
           <a href="https://craftandhelps.com" target="_blank" rel="noopener noreferrer" className="cah-banner">
             <img
-              src={`${import.meta.env.BASE_URL}Logo_CAH.png`}
+              src="/Logo_CAH.png"
               alt="Craft and Helps"
               className="cah-logo"
             />
@@ -100,7 +105,7 @@ function Inner() {
           </a>
           <a href="https://ko-fi.com/playtls" target="_blank" rel="noopener noreferrer" className="kofi-banner">
             <img
-              src={`${import.meta.env.BASE_URL}support_me_on_kofi_beige.webp`}
+              src="/support_me_on_kofi_beige.webp"
               alt={t("kofiSupportLine")}
               className="kofi-img"
             />
@@ -122,6 +127,7 @@ function Inner() {
         <p className="footer-disclaimer">
           {t("footerDisclaimer")}
         </p>
+        <p className="footer-credit">{t("mcHeadsCredit")}</p>
       </footer>
 
       <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
@@ -130,11 +136,16 @@ function Inner() {
 }
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  if (MAINTENANCE) return <MaintenanceScreen />;
   return (
     <ThemeProvider>
-      <LangProvider>
-        <Inner />
-      </LangProvider>
+      <DesignProvider>
+        <LangProvider>
+          {loading && <LoadingScreen onDone={() => setLoading(false)} />}
+          <Inner />
+        </LangProvider>
+      </DesignProvider>
     </ThemeProvider>
   );
 }

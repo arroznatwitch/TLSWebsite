@@ -2,6 +2,7 @@ import { useLang } from "../hooks/useLang";
 import { SwordIcon, ArrowIcon, ClockIcon, GoldenAppleIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
+import McHead from "./McHead";
 
 const medals = ["🥇","🥈","🥉"];
 
@@ -94,7 +95,7 @@ export default function AllTime({ seasons }) {
               {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
             </span>
             <span className="c-name player-name">
-              <img src={`https://mc-heads.net/avatar/${p.nick}/32`} alt={p.nick} className="mc-head" loading="lazy"/>
+              <McHead nick={p.nick} uuid={p.uuid} size={32} className="mc-head" />
               <span>{p.nick}</span>
             </span>
             <span className="c-val twitch-col">

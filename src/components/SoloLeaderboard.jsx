@@ -5,6 +5,7 @@ import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
 import PlayerTag from "./PlayerTag";
 import CastersList from "./CastersList";
+import McHead from "./McHead";
 
 const medals = ["🥇","🥈","🥉"];
 
@@ -29,7 +30,7 @@ export default function SoloLeaderboard({ season }) {
   const { t } = useLang();
   const showDmg    = season.showDmg    === true;
   const autoPoints = season.autoPoints === true;
-  const [sortMode, setSortMode] = useState("points");
+  const [sortMode, setSortMode] = useState("death");
   const podium = season.podium ?? [];
 
   const players = season.players.map(p => ({
@@ -55,8 +56,8 @@ export default function SoloLeaderboard({ season }) {
     <>
 <div className="lb-wrap">
         <div className="lb-toolbar">
-          <button className={`sort-btn ${sortMode==="points"?"active":""}`} onClick={() => setSortMode("points")}>{t("points")}</button>
           <button className={`sort-btn ${sortMode==="death"?"active":""}`}  onClick={() => setSortMode("death")}>{t("deathOrder")}</button>
+          <button className={`sort-btn ${sortMode==="points"?"active":""}`} onClick={() => setSortMode("points")}>{t("points")}</button>
         </div>
         <div className={`lb-head ${gridClass}`}>
           <span className="c-pos">#</span>
@@ -77,7 +78,7 @@ export default function SoloLeaderboard({ season }) {
                 {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
               </span>
               <span className="c-name player-name">
-                <img src={`https://mc-heads.net/avatar/${p.nick}/32`} alt={p.nick} className="mc-head" loading="lazy"/>
+                <McHead nick={p.nick} uuid={p.uuid} size={32} className="mc-head" />
                 <span>{p.nick}</span>
                 <PlayerTag tag={p.tag} />
               </span>

@@ -185,6 +185,7 @@
         },
         {
           "nick": "Jo4na_",
+          "uuid": "bcc04a775e344246a989fa89fdbda5ab",
           "twitch": "twitch.tv/jo4na",
           "tag": {
             "type": "eliminatedGroupC"
@@ -220,6 +221,7 @@
       "teams": [
         {
           "name": "Equipa Verde",
+          "nameKey": "teamGreen",
           "icon": "/icons/teams/green.png",
           "color": "#4ade80",
           "points": 0,
@@ -262,6 +264,7 @@
         },
         {
           "name": "Equipa Azul",
+          "nameKey": "teamBlue",
           "icon": "/icons/teams/blue.png",
           "color": "#60a5fa",
           "points": 0,
@@ -304,6 +307,7 @@
         },
         {
           "name": "Equipa Vermelha",
+          "nameKey": "teamRed",
           "icon": "/icons/teams/red.png",
           "color": "#f87171",
           "points": 0,
@@ -346,6 +350,7 @@
         },
         {
           "name": "Equipa Amarela",
+          "nameKey": "teamYellow",
           "icon": "/icons/teams/yellow.png",
           "color": "#facc15",
           "points": 0,
@@ -368,6 +373,7 @@
             },
             {
               "nick": "Jo4na_",
+              "uuid": "bcc04a775e344246a989fa89fdbda5ab",
               "twitch": "twitch.tv/jo4na",
               "kills": 0,
               "deaths": 1,
@@ -388,6 +394,7 @@
         }
       ]
     }
-      ]
-    }
+      ],
+  "nextEvent": { "label": "TLS III", "date": "2026-07-25T21:00:00" }
+}
   
