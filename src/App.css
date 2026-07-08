@@ -3,6 +3,7 @@
 /* ── Tokens ── */
 :root {
   --bg:      #0f0f0f;
+  --bg-dark: #070707;
   --bg2:     #161616;
   --bg3:     #1c1c1c;
   --surface: #202020;
@@ -25,6 +26,7 @@
 
 [data-theme="light"] {
   --bg:      #f2f2f2;
+  --bg-dark: #e2e2e2;
   --bg2:     #e8e8e8;
   --bg3:     #ddd;
   --surface: #fff;
@@ -59,7 +61,10 @@ body {
   justify-content: center;
   padding: 18px 24px;
   position: relative;
-  border-bottom: 1px solid var(--bdr);
+  /* Barra mais escura que ocupa toda a largura (o conteúdo fica centrado) */
+  background: var(--bg-dark);
+  box-shadow: 0 0 0 100vw var(--bg-dark);
+  clip-path: inset(0 -100vw);
 }
 
 .logo-box {
@@ -89,12 +94,10 @@ body {
 }
 .gear-btn:hover { color: var(--txt); border-color: var(--bdr2); background: var(--sur2); }
 
-/* ── Nav ── */
 .nav {
   display: flex;
   gap: 0;
   padding: 0 20px;
-  border-bottom: 1px solid var(--bdr);
   overflow-x: auto;
 }
 
@@ -114,10 +117,8 @@ body {
 .nav-sub { font-size: 10px; color: var(--txt3); font-weight: 400; }
 .nav-tab.active .nav-sub { color: var(--txt2); }
 
-/* ── Main ── */
 .main { flex: 1; padding: 24px; }
 
-/* ── Leaderboard ── */
 .lb-wrap {
   background: var(--surface);
   border: 1px solid var(--bdr);
@@ -319,10 +320,13 @@ body {
 
 /* ── Footer ── */
 .footer {
-  border-top: 1px solid var(--bdr);
   padding: 24px;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 12px;
+  /* Barra mais escura que ocupa toda a largura (o conteúdo fica centrado) */
+  background: var(--bg-dark);
+  box-shadow: 0 0 0 100vw var(--bg-dark);
+  clip-path: inset(0 -100vw);
 }
 .footer-text { font-size: 13px; color: var(--txt3); }
 
@@ -395,7 +399,7 @@ body {
 
 /* ── Header logo ── */
 .header-logo {
-  height: 52px;
+  height: 72px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -692,6 +696,7 @@ body {
   align-items: flex-start;
   gap: 16px;
   max-width: 100%;
+  flex: 1;
 }
 
 .content-with-sidebar .main {
@@ -711,7 +716,7 @@ body {
 
 /* ── Sidebar countdown ── */
 .sidebar-countdown {
-  background: var(--accent);
+  background: linear-gradient(135deg, #02997e 0%, #015d4e 55%, #013b31 100%);
   border-radius: var(--rl);
   padding: 22px 20px 18px;
   display: flex;
@@ -830,6 +835,26 @@ body {
   display: block;
 }
 
+/* ── Apoiadores (aba própria, em grelha) ── */
+.supporters-page { width: 100%; }
+.sp-head { margin-bottom: 18px; }
+.sp-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.sp-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+.supporters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+.supporter-card {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-radius: var(--r); padding: 10px 12px;
+}
+.supporter-nick {
+  font-size: 13px; font-weight: 500; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
 /* ── Watch Party ── */
 .wp { width: 100%; }
 .wp-head { margin-bottom: 18px; }
@@ -892,7 +917,12 @@ body {
   font-size: 11px; color: var(--txt3); margin: 16px 0 0; line-height: 1.5;
 }
 .wp-empty { color: var(--txt2); font-size: 14px; }
-.nav-tab-wp .nav-sub { color: var(--gold); }
+.nav-tab-wp .nav-sub,
+.nav-tab-wp.active .nav-sub,
+.nav-tab-rank .nav-sub,
+.nav-tab-rank.active .nav-sub,
+.nav-tab-sup .nav-sub,
+.nav-tab-sup.active .nav-sub { color: var(--gold); }
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
@@ -905,7 +935,7 @@ body {
   .main { padding: 14px; }
   .nav { padding: 0 14px; }
   .header { padding: 14px 16px; }
-  .header-logo { height: 40px; }
+  .header-logo { height: 52px; }
   .gear-btn { right: 14px; width: 32px; height: 32px; }
 
   .at-grid { grid-template-columns: 1fr; }
@@ -915,16 +945,13 @@ body {
   .wp-main-info { flex-wrap: wrap; }
   .wp-open { margin-left: 0; }
 
-  /* Leaderboard solo: só pos, nome, pontos, kills */
   .lb-grid-nodmg, .lb-grid-dmg { grid-template-columns: 32px 1fr 56px 44px; }
   .lb-grid-nodmg .twitch-col, .lb-grid-dmg .twitch-col { display: none; }
   .lb-grid-nodmg .c-val:nth-child(n+6), .lb-grid-dmg .c-val:nth-child(n+6) { display: none; }
 
-  /* Cabeçalho/linha da equipa */
   .teams-lb-head, .teams-lb-row { grid-template-columns: 36px 1fr 60px 26px; }
   .teams-lb-head .mc-head-sm, .teams-lb-row .mc-head-sm { width: 18px; height: 18px; }
 
-  /* Stats individuais da equipa: só nome, pontos, kills */
   .member-grid-nodmg, .member-grid-dmg { grid-template-columns: 1fr 56px 44px; }
   .member-grid-nodmg .twitch-col, .member-grid-dmg .twitch-col { display: none; }
   .member-grid-nodmg .c-val:nth-child(n+5), .member-grid-dmg .c-val:nth-child(n+5) { display: none; }
@@ -934,9 +961,6 @@ body {
   .wp-grid { grid-template-columns: 1fr; }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   Loading screen (logo + barra azul)
-   ══════════════════════════════════════════════════════════════ */
 .loading-screen {
   position: fixed; inset: 0; z-index: 9999;
   background: var(--bg);
@@ -979,137 +1003,7 @@ body {
   letter-spacing: .5px;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   Design "Moderno" — visual escuro/preto, minimalista e monocromático
-   (sem azul). Ativa-se com data-design="mcc" no <html>. Cartões
-   arredondados, títulos mais fortes e destaques a branco/cinza.
-   O design "classic" é o que está acima e não é tocado.
-   ══════════════════════════════════════════════════════════════ */
-:root[data-design="mcc"] {
-  --bg:      #0a0a0a;
-  --bg2:     #0f0f0f;
-  --bg3:     #151515;
-  --surface: #131313;
-  --sur2:    #1e1e1e;
-  --bdr:     rgba(255,255,255,0.07);
-  --bdr2:    rgba(255,255,255,0.16);
-  --txt:     #f4f4f5;
-  --txt2:    #a1a1aa;
-  --txt3:    #5a5a5f;
-  --accent:  #e5e5e7;               /* accent neutro claro, sem azul */
-  --accent-dim: rgba(255,255,255,0.10);
-  --gold:    #ffd23f;
-  --r:       9px;
-  --rl:      14px;
-}
-:root[data-design="mcc"][data-theme="light"] {
-  --bg:      #f4f4f5;
-  --bg2:     #ececee;
-  --bg3:     #e2e2e5;
-  --surface: #ffffff;
-  --sur2:    #f1f1f3;
-  --bdr:     rgba(0,0,0,0.08);
-  --bdr2:    rgba(0,0,0,0.18);
-  --txt:     #121214;
-  --txt2:    #52525b;
-  --txt3:    #9a9aa2;
-  --accent:  #18181b;               /* preto para os destaques no modo claro */
-  --accent-dim: rgba(0,0,0,0.08);
-}
 
-/* Fundo com vinheta subtil (sem cor) */
-[data-design="mcc"] body {
-  background:
-    radial-gradient(1100px 600px at 50% -10%, rgba(255,255,255,0.04), transparent 60%),
-    var(--bg);
-}
-
-/* Header + logo com destaque neutro */
-[data-design="mcc"] .header {
-  border-bottom: 1px solid var(--bdr2);
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
-}
-[data-design="mcc"] .header-logo { filter: drop-shadow(0 4px 18px rgba(0,0,0,0.55)); }
-
-/* Nav: separador ativo em "pill" elevado, em vez de underline fino */
-[data-design="mcc"] .nav { border-bottom: 1px solid var(--bdr2); gap: 4px; padding: 8px 20px; }
-[data-design="mcc"] .nav-tab {
-  border-bottom: none;
-  border-radius: 10px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: .6px;
-  padding: 9px 14px 8px;
-}
-[data-design="mcc"] .nav-tab:hover { background: var(--sur2); }
-[data-design="mcc"] .nav-tab.active {
-  color: var(--txt);
-  background: var(--sur2);
-  box-shadow: inset 0 0 0 1px var(--bdr2);
-}
-[data-design="mcc"] .nav-tab.active .nav-sub { color: var(--txt2); }
-
-/* Títulos de secção mais fortes */
-[data-design="mcc"] .wp-title,
-[data-design="mcc"] .pl-title,
-[data-design="mcc"] .casters-title,
-[data-design="mcc"] .wp-grid-label {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-[data-design="mcc"] .wp-title { letter-spacing: .4px; }
-
-/* Cartões / leaderboards arredondados com sombra no hover */
-[data-design="mcc"] .lb-wrap,
-[data-design="mcc"] .points-legend,
-[data-design="mcc"] .casters-wrap,
-[data-design="mcc"] .countdown-wrap,
-[data-design="mcc"] .settings-panel {
-  border-radius: var(--rl);
-  border: 1px solid var(--bdr2);
-  box-shadow: 0 10px 30px -18px rgba(0,0,0,0.9);
-}
-[data-design="mcc"] .lb-row { transition: background .12s, box-shadow .12s; }
-[data-design="mcc"] .lb-row:hover,
-[data-design="mcc"] .tm-row:hover { background: var(--sur2); }
-
-/* Top-3 com faixa de destaque (medalhas) */
-[data-design="mcc"] .lb-row.rank-1 { box-shadow: inset 3px 0 0 var(--gold); }
-[data-design="mcc"] .lb-row.rank-2 { box-shadow: inset 3px 0 0 var(--silver); }
-[data-design="mcc"] .lb-row.rank-3 { box-shadow: inset 3px 0 0 var(--bronze); }
-
-/* Toolbar/pills coerentes (monocromático) */
-[data-design="mcc"] .lang-pill.on,
-[data-design="mcc"] .sort-btn.active {
-  border-color: var(--bdr2);
-  color: var(--txt);
-  background: var(--sur2);
-}
-
-/* Countdown lateral: caixa escura em vez do fundo accent (evita texto invisível) */
-[data-design="mcc"] .sidebar-countdown {
-  background: var(--surface);
-  border: 1px solid var(--bdr2);
-}
-[data-design="mcc"] .scd-label,
-[data-design="mcc"] .scd-num,
-[data-design="mcc"] .scd-sep { color: var(--txt); }
-[data-design="mcc"] .scd-sub { color: var(--txt2); }
-
-/* Watch Party: célula ativa com contorno neutro brilhante */
-[data-design="mcc"] .wp-cell { border-radius: var(--rl); }
-[data-design="mcc"] .wp-cell.active {
-  border-color: var(--txt2);
-  box-shadow: 0 0 0 1px var(--txt2), 0 8px 24px -12px rgba(0,0,0,0.9);
-}
-[data-design="mcc"] .wp-main-frame { border: 1px solid var(--bdr2); box-shadow: 0 12px 34px -20px rgba(0,0,0,0.9); }
-
-/* Botão de definições com contorno neutro */
-[data-design="mcc"] .gear-btn:hover { border-color: var(--bdr2); color: var(--txt); }
-
-/* ══════════════════════════════════════════════════════════════
-   Página de manutenção
-   ══════════════════════════════════════════════════════════════ */
 .maintenance {
   position: fixed; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -1141,5 +1035,8 @@ body {
 .maintenance-text { font-size: 15px; color: #d4d4d8; margin: 0; }
 .maintenance-text-sub { font-size: 12px; color: #8a8a92; margin: 0; line-height: 1.6; }
 
-/* Crédito no footer (API Minecraft Heads) */
 .footer-credit { font-size: 10px; color: var(--txt3); opacity: 0.7; }
+.crafthead-link { font-weight: 700; color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.crafthead-link:hover { color: var(--txt); }
+.footer-brand { text-decoration: underline; text-underline-offset: 2px; }
+.footer-disclaimer-strong { font-weight: 700; opacity: 0.9; }

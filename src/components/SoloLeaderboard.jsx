@@ -94,7 +94,7 @@ export default function SoloLeaderboard({ season }) {
         })}
       </div>
 
-      {/* Casters */}
+      {}
       <CastersList casters={season.casters} />
 
       <PointsLegend showRevives={false} showDmg={showDmg} />

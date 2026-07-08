@@ -1,4 +1,3 @@
-// Ícone Twitch ou YouTube consoante o link do jogador
 
 function TwitchIcon({ size = 13 }) {
   return (
@@ -32,8 +31,6 @@ export function StreamLink({ channel, size = 13, className = "" }) {
     </a>
   );
 }
-
-// Versão mini (só ícone, sem texto) para usar nas rows
 export function StreamMini({ channel }) {
   if (!channel) return null;
   return <StreamLink channel={channel} size={12} className="twitch-mini" />;

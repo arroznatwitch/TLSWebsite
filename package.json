@@ -5,8 +5,10 @@
   "type": "module",
   "source": "index.html",
   "scripts": {
+    "predev": "node -e \"const fs=require('fs');fs.mkdirSync('dist',{recursive:true});fs.cpSync('public','dist',{recursive:true})\"",
     "dev": "parcel index.html --port 1234",
-    "build": "parcel build index.html --dist-dir dist --public-url /",
+    "build": "node build.js",
+    "clean": "node -e \"const fs=require('fs');['.parcel-cache','dist'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}))\"",
     "lint": "eslint ."
   },
   "staticFiles": {

@@ -1,23 +1,15 @@
 import { useState } from "react";
 
-// Avatar de Minecraft com cadeia de fallback.
-//
-// Porque é que alguns jogadores apareciam "bugados": o mc-heads.net resolve a
-// cabeça pelo NOME ATUAL da conta. Se o jogador mudou de nome (o nick no
-// seasons.json fica desatualizado), tem maiúsculas/minúsculas estranhas, ou o
-// serviço está lento/limitado, o pedido falha e ficava um quadrado vazio.
-//
-// Solução:
-//  - Se o jogador tiver "uuid" no seasons.json usamos isso (estável mesmo
-//    quando muda de nome) — é a forma mais fiável de fixar um jogador.
-//  - Em caso de erro, tentamos o minotar e por fim uma cabeça padrão (Steve),
-//    para nunca ficar um espaço em branco.
 const buildSources = (nick, uuid, size) => {
   const primary = uuid || nick;
+  // Cara 2D COM a camada de overlay (chapéu/óculos): /helm inclui a 2ª camada
+  // do skin, ao contrário de /avatar. Pedimos 2x a resolução para ficar nítido.
+  const s = Math.min(128, size * 2);
   return [
-    `https://mc-heads.net/avatar/${encodeURIComponent(primary)}/${size}`,
-    `https://minotar.net/helm/${encodeURIComponent(nick || "MHF_Steve")}/${size}`,
-    `https://mc-heads.net/avatar/MHF_Steve/${size}`,
+    `https://crafthead.net/helm/${encodeURIComponent(primary)}/${s}`,
+    `https://mc-heads.net/avatar/${encodeURIComponent(primary)}/${s}`,
+    `https://minotar.net/helm/${encodeURIComponent(nick || "MHF_Steve")}/${s}`,
+    `https://crafthead.net/helm/MHF_Steve/${s}`,
   ];
 };
 

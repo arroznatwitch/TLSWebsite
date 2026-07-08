@@ -40,8 +40,8 @@ const T = {
     kofiSupportLine:"Buy The Last Survivor a Coffee",
     cahDescription:"Um servidor de Minecraft com Rankup, minas personalizadas, masmorras, chefes e uma comunidade ativa. Evolua, conquiste e faça parte de uma história que nunca terminou.",
     teamGreen:"Equipa Verde", teamBlue:"Equipa Azul", teamRed:"Equipa Vermelha", teamYellow:"Equipa Amarela",
-    mcHeadsCredit:"Cabeças dos jogadores fornecidas pela API Minecraft Heads.",
-    design:"Design", designClassic:"Clássico", designMcc:"Moderno",
+    avatarsCredit:"Avatares de Minecraft fornecidos por", ranking:"Ranking", supporters:"Apoiadores",
+    supportersSub:"Obrigado a quem apoia o The Last Survivor!", supportersEmpty:"Ainda não há apoiadores para mostrar.",
   },
   en: {
     allTime:"All-Time", settings:"Settings", darkMode:"Dark Mode", lightMode:"Light Mode",
@@ -82,8 +82,8 @@ const T = {
     kofiSupportLine:"Buy The Last Survivor a coffee",
     cahDescription:"A Minecraft server with Rankup, custom mines, dungeons, bosses, and an active community. Level up, conquer, and become part of a story that never truly ended.",
     teamGreen:"Green Team", teamBlue:"Blue Team", teamRed:"Red Team", teamYellow:"Yellow Team",
-    mcHeadsCredit:"Player heads provided by the Minecraft Heads API.",
-    design:"Design", designClassic:"Classic", designMcc:"Modern",
+    avatarsCredit:"Minecraft Avatars provided by", ranking:"Ranking", supporters:"Supporters",
+    supportersSub:"Thank you to everyone who supports The Last Survivor!", supportersEmpty:"No supporters to show yet.",
   },
   es: {
     allTime:"Histórico", settings:"Ajustes", darkMode:"Modo Oscuro", lightMode:"Modo Claro",
@@ -124,8 +124,8 @@ const T = {
     kofiSupportLine:"Invita un café a The Last Survivor",
     cahDescription:"Un servidor de Minecraft con Rankup, minas personalizadas, mazmorras, jefes y una comunidad activa. Sube de nivel, conquista y forma parte de una historia que nunca terminó.",
     teamGreen:"Equipo Verde", teamBlue:"Equipo Azul", teamRed:"Equipo Rojo", teamYellow:"Equipo Amarillo",
-    mcHeadsCredit:"Cabezas de jugadores proporcionadas por la API de Minecraft Heads.",
-    design:"Diseño", designClassic:"Clásico", designMcc:"Moderno",
+    avatarsCredit:"Avatares de Minecraft proporcionados por", ranking:"Ranking", supporters:"Colaboradores",
+    supportersSub:"¡Gracias a todos los que apoyan The Last Survivor!", supportersEmpty:"Todavía no hay colaboradores para mostrar.",
   },
 };
 

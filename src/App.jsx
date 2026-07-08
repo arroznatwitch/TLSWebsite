@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ThemeProvider } from "./hooks/useTheme";
-import { DesignProvider } from "./hooks/useDesign";
 import { LangProvider, useLang } from "./hooks/useLang";
 import LoadingScreen from "./components/LoadingScreen";
 import MaintenanceScreen from "./components/MaintenanceScreen";
@@ -11,6 +10,7 @@ import TeamsLeaderboard from "./components/TeamsLeaderboard";
 import AllTime from "./components/AllTime";
 import data from "./data/seasons.json";
 import EventCountdown from "./components/EventCountdown";
+import Supporters from "./components/Supporters";
 import WatchParty from "./components/WatchParty";
 import "./App.css";
 
@@ -66,8 +66,9 @@ function Inner() {
             <span className="nav-sub">{s.type==="solo" ? t("soloEvent") : t("teamsEvent")}</span>
           </button>
         ))}
-        <button className={`nav-tab ${tab==="alltime"?"active":""}`} onClick={() => setTab("alltime")} style={{marginLeft:"auto"}}>
+        <button className={`nav-tab nav-tab-rank ${tab==="alltime"?"active":""}`} onClick={() => setTab("alltime")} style={{marginLeft:"auto"}}>
           {t("allTime")}
+          <span className="nav-sub">{t("ranking")}</span>
         </button>
         {wpSeason && (
           <button className={`nav-tab nav-tab-wp ${tab==="watchparty"?"active":""}`} onClick={() => setTab("watchparty")}>
@@ -75,6 +76,10 @@ function Inner() {
             <span className="nav-sub">{wpSeason.label}</span>
           </button>
         )}
+        <button className={`nav-tab nav-tab-sup ${tab==="supporters"?"active":""}`} onClick={() => setTab("supporters")}>
+          {t("supporters")}
+          <span className="nav-sub">♥</span>
+        </button>
       </nav>
 
       <div className="content-with-sidebar">
@@ -83,9 +88,11 @@ function Inner() {
             ? <AllTime seasons={seasons} />
             : tab === "watchparty"
               ? <WatchParty season={wpSeason} />
-              : active?.type === "solo"
-                ? <SoloLeaderboard season={active} />
-                : <TeamsLeaderboard season={active} />
+              : tab === "supporters"
+                ? <Supporters />
+                : active?.type === "solo"
+                  ? <SoloLeaderboard season={active} />
+                  : <TeamsLeaderboard season={active} />
           }
         </main>
         <aside className="sidebar">
@@ -114,7 +121,14 @@ function Inner() {
       </div>
 
       <footer className="footer">
-        <p className="footer-text">{t("footer")}</p>
+        <p className="footer-text">
+          {(() => {
+            const txt = t("footer");
+            const b = "The Last Survivor";
+            const i = txt.indexOf(b);
+            return i === -1 ? txt : <>{txt.slice(0, i)}<span className="footer-brand">{b}</span>{txt.slice(i + b.length)}</>;
+          })()}
+        </p>
         <div className="footer-socials">
           <a href="https://instagram.com/tls.thelastsurvivor" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
             <InstagramIcon />
@@ -124,10 +138,13 @@ function Inner() {
           </a>
         </div>
         <p className="footer-copy">© 2024 – 2026 · The Last Survivor</p>
-        <p className="footer-disclaimer">
+        <p className="footer-disclaimer footer-disclaimer-strong">
           {t("footerDisclaimer")}
         </p>
-        <p className="footer-credit">{t("mcHeadsCredit")}</p>
+        <p className="footer-credit">
+          {t("avatarsCredit")}{" "}
+          <a href="https://crafthead.net/" target="_blank" rel="noopener noreferrer" className="crafthead-link">Crafthead</a>
+        </p>
       </footer>
 
       <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
@@ -140,12 +157,10 @@ export default function App() {
   if (MAINTENANCE) return <MaintenanceScreen />;
   return (
     <ThemeProvider>
-      <DesignProvider>
-        <LangProvider>
-          {loading && <LoadingScreen onDone={() => setLoading(false)} />}
-          <Inner />
-        </LangProvider>
-      </DesignProvider>
+      <LangProvider>
+        {loading && <LoadingScreen onDone={() => setLoading(false)} />}
+        <Inner />
+      </LangProvider>
     </ThemeProvider>
   );
 }

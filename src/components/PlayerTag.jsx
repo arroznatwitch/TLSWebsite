@@ -20,12 +20,10 @@ export default function PlayerTag({ tag }) {
   };
 
   const preset = PRESETS[tag.type] ?? null;
-  // Se tiver label custom no JSON usa sempre esse, senão traduz pelo tipo
   const label  = tag.label
     ? (preset?.labelKey ? t(preset.labelKey) : tag.label)
     : (preset?.labelKey ? t(preset.labelKey) : tag.type);
 
-  // Se tiver label custom E não for um preset, usa o label direto (sem tradução)
   const finalLabel = preset
     ? t(preset.labelKey)
     : (tag.label ?? tag.type);

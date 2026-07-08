@@ -55,12 +55,12 @@ export default function AllTime({ seasons }) {
         const n = team.players.length;
         for (const p of team.players) {
           ensure(p.nick, p.twitch);
-          // Pontos: autoPoints calcula pelas stats individuais, senão divide equipa
+   
           const pts = autoPoints
             ? calcPlayerPoints(p)
             : Math.round((team.points ?? 0) / n);
           playerMap[p.nick].points   += pts;
-          // Stats individuais têm prioridade sobre divisão da equipa
+
           playerMap[p.nick].kills    += p.kills    !== undefined ? p.kills    : Math.round((team.kills    ?? 0) / n);
           playerMap[p.nick].deaths   += p.deaths   !== undefined ? p.deaths   : Math.round((team.deaths  ?? 0) / n);
           playerMap[p.nick].assists  += p.assists  !== undefined ? p.assists  : Math.round((team.assists ?? 0) / n);

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-// Ecrã de arranque: logo da TLS + barra de progresso azul (a cor de accent).
-// Avança até 100% em ~1,2s e depois faz fade-out. onDone é chamado no fim.
 export default function LoadingScreen({ onDone }) {
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
