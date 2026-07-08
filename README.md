@@ -1,8 +1,11 @@
-# React + Vite
+<p align="left">
+  <img src="https://raw.githubusercontent.com/arroznatwitch/TLSPlugin/main/assets/logotipo_tls.jpg" width="120" alt="TLS Logo">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# The Last Survivor - Website
 
-Currently, two official plugins are available:
+<a href="https://ko-fi.com/playtls" target="_blank">
+  <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_button_blue.png" height="55" alt="Support on Ko-fi">
+</a>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
