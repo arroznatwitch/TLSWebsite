@@ -21,9 +21,7 @@
         {
           "nick": "Nunorr",
           "twitch": "twitch.tv/nunorr13",
-          "tag": {
-            "type": "winner"
-          },
+          "tag": { "type": "winner" },
           "kills": 1,
           "deaths": 0,
           "assists": 0,
@@ -36,9 +34,7 @@
         {
           "nick": "Hoyuro",
           "twitch": "twitch.tv/hoyuro",
-          "tag": {
-            "type": "second"
-          },
+          "tag": { "type": "second" },
           "kills": 2,
           "deaths": 2,
           "assists": 0,
@@ -51,9 +47,7 @@
         {
           "nick": "GrysHGG",
           "twitch": "twitch.tv/gryshgg",
-          "tag": {
-            "type": "gaveslot"
-          },
+          "tag": { "type": "gaveslot" },
           "kills": 2,
           "deaths": 0,
           "assists": 0,
@@ -66,9 +60,7 @@
         {
           "nick": "Rick0PT",
           "twitch": "twitch.tv/rick0_pt",
-          "tag": {
-            "type": "third"
-          },
+          "tag": { "type": "third" },
           "kills": 0,
           "deaths": 2,
           "assists": 0,
@@ -81,9 +73,7 @@
         {
           "nick": "Mirandappt",
           "twitch": "twitch.tv/mirandappt",
-          "tag" : {
-            "type": "finalist"
-          },
+          "tag": { "type": "finalist" },
           "kills": 1,
           "deaths": 1,
           "assists": 0,
@@ -96,9 +86,7 @@
         {
           "nick": "Brine16",
           "twitch": "twitch.tv/brine16",
-          "tag": {
-            "type": "gaveslot"
-          },
+          "tag": { "type": "gaveslot" },
           "kills": 1,
           "deaths": 1,
           "assists": 0,
@@ -111,9 +99,7 @@
         {
           "nick": "KenanX",
           "twitch": "twitch.tv/kenanlives",
-            "tag" : {
-            "type": "finalist"
-          },
+          "tag": { "type": "finalist" },
           "kills": 0,
           "deaths": 2,
           "assists": 0,
@@ -126,9 +112,7 @@
         {
           "nick": "Miguel_31",
           "twitch": "twitch.tv/lideude",
-          "tag": {
-            "type": "eliminatedGroupA"
-          },
+          "tag": { "type": "eliminatedGroupA" },
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -141,9 +125,7 @@
         {
           "nick": "Morgadinho",
           "twitch": "youtube.com/@MorgadinhoPT",
-            "tag": {
-            "type": "eliminatedGroupB"
-          },
+          "tag": { "type": "eliminatedGroupB" },
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -156,9 +138,7 @@
         {
           "nick": "FieryFox653",
           "twitch": "twitch.tv/fieryfox653",
-            "tag": {
-            "type": "eliminatedGroupB"
-          },
+          "tag": { "type": "eliminatedGroupB" },
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -171,9 +151,7 @@
         {
           "nick": "Peter_PT",
           "twitch": "twitch.tv/mrpeter_pt",
-          "tag": {
-            "type": "eliminatedGroupA"
-          },
+          "tag": { "type": "eliminatedGroupA" },
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -187,9 +165,7 @@
           "nick": "Jo4na_",
           "uuid": "bcc04a775e344246a989fa89fdbda5ab",
           "twitch": "twitch.tv/jo4na",
-          "tag": {
-            "type": "eliminatedGroupC"
-          },
+          "tag": { "type": "eliminatedGroupC" },
           "kills": 0,
           "deaths": 1,
           "assists": 0,
@@ -233,33 +209,9 @@
           "damageDealt": 0,
           "damageTaken": 0,
           "players": [
-            {
-              "nick": "Rick0PT",
-              "twitch": "twitch.tv/rick0_pt",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 39,
-              "revives": 0
-            },
-            {
-              "nick": "Blubxxx",
-              "twitch": "twitch.tv/blubxxx",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 39,
-              "revives": 0
-            },
-            {
-              "nick": "GhostedMK_",
-              "twitch": "twitch.tv/ghostedmk_",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 40,
-              "revives": 0
-            }
+            { "nick": "Rick0PT", "twitch": "twitch.tv/rick0_pt", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 39, "revives": 0 },
+            { "nick": "Blubxxx", "twitch": "twitch.tv/blubxxx", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 39, "revives": 0 },
+            { "nick": "GhostedMK_", "twitch": "twitch.tv/ghostedmk_", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 40, "revives": 0 }
           ]
         },
         {
@@ -276,33 +228,9 @@
           "damageDealt": 0,
           "damageTaken": 0,
           "players": [
-            {
-              "nick": "mcaeiroo",
-              "twitch": "twitch.tv/mcaeiro",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 100,
-              "revives": 0
-            },
-            {
-              "nick": "KenanX",
-              "twitch": "twitch.tv/kenanx",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 54,
-              "revives": 0
-            },
-            {
-              "nick": "elParreira",
-              "twitch": "twitch.tv/mrparreirinha",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 54,
-              "revives": 0
-            }
+            { "nick": "mcaeiroo", "twitch": "twitch.tv/mcaeiro", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 100, "revives": 0 },
+            { "nick": "KenanX", "twitch": "twitch.tv/kenanx", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 54, "revives": 0 },
+            { "nick": "elParreira", "twitch": "twitch.tv/mrparreirinha", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 54, "revives": 0 }
           ]
         },
         {
@@ -319,33 +247,9 @@
           "damageDealt": 0,
           "damageTaken": 0,
           "players": [
-            {
-              "nick": "Peter_PT",
-              "twitch": "twitch.tv/mrpeter_pt",
-              "kills": 1,
-              "deaths": 0,
-              "assists": 0,
-              "timeLive": 100,
-              "revives": 0
-            },
-            {
-              "nick": "ysn00p",
-              "twitch": "twitch.tv/ysn00p",
-              "kills": 2,
-              "deaths": 0,
-              "assists": 0,
-              "timeLive": 100,
-              "revives": 0
-            },
-            {
-              "nick": "Mirandappt",
-              "twitch": "twitch.tv/mirandappt",
-              "kills": 1,
-              "deaths": 0,
-              "assists": 1,
-              "timeLive": 100,
-              "revives": 0
-            }
+            { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "kills": 1, "deaths": 0, "assists": 0, "timeLive": 100, "revives": 0 },
+            { "nick": "ysn00p", "twitch": "twitch.tv/ysn00p", "kills": 2, "deaths": 0, "assists": 0, "timeLive": 100, "revives": 0 },
+            { "nick": "Mirandappt", "twitch": "twitch.tv/mirandappt", "kills": 1, "deaths": 0, "assists": 1, "timeLive": 100, "revives": 0 }
           ]
         },
         {
@@ -362,39 +266,49 @@
           "damageDealt": 0,
           "damageTaken": 0,
           "players": [
-            {
-              "nick": "Hoyuro",
-              "twitch": "twitch.tv/hoyuro",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 90,
-              "revives": 0
-            },
-            {
-              "nick": "Jo4na_",
-              "uuid": "bcc04a775e344246a989fa89fdbda5ab",
-              "twitch": "twitch.tv/jo4na",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 90,
-              "revives": 0
-            },
-            {
-              "nick": "Nunorr",
-              "twitch": "twitch.tv/nunorr13",
-              "kills": 0,
-              "deaths": 1,
-              "assists": 0,
-              "timeLive": 90,
-              "revives": 0
-            }
+            { "nick": "Hoyuro", "twitch": "twitch.tv/hoyuro", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 90, "revives": 0 },
+            { "nick": "Jo4na_", "uuid": "bcc04a775e344246a989fa89fdbda5ab", "twitch": "twitch.tv/jo4na", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 90, "revives": 0 },
+            { "nick": "Nunorr", "twitch": "twitch.tv/nunorr13", "kills": 0, "deaths": 1, "assists": 0, "timeLive": 90, "revives": 0 }
           ]
         }
       ]
-    }
+    },
+    {
+      "id": "tls3",
+      "label": "TLS III",
+      "type": "solo",
+      "showDmg": true,
+      "autoPoints": true,
+      "eventDate": "2026-07-25T15:00:00",
+      "podium": [],
+      "casters": [
+        {
+          "nick": "ArrozNaTwitch",
+          "twitch": "twitch.tv/arroznatwitch"
+        },
+        {
+          "nick": "Hoyuro",
+          "twitch": "twitch.tv/hoyuro"
+        },
+        {
+          "nick": "Rick0PT",
+          "twitch": "twitch.tv/rick0_pt"
+        }
       ],
-  "nextEvent": { "label": "TLS III", "date": "2026-07-25T21:00:00" }
+      "players": [
+        { "nick": "Mirandappt", "twitch": "twitch.tv/mirandappt", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 2, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 3, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "ysn00p", "twitch": "twitch.tv/ysn00p", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 4, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "ArrozNaTwitch", "twitch": "twitch.tv/arroznatwitch", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "cozysafira", "twitch": "twitch.tv/cozysafira", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "CunhaDosMores", "twitch": "twitch.tv/cunhamore", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "Morgadinho", "twitch": "youtube.com/@MorgadinhoPT", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "eiGuerreiro", "twitch": "twitch.tv/eiguerreiro", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "mcaeiroo", "twitch": "twitch.tv/mcaeiro", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "IvanDaEscola", "twitch": "twitch.tv/ivandaescola", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "di0g0gamespt", "twitch": "twitch.tv/di0g0games", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
+        { "nick": "Digast", "twitch": "twitch.tv/diigast", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 }
+      ]
+    }
+  ]
 }
-  
