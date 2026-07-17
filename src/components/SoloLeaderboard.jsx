@@ -6,25 +6,9 @@ import PointsLegend from "./PointsLegend";
 import PlayerTag from "./PlayerTag";
 import CastersList from "./CastersList";
 import McHead from "./McHead";
+import { playerPoints, playerStats } from "../utils/points";
 
 const medals = ["🥇","🥈","🥉"];
-
-function ddrdPoints(dmgDealt, dmgTaken) {
-  const diff = (dmgDealt ?? 0) - (dmgTaken ?? 0);
-  if (diff >= 21) return 6;
-  if (diff >= 11) return 4;
-  if (diff >= 1)  return 2;
-  if (diff === 0) return 0;
-  return -3;
-}
-
-function calcPoints(p) {
-  return (p.kills   ?? 0) * 8
-       + (p.deaths  ?? 0) * -6
-       + (p.assists ?? 0) * 3
-       + (p.timeLive ?? 0)
-       + ddrdPoints(p.damageDealt, p.damageTaken);
-}
 
 export default function SoloLeaderboard({ season }) {
   const { t } = useLang();
@@ -35,7 +19,8 @@ export default function SoloLeaderboard({ season }) {
 
   const players = season.players.map(p => ({
     ...p,
-    _points: autoPoints ? calcPoints(p) : (p.points ?? 0),
+    _points: autoPoints ? playerPoints(p) : (p.points ?? 0),
+    _stats: playerStats(p),
   }));
 
   const rows = [...players].sort((a, b) => {
@@ -71,7 +56,7 @@ export default function SoloLeaderboard({ season }) {
           {showDmg && <span className="c-val col-icon"><StrengthIcon size={15} label="DDRD" /></span>}
         </div>
         {rows.map((p, i) => {
-          const diff = (p.damageDealt ?? 0) - (p.damageTaken ?? 0);
+          const diff = (p._stats.damageDealt ?? 0) - (p._stats.damageTaken ?? 0);
           return (
             <div key={p.nick} className={`lb-row solo-row rank-${i+1} ${gridClass}`}>
               <span className="c-pos">
@@ -84,10 +69,10 @@ export default function SoloLeaderboard({ season }) {
               </span>
               <span className="c-val twitch-col"><StreamMini channel={p.twitch} /></span>
               <span className="c-val pts">{p._points}</span>
-              <span className="c-val">{p.kills   ?? 0}</span>
-              <span className="c-val">{p.deaths  ?? 0}</span>
-              <span className="c-val">{p.assists ?? 0}</span>
-              <span className="c-val">{p.timeLive ?? 0}</span>
+              <span className="c-val">{p._stats.kills}</span>
+              <span className="c-val">{p._stats.deaths}</span>
+              <span className="c-val">{p._stats.assists}</span>
+              <span className="c-val">{p._stats.timeLive}</span>
               {showDmg && <span className={`c-val dmg ${diff>=0?"pos":"neg"}`}>{diff>=0?"+":""}{diff}</span>}
             </div>
           );

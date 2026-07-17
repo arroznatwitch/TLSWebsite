@@ -3,26 +3,9 @@ import { SwordIcon, ArrowIcon, ClockIcon, GoldenAppleIcon, BarrierIcon } from ".
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
 import McHead from "./McHead";
+import { playerPoints, playerStats } from "../utils/points";
 
 const medals = ["🥇","🥈","🥉"];
-
-function ddrdPoints(dmgDealt, dmgTaken) {
-  const diff = (dmgDealt ?? 0) - (dmgTaken ?? 0);
-  if (diff >= 21) return 6;
-  if (diff >= 11) return 4;
-  if (diff >= 1)  return 2;
-  if (diff === 0) return 0;
-  return -3;
-}
-
-function calcPlayerPoints(p) {
-  return (p.kills   ?? 0) * 8
-       + (p.deaths  ?? 0) * -6
-       + (p.assists ?? 0) * 3
-       + (p.timeLive ?? 0)
-       + (p.revives ?? 0) * 5
-       + ddrdPoints(p.damageDealt, p.damageTaken);
-}
 
 export default function AllTime({ seasons }) {
   const { t } = useLang();
@@ -42,30 +25,33 @@ export default function AllTime({ seasons }) {
     if (season.type === "solo") {
       for (const p of season.players) {
         ensure(p.nick, p.twitch);
-        const pts = autoPoints ? calcPlayerPoints(p) : (p.points ?? 0);
+        const pts = autoPoints ? playerPoints(p) : (p.points ?? 0);
+        const s = playerStats(p);
         playerMap[p.nick].points   += pts;
-        playerMap[p.nick].kills    += p.kills    ?? 0;
-        playerMap[p.nick].deaths   += p.deaths   ?? 0;
-        playerMap[p.nick].assists  += p.assists  ?? 0;
-        playerMap[p.nick].timeLive += p.timeLive ?? 0;
-        playerMap[p.nick].revives  += p.revives  ?? 0;
+        playerMap[p.nick].kills    += s.kills;
+        playerMap[p.nick].deaths   += s.deaths;
+        playerMap[p.nick].assists  += s.assists;
+        playerMap[p.nick].timeLive += s.timeLive;
+        playerMap[p.nick].revives  += s.revives;
       }
     } else {
       for (const team of season.teams) {
         const n = team.players.length;
         for (const p of team.players) {
           ensure(p.nick, p.twitch);
-   
+          const s = playerStats(p);
+          const hasIndividual = p.kills !== undefined || Array.isArray(p.phases);
+
           const pts = autoPoints
-            ? calcPlayerPoints(p)
+            ? playerPoints(p)
             : Math.round((team.points ?? 0) / n);
           playerMap[p.nick].points   += pts;
 
-          playerMap[p.nick].kills    += p.kills    !== undefined ? p.kills    : Math.round((team.kills    ?? 0) / n);
-          playerMap[p.nick].deaths   += p.deaths   !== undefined ? p.deaths   : Math.round((team.deaths  ?? 0) / n);
-          playerMap[p.nick].assists  += p.assists  !== undefined ? p.assists  : Math.round((team.assists ?? 0) / n);
-          playerMap[p.nick].timeLive += p.timeLive !== undefined ? p.timeLive : 0; // só conta se tiver individual
-          playerMap[p.nick].revives  += p.revives  !== undefined ? p.revives  : Math.round((team.revives ?? 0) / n);
+          playerMap[p.nick].kills    += hasIndividual ? s.kills    : Math.round((team.kills    ?? 0) / n);
+          playerMap[p.nick].deaths   += hasIndividual ? s.deaths   : Math.round((team.deaths  ?? 0) / n);
+          playerMap[p.nick].assists  += hasIndividual ? s.assists  : Math.round((team.assists ?? 0) / n);
+          playerMap[p.nick].timeLive += hasIndividual ? s.timeLive : 0; // só conta se tiver individual
+          playerMap[p.nick].revives  += hasIndividual ? s.revives  : Math.round((team.revives ?? 0) / n);
         }
       }
     }

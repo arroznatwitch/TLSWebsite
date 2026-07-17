@@ -296,18 +296,54 @@
         }
       ],
       "players": [
-        { "nick": "Mirandappt", "twitch": "twitch.tv/mirandappt", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 2, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 3, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "ysn00p", "twitch": "twitch.tv/ysn00p", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 4, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "ArrozNaTwitch", "twitch": "twitch.tv/arroznatwitch", "tag": { "type": "final" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "cozysafira", "twitch": "twitch.tv/cozysafira", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "CunhaDosMores", "twitch": "twitch.tv/cunhamore", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "Morgadinho", "twitch": "youtube.com/@MorgadinhoPT", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "EiGuerreiro", "twitch": "twitch.tv/eiguerreiro", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "mcaeiroo", "twitch": "twitch.tv/mcaeiro", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "IvanDaEscola", "twitch": "twitch.tv/ivandaescola", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "di0g0gamespt", "twitch": "twitch.tv/di0g0games", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 },
-        { "nick": "Digast", "twitch": "twitch.tv/diigast", "tag": { "type": "playoff" }, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "deathOrder": 1, "damageDealt": 0, "damageTaken": 0 }
+        { "nick": "Mirandappt", "twitch": "twitch.tv/mirandappt", "tag": { "type": "final" }, "deathOrder": 1,
+          "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
+        { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "tag": { "type": "final" }, "deathOrder": 1,
+          "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
+        { "nick": "ysn00p", "twitch": "twitch.tv/ysn00p", "tag": { "type": "final" }, "deathOrder": 1,
+          "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
+        { "nick": "ArrozNaTwitch", "twitch": "twitch.tv/arroznatwitch", "tag": { "type": "final" }, "deathOrder": 1,
+          "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
+        { "nick": "cozysafira", "twitch": "twitch.tv/cozysafira", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "CunhaDosMores", "twitch": "twitch.tv/cunhamore", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "Morgadinho", "twitch": "youtube.com/@MorgadinhoPT", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "EiGuerreiro", "twitch": "twitch.tv/eiguerreiro", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "mcaeiroo", "twitch": "twitch.tv/mcaeiro", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "IvanDaEscola", "twitch": "twitch.tv/ivandaescola", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "di0g0gamespt", "twitch": "twitch.tv/di0g0games", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] },
+        { "nick": "Digast", "twitch": "twitch.tv/diigast", "tag": { "type": "playoff" }, "deathOrder": 1,
+          "phases": [
+            { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 },
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 }
+          ] }
       ]
     }
   ]

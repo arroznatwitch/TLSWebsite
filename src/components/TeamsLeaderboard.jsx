@@ -6,26 +6,9 @@ import PointsLegend from "./PointsLegend";
 import PlayerTag from "./PlayerTag";
 import CastersList from "./CastersList";
 import McHead from "./McHead";
+import { playerPoints, playerStats } from "../utils/points";
 
 const medals = ["🥇","🥈","🥉"];
-
-function ddrdPoints(dmgDealt, dmgTaken) {
-  const diff = (dmgDealt ?? 0) - (dmgTaken ?? 0);
-  if (diff >= 21) return 6;
-  if (diff >= 11) return 4;
-  if (diff >= 1)  return 2;
-  if (diff === 0) return 0;
-  return -3;
-}
-
-function calcPlayerPoints(p) {
-  return (p.kills   ?? 0) * 8
-       + (p.deaths  ?? 0) * -6
-       + (p.assists ?? 0) * 3
-       + (p.timeLive ?? 0)
-       + (p.revives ?? 0) * 5
-       + ddrdPoints(p.damageDealt, p.damageTaken);
-}
 
 export default function TeamsLeaderboard({ season }) {
   const { t } = useLang();
@@ -39,10 +22,11 @@ export default function TeamsLeaderboard({ season }) {
     ...team,
     players: team.players.map(p => ({
       ...p,
-      _points: autoPoints ? calcPlayerPoints(p) : null,
+      _points: autoPoints ? playerPoints(p) : null,
+      _stats: playerStats(p),
     })),
     _points: autoPoints
-      ? team.players.reduce((s, p) => s + calcPlayerPoints(p), 0)
+      ? team.players.reduce((s, p) => s + playerPoints(p), 0)
       : (team.points ?? 0),
   }));
 
@@ -69,11 +53,10 @@ export default function TeamsLeaderboard({ season }) {
 
         {rows.map((team, i) => {
           const open = expanded === team.name;
-          const totalKills   = team.players.reduce((s,p) => s + (p.kills   ?? 0), 0) || team.kills;
-          const totalDeaths  = team.players.reduce((s,p) => s + (p.deaths  ?? 0), 0) || (team.deaths ?? 0);
-          const totalAssists = team.players.reduce((s,p) => s + (p.assists ?? 0), 0) || team.assists;
-          const totalTime    = team.players.reduce((s,p) => s + (p.timeLive?? 0), 0) || team.timeLive;
-          const totalRevives = team.players.reduce((s,p) => s + (p.revives ?? 0), 0) || team.revives;
+          const totalKills   = team.players.reduce((s,p) => s + p._stats.kills,   0) || team.kills;
+          const totalDeaths  = team.players.reduce((s,p) => s + p._stats.deaths,  0) || (team.deaths ?? 0);
+          const totalAssists = team.players.reduce((s,p) => s + p._stats.assists, 0) || team.assists;
+          const totalRevives = team.players.reduce((s,p) => s + p._stats.revives, 0) || team.revives;
           const diff = (team.damageDealt ?? 0) - (team.damageTaken ?? 0);
 
           return (
@@ -144,7 +127,7 @@ export default function TeamsLeaderboard({ season }) {
                       {showDmg && <span className="c-val">DDRD</span>}
                     </div>
                     {team.players.map(p => {
-                      const pdiff = (p.damageDealt ?? 0) - (p.damageTaken ?? 0);
+                      const pdiff = (p._stats.damageDealt ?? 0) - (p._stats.damageTaken ?? 0);
                       const ppts  = autoPoints ? p._points : "—";
                       return (
                         <div key={p.nick} className={`tm-row ${memberGridClass}`}>
@@ -155,11 +138,11 @@ export default function TeamsLeaderboard({ season }) {
                           </span>
                           <span className="c-val twitch-col"><StreamMini channel={p.twitch} /></span>
                           <span className="c-val pts" style={{ fontSize: 13 }}>{ppts}</span>
-                          <span className="c-val">{p.kills   ?? 0}</span>
-                          <span className="c-val">{p.deaths  ?? 0}</span>
-                          <span className="c-val">{p.assists ?? 0}</span>
-                          <span className="c-val">{p.timeLive ?? 0}</span>
-                          <span className="c-val">{p.revives ?? 0}</span>
+                          <span className="c-val">{p._stats.kills}</span>
+                          <span className="c-val">{p._stats.deaths}</span>
+                          <span className="c-val">{p._stats.assists}</span>
+                          <span className="c-val">{p._stats.timeLive}</span>
+                          <span className="c-val">{p._stats.revives}</span>
                           {showDmg && <span className={`c-val dmg ${pdiff>=0?"pos":"neg"}`}>{pdiff>=0?"+":""}{pdiff}</span>}
                         </div>
                       );
