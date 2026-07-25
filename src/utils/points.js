@@ -26,9 +26,11 @@ function rawStatPoints(s) {
 }
 
 // Pontos totais de um jogador, aplicando o peso de cada fase quando existir.
+// Arredondado sempre para cima (ex.: pesos como 0.25 podem dar decimais).
 export function playerPoints(p) {
   if (Array.isArray(p.phases)) {
-    return p.phases.reduce((sum, ph) => sum + rawStatPoints(ph) * (ph.weight ?? 1), 0);
+    const total = p.phases.reduce((sum, ph) => sum + rawStatPoints(ph) * (ph.weight ?? 1), 0);
+    return Math.ceil(total);
   }
   return rawStatPoints(p);
 }
