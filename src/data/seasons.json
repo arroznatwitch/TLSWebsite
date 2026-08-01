@@ -298,7 +298,7 @@
       "players": [
         { "nick": "Mirandappt", "twitch": "twitch.tv/mirandappt", "tag": { "type": "final" }, "deathOrder": 1,
           "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
-        { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "tag": { "type": "gaveslot" }, "deathOrder": 7,
+        { "nick": "Peter_PT", "twitch": "twitch.tv/mrpeter_pt", "tag": { "type": "absent" }, "deathOrder": 7,
           "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
         { "nick": "ysn00p", "twitch": "twitch.tv/ysn00p", "tag": { "type": "final" }, "deathOrder": 1,
           "phases": [ { "phase": "final", "weight": 1, "kills": 0, "deaths": 0, "assists": 0, "timeLive": 0, "revives": 0, "damageDealt": 0, "damageTaken": 0 } ] },
