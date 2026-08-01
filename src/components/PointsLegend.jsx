@@ -1,7 +1,7 @@
 import { useLang } from "../hooks/useLang";
 import { SwordIcon, ArrowIcon, ClockIcon, StrengthIcon, BarrierIcon, GoldenAppleIcon } from "./McIcons";
 
-export default function PointsLegend({ showRevives = false, showDmg = false }) {
+export default function PointsLegend({ showRevives = false, showDmg = false, note = null }) {
   const { t } = useLang();
   return (
     <div className="points-legend">
@@ -42,6 +42,7 @@ export default function PointsLegend({ showRevives = false, showDmg = false }) {
           </div>
         )}
       </div>
+      {note && <p className="pl-note">{note}</p>}
     </div>
   );
 }

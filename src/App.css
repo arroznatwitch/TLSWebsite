@@ -166,6 +166,9 @@ body {
 .dmg.pos { color: var(--pos); }
 .dmg.neg { color: var(--neg); }
 
+/* ── All-Time: grelha (via classe, não inline, para dar para ser responsiva) ── */
+.at-lb-grid { grid-template-columns: 40px 1fr 32px 70px repeat(5, 62px); }
+
 /* ── Grids da leaderboard solo (via classe, não inline) ── */
 .lb-grid-nodmg { grid-template-columns: 40px 1fr 32px 70px repeat(5, 62px); }
 .lb-grid-dmg   { grid-template-columns: 40px 1fr 32px 70px repeat(6, 62px); }
@@ -955,6 +958,11 @@ body {
   .member-grid-nodmg, .member-grid-dmg { grid-template-columns: 1fr 56px 44px; }
   .member-grid-nodmg .twitch-col, .member-grid-dmg .twitch-col { display: none; }
   .member-grid-nodmg .c-val:nth-child(n+5), .member-grid-dmg .c-val:nth-child(n+5) { display: none; }
+
+  /* All-Time: só pos, nome, pontos, kills (igual ao Solo) */
+  .at-lb-grid { grid-template-columns: 32px 1fr 56px 44px; }
+  .at-lb-grid .twitch-col,
+  .at-lb-grid .at-col-extra { display: none; }
 }
 
 @media (max-width: 600px) {

@@ -42,6 +42,8 @@ const T = {
     teamGreen:"Equipa Verde", teamBlue:"Equipa Azul", teamRed:"Equipa Vermelha", teamYellow:"Equipa Amarela",
     avatarsCredit:"Avatares de Minecraft fornecidos por", ranking:"Ranking", supporters:"Apoiantes",
     supportersSub:"Obrigado a quem apoia o The Last Survivor!", supportersEmpty:"Ainda não há apoiantes para mostrar.",
+    modeNormal:"Normal", modeComplex:"Complexo", editions:"Edições", editionsShort:"ed.",
+    modeComplexNote:"Complexo: pontos divididos pelo número de edições que cada jogador disputou, para nivelar quem jogou mais épocas com quem jogou menos.",
   },
   en: {
     allTime:"All-Time", settings:"Settings", darkMode:"Dark Mode", lightMode:"Light Mode",
@@ -84,6 +86,8 @@ const T = {
     teamGreen:"Green Team", teamBlue:"Blue Team", teamRed:"Red Team", teamYellow:"Yellow Team",
     avatarsCredit:"Minecraft avatars provided by", ranking:"Ranking", supporters:"Supporters",
     supportersSub:"Thanks to everyone who supports The Last Survivor!", supportersEmpty:"There aren't any supporters yet.",
+    modeNormal:"Normal", modeComplex:"Complex", editions:"Editions", editionsShort:"ed.",
+    modeComplexNote:"Complex: points divided by the number of editions each player took part in, to level out players who played more seasons than others.",
   },
   es: {
     allTime:"All-Time", settings:"Definiciones", darkMode:"Modo Oscuro", lightMode:"Modo Claro",
@@ -126,6 +130,8 @@ const T = {
     teamGreen:"Equipo Verde", teamBlue:"Equipo Azul", teamRed:"Equipo Rojo", teamYellow:"Equipo Amarillo",
     avatarsCredit:"Avatares de Minecraft proporcionados por", ranking:"Ranking", supporters:"Seguidores",
     supportersSub:"¡Gracias a quien apoya The Last Survivor!", supportersEmpty:"Aún no hay seguidores para mostrar.",
+    modeNormal:"Normal", modeComplex:"Complejo", editions:"Ediciones", editionsShort:"ed.",
+    modeComplexNote:"Complejo: puntos divididos por el número de ediciones en que participó cada jugador, para nivelar a quien jugó más temporadas con quien jugó menos.",
   },
 };
 
