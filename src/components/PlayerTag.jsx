@@ -15,7 +15,7 @@ export default function PlayerTag({ tag }) {
     eliminated: { labelKey: "tagEliminated",  bg: "rgba(248,113,113,0.12)", color: "#f87171", border: "rgba(248,113,113,0.3)"  },
     gaveslot:   { labelKey: "tagGaveSlot",    bg: "rgba(156,163,175,0.12)", color: "#9ca3af", border: "rgba(156,163,175,0.3)"  },
     eliminatedGroupA: { labelKey: "tagEliminatedGroupA",  bg: "rgba(248,113,113,0.12)", color: "#f87171", border: "rgba(248,113,113,0.3)"  },
-    eliminatedGroupB: { labelKey: "tagEliminatedGroupB",  bg: "rgba(248,113,１１３,0.１２)", color: "#f87１７１", border: "rgba(２４８,１１３,１１３,０.３)"  },
+    eliminatedGroupB: { labelKey: "tagEliminatedGroupB",  bg: "rgba(248,113,113,0.12)", color: "#f87171", border: "rgba(248,113,113,0.3)"  },
     eliminatedGroupC: { labelKey: "tagEliminatedGroupC",  bg: "rgba(248,113,113,0.12)", color: "#f87171", border: "rgba(248,113,113,0.3)"  },
   };
 
