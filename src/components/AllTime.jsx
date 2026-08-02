@@ -8,6 +8,14 @@ import { playerPoints, playerStats } from "../utils/points";
 
 const medals = ["🥇","🥈","🥉"];
 
+// Só conta como "participou" se tiver alguma stat real. Isto é independente
+// da tag (ex.: alguém pode estar marcado "absent" para a final mas ter
+// jogado o play-off — nesse caso continua a contar como edição jogada).
+function hasParticipation(s) {
+  return s.kills > 0 || s.deaths > 0 || s.assists > 0 || s.timeLive > 0
+      || s.revives > 0 || s.damageDealt > 0 || s.damageTaken > 0;
+}
+
 export default function AllTime({ seasons }) {
   const { t } = useLang();
   const [mode, setMode] = useState("normal");
@@ -36,7 +44,7 @@ export default function AllTime({ seasons }) {
         playerMap[p.nick].assists  += s.assists;
         playerMap[p.nick].timeLive += s.timeLive;
         playerMap[p.nick].revives  += s.revives;
-        nicksInSeason.add(p.nick);
+        if (hasParticipation(s)) nicksInSeason.add(p.nick);
       }
     } else {
       for (const team of season.teams) {
@@ -56,7 +64,7 @@ export default function AllTime({ seasons }) {
           playerMap[p.nick].assists  += hasIndividual ? s.assists  : Math.round((team.assists ?? 0) / n);
           playerMap[p.nick].timeLive += hasIndividual ? s.timeLive : 0; // só conta se tiver individual
           playerMap[p.nick].revives  += hasIndividual ? s.revives  : Math.round((team.revives ?? 0) / n);
-          nicksInSeason.add(p.nick);
+          if (!hasIndividual || hasParticipation(s)) nicksInSeason.add(p.nick);
         }
       }
     }
