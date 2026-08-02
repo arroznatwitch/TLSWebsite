@@ -327,7 +327,7 @@
         { "nick": "mcaeiroo", "twitch": "twitch.tv/mcaeiro", "tag": { "type": "third" }, "deathOrder": 4,
           "phases": [
             { "phase": "playoff", "weight": 0.25, "kills": 0, "deaths": 1, "assists": 0, "timeLive": 123, "revives": 0, "damageDealt": 17, "damageTaken": 20 },
-            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 0, "assists": 0, "timeLive": 73, "revives": 0, "damageDealt": 0, "damageTaken": 7 }
+            { "phase": "final",   "weight": 1,    "kills": 0, "deaths": 1, "assists": 0, "timeLive": 73, "revives": 0, "damageDealt": 0, "damageTaken": 7 }
           ] },
         { "nick": "IvanDaEscola", "twitch": "twitch.tv/ivandaescola", "tag": { "type": "eliminated" }, "deathOrder": 10,
           "phases": [
