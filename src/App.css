@@ -858,6 +858,88 @@ body {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
+/* ── Campeões (aba própria: pódio de cada edição) ── */
+.champions { width: 100%; }
+.champ-head { margin-bottom: 18px; }
+.champ-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.champ-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+
+.champ-season { margin-bottom: 14px; }
+.champ-season-label {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px;
+}
+.champ-podium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+.champ-card {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-left: 3px solid var(--bdr2);
+  border-radius: var(--r); padding: 11px 13px;
+}
+.champ-card.champ-1 { border-left-color: var(--gold); }
+.champ-card.champ-2 { border-left-color: var(--silver); }
+.champ-card.champ-3 { border-left-color: var(--bronze); }
+.champ-medal { font-size: 17px; line-height: 1.4; flex-shrink: 0; }
+
+.champ-player { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.champ-nick {
+  font-size: 14px; font-weight: 600; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.champ-team { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.champ-team-top { display: flex; align-items: center; gap: 8px; }
+.champ-team-members { display: flex; flex-direction: column; gap: 5px; }
+.champ-member { display: flex; align-items: center; gap: 7px; }
+.champ-member-nick {
+  font-size: 12px; color: var(--txt2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ── Wiki ── */
+.wiki { width: 100%; }
+.wiki-head { margin-bottom: 18px; }
+.wiki-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.wiki-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+
+.wiki-layout { display: flex; align-items: flex-start; gap: 14px; }
+.wiki-nav {
+  width: 210px; flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.wiki-nav-item {
+  display: flex; align-items: center; gap: 8px;
+  background: none; border: 1px solid transparent;
+  border-radius: var(--r); padding: 9px 11px;
+  color: var(--txt2); font-family: inherit; font-size: 13px; font-weight: 500;
+  text-align: left; cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.wiki-nav-item:hover { background: var(--sur2); color: var(--txt); }
+.wiki-nav-item.active {
+  background: var(--sur2); color: var(--txt);
+  border-color: var(--bdr2); font-weight: 600;
+}
+.wiki-nav-icon { font-size: 14px; flex-shrink: 0; }
+
+.wiki-content {
+  flex: 1; min-width: 0;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-radius: var(--rl); padding: 20px 22px;
+}
+.wiki-article-title {
+  font-size: 16px; font-weight: 700; color: var(--txt);
+  margin: 0 0 12px;
+}
+.wiki-para {
+  font-size: 13px; color: var(--txt2); line-height: 1.7;
+  margin: 0 0 12px; white-space: pre-line;
+}
+.wiki-para:last-child { margin-bottom: 0; }
+
 /* ── Watch Party ── */
 .wp { width: 100%; }
 .wp-head { margin-bottom: 18px; }
@@ -963,6 +1045,18 @@ body {
   .at-lb-grid { grid-template-columns: 32px 1fr 56px 44px; }
   .at-lb-grid .twitch-col,
   .at-lb-grid .at-col-extra { display: none; }
+
+  /* Wiki: índice passa para cima do conteúdo, em vez de coluna lateral */
+  .wiki-layout { flex-direction: column; }
+  .wiki-nav {
+    width: 100%;
+    flex-direction: row; flex-wrap: wrap;
+  }
+  .wiki-nav-item { flex: 1 1 auto; }
+  .wiki-content { padding: 16px; width: 100%; }
+
+  /* Campeões: uma coluna */
+  .champ-podium { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
