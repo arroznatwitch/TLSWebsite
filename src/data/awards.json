@@ -1,0 +1,29 @@
+{
+  "_comment": "Prémios por edição. O 'nick' tem de bater certo com o nick em seasons.json — a foto (cabeça) e o link da plataforma são procurados automaticamente a partir daí. Tipos disponíveis: mvp, revelation, fanFavourite.",
+  "editions": [
+    {
+      "seasonId": "tls1",
+      "awards": [
+        { "type": "mvp", "nick": "Hoyuro" },
+        { "type": "revelation", "nick": "-" },
+        { "type": "fanFavourite", "nick": "-" }
+      ]
+    },
+    {
+      "seasonId": "tls2",
+      "awards": [
+        { "type": "mvp", "nick": "ysn00p" },
+        { "type": "revelation", "nick": "ysn00p" },
+        { "type": "fanFavourite", "nick": "Peter_PT" }
+      ]
+    },
+    {
+      "seasonId": "tls3",
+      "awards": [
+        { "type": "mvp", "nick": "Morgadinho" },
+        { "type": "revelation", "nick": "cozysafira" },
+        { "type": "fanFavourite", "nick": "CunhaDosMores" }
+      ]
+    }
+  ]
+}

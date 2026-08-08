@@ -12,6 +12,7 @@ import data from "./data/seasons.json";
 import EventCountdown from "./components/EventCountdown";
 import Supporters from "./components/Supporters";
 import Champions from "./components/Champions";
+import Awards from "./components/Awards";
 import Wiki from "./components/Wiki";
 import WatchParty from "./components/WatchParty";
 import "./App.css";
@@ -69,16 +70,16 @@ function Inner() {
           </button>
         ))}
         <button className={`nav-tab nav-tab-rank ${tab==="alltime"?"active":""}`} onClick={() => setTab("alltime")} style={{marginLeft:"auto"}}>
-          {t("allTime")}
-          <span className="nav-sub">{t("ranking")}</span>
+          {t("ranking")}
         </button>
         <button className={`nav-tab nav-tab-champ ${tab==="champions"?"active":""}`} onClick={() => setTab("champions")}>
           {t("champions")}
-          <span className="nav-sub">🏆</span>
+        </button>
+        <button className={`nav-tab nav-tab-aw ${tab==="awards"?"active":""}`} onClick={() => setTab("awards")}>
+          {t("awards")}
         </button>
         <button className={`nav-tab nav-tab-wiki ${tab==="wiki"?"active":""}`} onClick={() => setTab("wiki")}>
           {t("wiki")}
-          <span className="nav-sub">TLS</span>
         </button>
         {WATCH_PARTY && wpSeason && (
           <button className={`nav-tab nav-tab-wp ${tab==="watchparty"?"active":""}`} onClick={() => setTab("watchparty")}>
@@ -88,25 +89,19 @@ function Inner() {
         )}
         <button className={`nav-tab nav-tab-sup ${tab==="supporters"?"active":""}`} onClick={() => setTab("supporters")}>
           {t("supporters")}
-          <span className="nav-sub">♥</span>
         </button>
       </nav>
 
       <div className="content-with-sidebar">
         <main className="main">
-          {tab === "alltime"
-            ? <AllTime seasons={seasons} />
-            : tab === "champions"
-              ? <Champions seasons={seasons} />
-              : tab === "wiki"
-                ? <Wiki />
-                : WATCH_PARTY && tab === "watchparty"
-                  ? <WatchParty season={wpSeason} />
-                  : tab === "supporters"
-                    ? <Supporters />
-                    : active?.type === "solo"
-                      ? <SoloLeaderboard season={active} />
-                      : <TeamsLeaderboard season={active} />
+          {tab === "alltime"      ? <AllTime seasons={seasons} />
+           : tab === "champions"  ? <Champions seasons={seasons} />
+           : tab === "awards"     ? <Awards seasons={seasons} />
+           : tab === "wiki"       ? <Wiki />
+           : tab === "supporters" ? <Supporters />
+           : WATCH_PARTY && tab === "watchparty" ? <WatchParty season={wpSeason} />
+           : active?.type === "solo" ? <SoloLeaderboard season={active} />
+           : <TeamsLeaderboard season={active} />
           }
         </main>
         <aside className="sidebar">

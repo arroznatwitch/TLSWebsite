@@ -108,7 +108,7 @@ body {
   font-family: inherit; font-size: 13px; font-weight: 500;
   padding: 12px 16px 11px;
   cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
   white-space: nowrap;
   transition: color .15s, border-color .15s;
 }
@@ -899,6 +899,59 @@ body {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
+/* ── Prémios (aba própria: MVP, revelação, favorito dos fãs) ── */
+.awards { width: 100%; }
+.aw-head { margin-bottom: 18px; }
+.aw-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.aw-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+
+.aw-season { margin-bottom: 14px; }
+.aw-season-label {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px;
+}
+.aw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+.aw-card {
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-left: 3px solid var(--bdr2);
+  border-radius: var(--r); padding: 12px 14px;
+}
+/* Cores dos prémios — independentes dos tokens partilhados do site,
+   para poderem ser mudadas aqui sem afetar mais nada.
+   Aplicadas à barra lateral E ao nome do prémio (mais área = mais legível). */
+.aw-card.aw-mvp          { border-left-color: #f0c040; }  /* dourado */
+.aw-card.aw-revelation   { border-left-color: #d9d02b; }  /* amarelo-limão */
+.aw-card.aw-fanFavourite { border-left-color: #d05555; }  /* vermelho */
+
+.aw-card.aw-mvp          .aw-label { color: #f0c040; }
+.aw-card.aw-revelation   .aw-label { color: #d9d02b; }
+.aw-card.aw-fanFavourite .aw-label { color: #d05555; }
+
+/* No tema claro estes tons ficariam ilegíveis sobre branco — versões escuras. */
+[data-theme="light"] .aw-card.aw-mvp          { border-left-color: #b8860b; }
+[data-theme="light"] .aw-card.aw-revelation   { border-left-color: #8a8200; }
+[data-theme="light"] .aw-card.aw-fanFavourite { border-left-color: #b03a3a; }
+[data-theme="light"] .aw-card.aw-mvp          .aw-label { color: #96690a; }
+[data-theme="light"] .aw-card.aw-revelation   .aw-label { color: #6f6900; }
+[data-theme="light"] .aw-card.aw-fanFavourite .aw-label { color: #a83232; }
+
+.aw-card-top { display: flex; align-items: center; gap: 7px; }
+.aw-icon { font-size: 14px; flex-shrink: 0; }
+.aw-label {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.aw-winner { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.aw-nick {
+  font-size: 14px; font-weight: 600; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
 /* ── Wiki ── */
 .wiki { width: 100%; }
 .wiki-head { margin-bottom: 18px; }
@@ -916,14 +969,24 @@ body {
   border-radius: var(--r); padding: 9px 11px;
   color: var(--txt2); font-family: inherit; font-size: 13px; font-weight: 500;
   text-align: left; cursor: pointer;
-  transition: background .15s, color .15s, border-color .15s;
+  transition: background .25s cubic-bezier(.22,1,.36,1),
+              color .25s cubic-bezier(.22,1,.36,1),
+              border-color .25s cubic-bezier(.22,1,.36,1),
+              transform .25s cubic-bezier(.22,1,.36,1);
 }
-.wiki-nav-item:hover { background: var(--sur2); color: var(--txt); }
+.wiki-nav-item:hover { background: var(--sur2); color: var(--txt); transform: translateX(3px); }
 .wiki-nav-item.active {
   background: var(--sur2); color: var(--txt);
   border-color: var(--bdr2); font-weight: 600;
 }
 .wiki-nav-icon { font-size: 14px; flex-shrink: 0; }
+.wiki-title-icon { font-size: 18px; flex-shrink: 0; }
+
+/* Ícone em imagem (ex.: "/logo.png") em vez de emoji */
+img.wiki-icon-img { object-fit: contain; display: block; flex-shrink: 0; }
+img.wiki-icon-img.is-pixelated { image-rendering: pixelated; }
+img.wiki-nav-icon { width: auto; height: 16px; max-width: 30px; }
+img.wiki-title-icon { width: auto; height: 24px; max-width: 44px; }
 
 .wiki-content {
   flex: 1; min-width: 0;
@@ -933,12 +996,194 @@ body {
 .wiki-article-title {
   font-size: 16px; font-weight: 700; color: var(--txt);
   margin: 0 0 12px;
+  display: flex; align-items: center; gap: 8px;
 }
 .wiki-para {
   font-size: 13px; color: var(--txt2); line-height: 1.7;
   margin: 0 0 12px; white-space: pre-line;
 }
 .wiki-para:last-child { margin-bottom: 0; }
+
+/* ── Animação de entrada ao trocar de artigo ──
+   Curva "ease-out quint": arranca rápido e trava devagar, o que dá a
+   sensação suave. Os blocos entram em cascata, um a seguir ao outro. */
+@keyframes wiki-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wiki-article > * {
+  animation: wiki-fade-up .55s cubic-bezier(.22, 1, .36, 1) both;
+}
+.wiki-article > *:nth-child(2)   { animation-delay: .06s; }
+.wiki-article > *:nth-child(3)   { animation-delay: .12s; }
+.wiki-article > *:nth-child(4)   { animation-delay: .18s; }
+.wiki-article > *:nth-child(5)   { animation-delay: .24s; }
+.wiki-article > *:nth-child(n+6) { animation-delay: .3s; }
+
+/* A lista de itens não anima como bloco — animam-se os itens um a um,
+   senão o movimento do contentor sobreporia o dos filhos. */
+.wiki-article > .wiki-items { animation: none; }
+.wiki-items .wiki-item {
+  animation: wiki-fade-up .5s cubic-bezier(.22, 1, .36, 1) both;
+}
+.wiki-items .wiki-item:nth-child(1) { animation-delay: .1s; }
+.wiki-items .wiki-item:nth-child(2) { animation-delay: .16s; }
+.wiki-items .wiki-item:nth-child(3) { animation-delay: .22s; }
+.wiki-items .wiki-item:nth-child(4) { animation-delay: .28s; }
+.wiki-items .wiki-item:nth-child(5) { animation-delay: .34s; }
+.wiki-items .wiki-item:nth-child(6) { animation-delay: .4s; }
+.wiki-items .wiki-item:nth-child(7) { animation-delay: .46s; }
+.wiki-items .wiki-item:nth-child(n+8) { animation-delay: .52s; }
+
+/* Linhas da tabela também entram em cascata */
+.wiki-table tbody tr {
+  animation: wiki-fade-up .4s cubic-bezier(.22, 1, .36, 1) both;
+}
+.wiki-table tbody tr:nth-child(1) { animation-delay: .14s; }
+.wiki-table tbody tr:nth-child(2) { animation-delay: .18s; }
+.wiki-table tbody tr:nth-child(3) { animation-delay: .22s; }
+.wiki-table tbody tr:nth-child(4) { animation-delay: .26s; }
+.wiki-table tbody tr:nth-child(5) { animation-delay: .3s; }
+.wiki-table tbody tr:nth-child(6) { animation-delay: .34s; }
+.wiki-table tbody tr:nth-child(7) { animation-delay: .38s; }
+.wiki-table tbody tr:nth-child(8) { animation-delay: .42s; }
+.wiki-table tbody tr:nth-child(9) { animation-delay: .46s; }
+.wiki-table tbody tr:nth-child(n+10) { animation-delay: .5s; }
+
+/* Quem prefere menos movimento não leva animação nenhuma */
+@media (prefers-reduced-motion: reduce) {
+  .wiki-article > *,
+  .wiki-items .wiki-item,
+  .wiki-table tbody tr { animation: none; }
+  .wiki-nav-item:hover { transform: none; }
+}
+
+/* Lista de itens especiais dentro de um artigo */
+.wiki-items { display: flex; flex-direction: column; gap: 10px; margin: 0 0 14px; }
+.wiki-item {
+  display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap;
+  background: var(--bg2); border: 1px solid var(--bdr);
+  border-radius: var(--r); padding: 12px 14px;
+}
+.wiki-item-icon { width: auto; height: 28px; max-width: 34px; flex-shrink: 0; }
+img.wiki-item-icon { image-rendering: pixelated; }
+.wiki-item-body { min-width: 0; flex: 1 1 200px; }
+.wiki-item-name { font-size: 14px; font-weight: 700; color: var(--txt); margin: 0 0 2px; }
+.wiki-item-recipe {
+  font-size: 11px; color: #15a58c; font-weight: 600;
+  margin: 0 0 6px;
+}
+[data-theme="light"] .wiki-item-recipe { color: #015d4e; }
+.wiki-item-text { font-size: 12.5px; color: var(--txt2); line-height: 1.65; margin: 0; }
+
+/* ── Efeitos de um item (poção, maçã especial…) ── */
+.wiki-effects-note {
+  font-size: 11.5px; color: var(--txt2);
+  margin: 9px 0 7px; line-height: 1.5;
+}
+.wiki-effects { display: flex; flex-wrap: wrap; gap: 6px; }
+.wiki-effect {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-radius: 999px; padding: 4px 10px 4px 5px;
+}
+/* O ícone do efeito reaproveita a célula de craft, mas sem moldura */
+.wiki-effect .craft-slot.effect-icon {
+  width: 20px; height: 20px;
+  background: none; border: none; border-radius: 0;
+}
+.wiki-effect .craft-slot.effect-icon img { width: 18px; height: 18px; }
+.wiki-effect-name { font-size: 11.5px; font-weight: 600; color: var(--txt); }
+.wiki-effect-detail { font-size: 10.5px; color: var(--txt3); }
+
+/* ── Grelha de craft (estilo mesa de trabalho do Minecraft) ── */
+.mc-craft {
+  display: flex; align-items: center; gap: 7px;
+  margin-left: auto; flex-shrink: 0;
+  padding: 7px;
+  background: var(--bg3);
+  border: 1px solid var(--bdr2);
+  border-radius: var(--r);
+}
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 24px);
+  grid-template-rows: repeat(3, 24px);
+  gap: 2px;
+}
+.craft-slot {
+  width: 24px; height: 24px;
+  background: var(--bg);
+  border: 1px solid var(--bdr2);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.craft-slot img {
+  width: 18px; height: 18px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+}
+.craft-swatch {
+  width: 16px; height: 16px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35);
+}
+
+/* ── Bloco em 3D (como no inventário do Minecraft) ──
+   Três faces da mesma textura montadas em cubo. O Minecraft escurece as faces
+   conforme a orientação: topo a 100%, frente a 80% e lado a 60%. */
+.mc-cube {
+  --cube: 13px;                       /* metade da aresta */
+  position: relative;
+  width: calc(var(--cube) * 2);
+  height: calc(var(--cube) * 2);
+  transform-style: preserve-3d;
+  /* Sem perspetiva -> projeção isométrica, igual ao jogo */
+  transform: scale(.62) rotateX(-30deg) rotateY(45deg);
+}
+.cube-face {
+  position: absolute; inset: 0;
+  background-image: var(--tex);
+  background-size: 100% 100%;
+  image-rendering: pixelated;
+  backface-visibility: hidden;
+}
+/* Com o cubo rodado 45°, as faces visíveis são o topo, a da frente (+Z) e a
+   da esquerda (−X). A +X ficaria virada para trás, escondida. */
+.cube-top   { transform: rotateX(90deg) translateZ(var(--cube));  filter: brightness(1); }
+.cube-front { transform: translateZ(var(--cube));                 filter: brightness(.8); }
+.cube-side  { transform: rotateY(-90deg) translateZ(var(--cube)); filter: brightness(.6); }
+.craft-arrow { color: var(--txt3); font-size: 14px; line-height: 1; }
+.craft-slot.craft-result {
+  width: 32px; height: 32px;
+  border-color: var(--accent);
+}
+.craft-slot.craft-result img { width: 24px; height: 24px; }
+
+/* Tabelas dentro dos artigos da wiki */
+.wiki-table-wrap { overflow-x: auto; margin: 0 0 14px; }
+.wiki-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 12.5px; white-space: nowrap;
+}
+.wiki-table th {
+  text-align: left; padding: 8px 12px;
+  background: var(--bg2);
+  color: var(--txt3); font-weight: 700;
+  font-size: 10px; text-transform: uppercase; letter-spacing: .6px;
+  border-bottom: 1px solid var(--bdr2);
+}
+.wiki-table td {
+  padding: 8px 12px;
+  color: var(--txt2);
+  border-bottom: 1px solid var(--bdr);
+}
+.wiki-table tbody tr:last-child td { border-bottom: none; }
+.wiki-table tbody tr:hover td { background: var(--sur2); }
+.wiki-table td:first-child { color: var(--txt); font-weight: 600; }
 
 /* ── Watch Party ── */
 .wp { width: 100%; }
@@ -1003,11 +1248,7 @@ body {
 }
 .wp-empty { color: var(--txt2); font-size: 14px; }
 .nav-tab-wp .nav-sub,
-.nav-tab-wp.active .nav-sub,
-.nav-tab-rank .nav-sub,
-.nav-tab-rank.active .nav-sub,
-.nav-tab-sup .nav-sub,
-.nav-tab-sup.active .nav-sub { color: var(--gold); }
+.nav-tab-wp.active .nav-sub { color: var(--gold); }
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
@@ -1055,8 +1296,12 @@ body {
   .wiki-nav-item { flex: 1 1 auto; }
   .wiki-content { padding: 16px; width: 100%; }
 
-  /* Campeões: uma coluna */
+  /* A grelha de craft passa para baixo do texto, alinhada à esquerda */
+  .mc-craft { margin-left: 0; }
+
+  /* Campeões e Prémios: uma coluna */
   .champ-podium { grid-template-columns: 1fr; }
+  .aw-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
