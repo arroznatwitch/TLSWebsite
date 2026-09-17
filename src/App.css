@@ -1528,7 +1528,6 @@ img.wiki-item-icon { image-rendering: pixelated; }
 }
 .maintenance-title { font-size: 22px; font-weight: 800; margin: 0; }
 .maintenance-text { font-size: 15px; color: #d4d4d8; margin: 0; }
-.maintenance-text-sub { font-size: 12px; color: #8a8a92; margin: 0; line-height: 1.6; }
 
 .footer-credit { font-size: 10px; color: var(--txt3); opacity: 0.7; }
 .crafthead-link { font-weight: 700; color: inherit; text-decoration: underline; text-underline-offset: 2px; }
