@@ -1,12 +1,8 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import McHead from "./McHead";
 import data from "../data/supporters.json";
 
-// Aba de apoiadores — mostra TODOS numa grelha (reflui em várias colunas,
-// por isso 50+ apoiadores continuam a caber bem, em vez de uma lista comprida).
-// A lista vem de src/data/supporters.json.
 export default function Supporters() {
-  const { t } = useLang();
   const supporters = data.supporters || [];
 
   return (

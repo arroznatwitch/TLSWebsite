@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 
 function getTimeLeft(target) {
   const diff = target - Date.now();
@@ -13,7 +13,6 @@ function getTimeLeft(target) {
 }
 
 export default function EventCountdown({ eventDate, label }) {
-  const { t } = useLang();
   const target = new Date(eventDate).getTime();
   const [timeLeft, setTimeLeft] = useState(getTimeLeft(target));
 

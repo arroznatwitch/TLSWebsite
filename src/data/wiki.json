@@ -1,49 +1,39 @@
 {
-  "_comment": "As traduções EN/ES estão vazias de propósito — enquanto estiverem assim, o site mostra o texto em português. Basta preencher os arrays para a tradução entrar.",
+  "_comment": "Artigos da wiki, em português. O site deixou de ter idiomas, por isso cada campo tem só 'pt'.",
   "articles": [
     {
       "id": "about",
       "icon": "/logo.png",
       "title": {
-        "pt": "O que é o The Last Survivor?",
-        "en": "What is The Last Survivor?",
-        "es": "¿Qué es The Last Survivor?"
+        "pt": "O que é o The Last Survivor?"
       },
       "body": {
         "pt": [
           "O The Last Survivor (TLS) é um evento de Minecraft, numa espécie de Battle Royale, em que vários criadores de conteúdo competem entre si até restar apenas um sobrevivente.",
           "Os jogadores precisam de ter cuidado com a borda, e a sua vida já que o mapa vai encolhendo com o tempo, e a vida não regenera automaticamente após a 2º Borda.",
           "No TLS, existe items especiais que podem ser cruciais para a vitória, lembrando que TLS não é apenas um evento de PvP, mas sim um evento de sobrevivência e a estratégia são essenciais para a vitória."
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     },
     {
       "id": "how-it-works",
       "icon": "/icons/mc/recipebook.png",
       "title": {
-        "pt": "Como funciona?",
-        "en": "How does it work?",
-        "es": "¿Cómo funciona?"
+        "pt": "Como funciona?"
       },
       "body": {
         "pt": [
           "Cada jogador ou equipa vai nascer dentro de uma cápsula nas extremidades do mapa e precisará de coletar recursos para poder sobreviver e eliminar os adversários.",
           "Como o TLS funciona como um Battle Royale, as bordas vão deixando o mapa mais pequeno. O número total de bordas são 10, com a duração de 12 minutos cada.",
           "Para deixar o evento ainda mais especial, o TLS contém itens especiais que podem craftados com o Livro de Receitas, que é fornecido aos jogadores quando estes entram no servidor"
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     },
     {
       "id": "how-border-works",
       "icon": "/icons/mc/barrier.png",
       "title": {
-        "pt": "Sistema de Borda",
-        "en": "Border System",
-        "es": "Sistema de Bordes"
+        "pt": "Sistema de Borda"
       },
       "body": {
         "pt": [
@@ -51,33 +41,73 @@
           "Ao todo são 10 bordas. Cada uma demora 12 minutos a encolher, e no fim de cada encolhimento há uma pausa de 30 segundos antes de a seguinte começar.",
           {
             "type": "table",
-            "headers": ["Borda", "Diâmetro", "Limites (X e Z)"],
+            "headers": [
+              "Borda",
+              "Diâmetro",
+              "Limites (X e Z)"
+            ],
             "rows": [
-              ["1.ª",  "10 000", "−5 000 a +5 000"],
-              ["2.ª",  "9 500",  "−4 750 a +4 750"],
-              ["3.ª",  "8 000",  "−4 000 a +4 000"],
-              ["4.ª",  "6 500",  "−3 250 a +3 250"],
-              ["5.ª",  "5 000",  "−2 500 a +2 500"],
-              ["6.ª",  "3 750",  "−1 875 a +1 875"],
-              ["7.ª",  "2 500",  "−1 250 a +1 250"],
-              ["8.ª",  "1 000",  "−500 a +500"],
-              ["9.ª",  "500",    "−250 a +250"],
-              ["10.ª", "50",     "−25 a +25"]
+              [
+                "1.ª",
+                "10 000",
+                "−5 000 a +5 000"
+              ],
+              [
+                "2.ª",
+                "9 500",
+                "−4 750 a +4 750"
+              ],
+              [
+                "3.ª",
+                "8 000",
+                "−4 000 a +4 000"
+              ],
+              [
+                "4.ª",
+                "6 500",
+                "−3 250 a +3 250"
+              ],
+              [
+                "5.ª",
+                "5 000",
+                "−2 500 a +2 500"
+              ],
+              [
+                "6.ª",
+                "3 750",
+                "−1 875 a +1 875"
+              ],
+              [
+                "7.ª",
+                "2 500",
+                "−1 250 a +1 250"
+              ],
+              [
+                "8.ª",
+                "1 000",
+                "−500 a +500"
+              ],
+              [
+                "9.ª",
+                "500",
+                "−250 a +250"
+              ],
+              [
+                "10.ª",
+                "50",
+                "−25 a +25"
+              ]
             ]
           },
           "Atenção: a partir da 2.ª borda a vida deixa de regenerar automaticamente, por isso convém ter cuidado que perder vida desnecessária pode ser fatal."
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     },
     {
       "id": "special-items",
       "icon": "/icons/mc/grappler.png",
       "title": {
-        "pt": "Itens Especiais",
-        "en": "Special Items",
-        "es": "Elementos Especiales"
+        "pt": "Itens Especiais"
       },
       "body": {
         "pt": [
@@ -89,10 +119,22 @@
                 "icon": "/icons/mc/compass_00.png",
                 "name": "Tracker",
                 "craft": {
-                  "shape": [" G ", "GCG", " G "],
+                  "shape": [
+                    " G ",
+                    "GCG",
+                    " G "
+                  ],
                   "keys": {
-                    "G": { "icon": "/icons/mc/gold_ingot.png", "name": "Barra de Ouro", "color": "#fcee4b" },
-                    "C": { "icon": "/icons/mc/compass.png", "name": "Bússola (normal)", "color": "#c94c4c" }
+                    "G": {
+                      "icon": "/icons/mc/gold_ingot.png",
+                      "name": "Barra de Ouro",
+                      "color": "#fcee4b"
+                    },
+                    "C": {
+                      "icon": "/icons/mc/compass.png",
+                      "name": "Bússola (normal)",
+                      "color": "#c94c4c"
+                    }
                   }
                 },
                 "text": "Uma bússola que localiza o adversário mais próximo."
@@ -101,33 +143,84 @@
                 "icon": "/icons/mc/goldpotion_item.png",
                 "name": "Poção Misteriosa",
                 "craft": {
-                  "shape": ["GGG", "GPG", "GGG"],
+                  "shape": [
+                    "GGG",
+                    "GPG",
+                    "GGG"
+                  ],
                   "keys": {
-                    "G": { "icon": "/icons/mc/gold_ingot.png", "name": "Barra de Ouro", "color": "#fcee4b" },
-                    "P": { "icon": "/icons/mc/water_bottle.png", "name": "Frasco de Água", "color": "#385dc6" }
+                    "G": {
+                      "icon": "/icons/mc/gold_ingot.png",
+                      "name": "Barra de Ouro",
+                      "color": "#fcee4b"
+                    },
+                    "P": {
+                      "icon": "/icons/mc/water_bottle.png",
+                      "name": "Frasco de Água",
+                      "color": "#385dc6"
+                    }
                   }
                 },
                 "text": "Dá um efeito completamente aleatório.",
                 "effectsNote": "Um destes efeitos, à sorte — 70% de hipótese de sair Nível I (90s) e 30% de Nível II (60s):",
                 "effects": [
-                  { "icon": "/icons/mc/effects/instant_health.png", "name": "Cura Instantânea" },
-                  { "icon": "/icons/mc/effects/regeneration.png", "name": "Regeneração" },
-                  { "icon": "/icons/mc/effects/strength.png", "name": "Força" },
-                  { "icon": "/icons/mc/effects/speed.png", "name": "Velocidade" },
-                  { "icon": "/icons/mc/effects/fire_resistance.png", "name": "Resistência ao Fogo" },
-                  { "icon": "/icons/mc/effects/jump_boost.png", "name": "Impulso de Salto" }
+                  {
+                    "icon": "/icons/mc/effects/instant_health.png",
+                    "name": "Cura Instantânea"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/regeneration.png",
+                    "name": "Regeneração"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/strength.png",
+                    "name": "Força"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/speed.png",
+                    "name": "Velocidade"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/fire_resistance.png",
+                    "name": "Resistência ao Fogo"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/jump_boost.png",
+                    "name": "Impulso de Salto"
+                  }
                 ]
               },
               {
                 "icon": "/icons/mc/grappler.png",
                 "name": "Grappler",
                 "craft": {
-                  "shape": ["  F", "IS ", "BI "],
+                  "shape": [
+                    "  F",
+                    "IS ",
+                    "BI "
+                  ],
                   "keys": {
-                    "F": { "icon": "/icons/mc/fishing_rod.png", "name": "Cana de Pesca", "color": "#b5651d" },
-                    "I": { "icon": "/icons/mc/iron_ingot.png", "name": "Barra de Ferro", "color": "#d8d8d8" },
-                    "S": { "icon": "/icons/mc/stick.png", "name": "Pau", "color": "#a0763c" },
-                    "B": { "icon": "/icons/mc/iron_block.png", "name": "Bloco de Ferro", "color": "#e8e8e8", "block": true }
+                    "F": {
+                      "icon": "/icons/mc/fishing_rod.png",
+                      "name": "Cana de Pesca",
+                      "color": "#b5651d"
+                    },
+                    "I": {
+                      "icon": "/icons/mc/iron_ingot.png",
+                      "name": "Barra de Ferro",
+                      "color": "#d8d8d8"
+                    },
+                    "S": {
+                      "icon": "/icons/mc/stick.png",
+                      "name": "Pau",
+                      "color": "#a0763c"
+                    },
+                    "B": {
+                      "icon": "/icons/mc/iron_block.png",
+                      "name": "Bloco de Ferro",
+                      "color": "#e8e8e8",
+                      "block": true
+                    }
                   }
                 },
                 "text": "Um gancho que te projeta na direção para onde estás a olhar, até 15 blocos de distância."
@@ -136,11 +229,28 @@
                 "icon": "/icons/mc/medkit_golden.png",
                 "name": "Kit Médico Completo",
                 "craft": {
-                  "shape": ["GWG", "WAW", "GWG"],
+                  "shape": [
+                    "GWG",
+                    "WAW",
+                    "GWG"
+                  ],
                   "keys": {
-                    "G": { "icon": "/icons/mc/gold_ingot.png", "name": "Barra de Ouro", "color": "#fcee4b" },
-                    "W": { "icon": "/icons/mc/yellow_wool.png", "name": "Lã Amarela", "color": "#f9c62c", "block": true },
-                    "A": { "icon": "/icons/mc/golden_apple.png", "name": "Maçã Dourada", "color": "#f0c040" }
+                    "G": {
+                      "icon": "/icons/mc/gold_ingot.png",
+                      "name": "Barra de Ouro",
+                      "color": "#fcee4b"
+                    },
+                    "W": {
+                      "icon": "/icons/mc/yellow_wool.png",
+                      "name": "Lã Amarela",
+                      "color": "#f9c62c",
+                      "block": true
+                    },
+                    "A": {
+                      "icon": "/icons/mc/golden_apple.png",
+                      "name": "Maçã Dourada",
+                      "color": "#f0c040"
+                    }
                   }
                 },
                 "text": "Serve para reanimar um jogador que tenha morrido e recupera a vida total."
@@ -149,11 +259,28 @@
                 "icon": "/icons/mc/medkit.png",
                 "name": "Kit Médico Parcial",
                 "craft": {
-                  "shape": ["IWI", "WAW", "IWI"],
+                  "shape": [
+                    "IWI",
+                    "WAW",
+                    "IWI"
+                  ],
                   "keys": {
-                    "I": { "icon": "/icons/mc/iron_ingot.png", "name": "Barra de Ferro", "color": "#d8d8d8" },
-                    "W": { "icon": "/icons/mc/red_wool.png", "name": "Lã Vermelha", "color": "#a02722", "block": true },
-                    "A": { "icon": "/icons/mc/golden_apple.png", "name": "Maçã Dourada", "color": "#f0c040" }
+                    "I": {
+                      "icon": "/icons/mc/iron_ingot.png",
+                      "name": "Barra de Ferro",
+                      "color": "#d8d8d8"
+                    },
+                    "W": {
+                      "icon": "/icons/mc/red_wool.png",
+                      "name": "Lã Vermelha",
+                      "color": "#a02722",
+                      "block": true
+                    },
+                    "A": {
+                      "icon": "/icons/mc/golden_apple.png",
+                      "name": "Maçã Dourada",
+                      "color": "#f0c040"
+                    }
                   }
                 },
                 "text": "Usa-se exatamente da mesma forma que o completo, mas devolve apenas metade da vida."
@@ -168,35 +295,59 @@
                 "icon": "/icons/mc/tls_special_apple.png",
                 "name": "Maçã Especial de Jogador",
                 "craft": {
-                  "shape": ["GGG", "GHG", "GGG"],
+                  "shape": [
+                    "GGG",
+                    "GHG",
+                    "GGG"
+                  ],
                   "keys": {
-                    "G": { "icon": "/icons/mc/gold_ingot.png", "name": "Barra de Ouro", "color": "#fcee4b" },
-                    "H": { "icon": "https://crafthead.net/cube/MHF_Steve/64", "name": "Cabeça de Jogador", "color": "#8b5a2b" }
+                    "G": {
+                      "icon": "/icons/mc/gold_ingot.png",
+                      "name": "Barra de Ouro",
+                      "color": "#fcee4b"
+                    },
+                    "H": {
+                      "icon": "https://crafthead.net/cube/MHF_Steve/64",
+                      "name": "Cabeça de Jogador",
+                      "color": "#8b5a2b"
+                    }
                   }
                 },
                 "text": "Craftada com a cabeça de um jogador rodeada de ouro — normalmente a cabeça de alguém que já foi eliminado.",
                 "effects": [
-                  { "icon": "/icons/mc/effects/regeneration.png", "name": "Regeneração", "detail": "Nível I · 10s" },
-                  { "icon": "/icons/mc/effects/absorption.png", "name": "Absorção", "detail": "Nível I · 90s" },
-                  { "icon": "/icons/mc/effects/fire_resistance.png", "name": "Resistência ao Fogo", "detail": "Nível I · 15s" },
-                  { "icon": "/icons/mc/effects/strength.png", "name": "Força", "detail": "Nível I · 5s" }
+                  {
+                    "icon": "/icons/mc/effects/regeneration.png",
+                    "name": "Regeneração",
+                    "detail": "Nível I · 10s"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/absorption.png",
+                    "name": "Absorção",
+                    "detail": "Nível I · 90s"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/fire_resistance.png",
+                    "name": "Resistência ao Fogo",
+                    "detail": "Nível I · 15s"
+                  },
+                  {
+                    "icon": "/icons/mc/effects/strength.png",
+                    "name": "Força",
+                    "detail": "Nível I · 5s"
+                  }
                 ]
               }
             ]
           },
           "Por enquanto esta é a lista completa de todos os items disponíveis do TLS, mas no futuro podem ser adicionados mais items especiais."
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     },
     {
       "id": "sudden-death",
       "icon": "/icons/mc/lava_bucket.png",
       "title": {
-        "pt": "Morte Súbita",
-        "en": "Sudden Death",
-        "es": "Muerte Súbita"
+        "pt": "Morte Súbita"
       },
       "body": {
         "pt": [
@@ -204,18 +355,14 @@
           "Quando a última borda acaba, os jogadores são avisados no chat de que a Morte Súbita começa dali a 5 minutos.",
           "• A borda vai fechando até 1 bloco no centro do mapa, nas coordenadas (0, 0).\n• A lava começa a subir camada a camada, do fundo até ao nível Y = 64.",
           "As duas coisas estão sincronizadas: a lava sobe ao mesmo ritmo a que a borda fecha."
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     },
     {
       "id": "mob-drops",
       "icon": "/icons/mc/gold_ingot.png",
       "title": {
-        "pt": "Ouro dos Mobs",
-        "en": "Mob Gold Drops",
-        "es": "Oro de los Mobs"
+        "pt": "Ouro dos Mobs"
       },
       "body": {
         "pt": [
@@ -224,22 +371,56 @@
           {
             "type": "items",
             "items": [
-              { "icon": "/icons/mc/mobs/witch.png",       "name": "Bruxa",           "recipe": "10%" },
-              { "icon": "/icons/mc/mobs/vindicator.png",  "name": "Vindicador",      "recipe": "10%" },
-              { "icon": "/icons/mc/mobs/skeleton.png",    "name": "Esqueleto",       "recipe": "10%" },
-              { "icon": "/icons/mc/mobs/enderman.png",    "name": "Enderman",        "recipe": "8%" },
-              { "icon": "/icons/mc/mobs/pillager.png",    "name": "Saqueador",       "recipe": "8%" },
-              { "icon": "/icons/mc/mobs/cave_spider.png", "name": "Aranha das Cavernas", "recipe": "6%" },
-              { "icon": "/icons/mc/mobs/zombie.png",      "name": "Zombie",          "recipe": "5%" },
-              { "icon": "/icons/mc/mobs/spider.png",      "name": "Aranha",          "recipe": "5%" },
-              { "icon": "/icons/mc/mobs/creeper.png",     "name": "Creeper",         "recipe": "4%" }
+              {
+                "icon": "/icons/mc/mobs/witch.png",
+                "name": "Bruxa",
+                "recipe": "10%"
+              },
+              {
+                "icon": "/icons/mc/mobs/vindicator.png",
+                "name": "Vindicador",
+                "recipe": "10%"
+              },
+              {
+                "icon": "/icons/mc/mobs/skeleton.png",
+                "name": "Esqueleto",
+                "recipe": "10%"
+              },
+              {
+                "icon": "/icons/mc/mobs/enderman.png",
+                "name": "Enderman",
+                "recipe": "8%"
+              },
+              {
+                "icon": "/icons/mc/mobs/pillager.png",
+                "name": "Saqueador",
+                "recipe": "8%"
+              },
+              {
+                "icon": "/icons/mc/mobs/cave_spider.png",
+                "name": "Aranha das Cavernas",
+                "recipe": "6%"
+              },
+              {
+                "icon": "/icons/mc/mobs/zombie.png",
+                "name": "Zombie",
+                "recipe": "5%"
+              },
+              {
+                "icon": "/icons/mc/mobs/spider.png",
+                "name": "Aranha",
+                "recipe": "5%"
+              },
+              {
+                "icon": "/icons/mc/mobs/creeper.png",
+                "name": "Creeper",
+                "recipe": "4%"
+              }
             ]
           },
           "Qualquer outro mob que não esteja nesta lista tem 5% de hipótese.",
           "Dica importante: o encantamento Pilhagem (Looting) aumenta estas probabilidades."
-        ],
-        "en": [],
-        "es": []
+        ]
       }
     }
   ]

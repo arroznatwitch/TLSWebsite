@@ -1,12 +1,8 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import McHead from "./McHead";
 import { StreamLink } from "./StreamIcon";
 
 const medals = ["🥇","🥈","🥉"];
-
-// Ordem do pódio a partir das tags do jogador (winner / second / third).
-// As tags são a fonte principal porque são explícitas e por jogador; o array
-// "podium" do seasons.json serve de reserva para épocas antigas.
 const PODIUM_TAGS = { winner: 0, second: 1, third: 2 };
 
 function getPodium(season) {
@@ -22,16 +18,12 @@ function getPodium(season) {
       .map(nick => players.find(p => p.nick === nick))
       .filter(Boolean);
   }
-  // Épocas por equipas: o pódio guarda os nomes das equipas.
   return (season.podium || [])
     .map(name => (season.teams || []).find(tm => tm.name === name))
     .filter(Boolean);
 }
 
-export default function Champions({ seasons }) {
-  const { t } = useLang();
-
-  // Só mostra épocas que já tenham pódio definido.
+export default function Champions({ seasons, embedded = false }) {
   const withPodium = (seasons || [])
     .map(s => ({ season: s, podium: getPodium(s) }))
     .filter(x => x.podium.length > 0)
@@ -39,10 +31,12 @@ export default function Champions({ seasons }) {
 
   return (
     <div className="champions">
-      <div className="champ-head">
-        <h2 className="champ-title">{t("champions")}</h2>
-        <p className="champ-sub">{t("championsSub")}</p>
-      </div>
+      {!embedded && (
+        <div className="champ-head">
+          <h2 className="champ-title">{t("champions")}</h2>
+          <p className="champ-sub">{t("championsSub")}</p>
+        </div>
+      )}
 
       {withPodium.length === 0 && <p className="wp-empty">{t("championsEmpty")}</p>}
 

@@ -1,0 +1,52 @@
+{
+  "_comment": "Jogadores elegíveis para o sorteio, por ordem de força ('rank' 1 = mais forte). Os NÍVEIS não estão aqui: são calculados a partir de quem ficar ativo no sorteio, por isso se excluíres jogadores a divisão é refeita (ex.: 16 jogadores -> 5 no N3, 6 no N2, 5 no N1). Estes jogadores não fazem parte de nenhuma temporada.",
+  "defaults": { "teamSize": 3, "numTeams": 8 },
+  "_defaults_nota": "Valores com que o sorteio abre. O nº de equipas ajusta-se sozinho a quem estiver ativo (ex.: se excluíres 3 dos 27, passa a 8 equipas de 3), a não ser que o mudes à mão.",
+  "tierSplit": { "t3": 0.25, "t1": 0.25 },
+  "_tierSplit_nota": "Fração de jogadores em cada nível extremo; o Nível 2 fica com o resto. 0.25/0.25 dá 25%/50%/25% — ex.: 16 jogadores -> 4 N3, 8 N2, 4 N1. Para voltar a terços, põe 0.3333 nos dois.",
+  "_regras": [
+    "1) Um Nível 1 nunca fica com outro Nível 1.",
+    "2) Um Nível 3 nunca fica com outro Nível 3.",
+    "3) A metade mais forte do N3 só apanha a parte de cima do N2; a metade mais fraca só apanha a parte de baixo (com um de sobreposição ao meio).",
+    "Com os 27 jogadores isto dá exatamente: Top 1-4 -> 10 a 14, e Top 5-9 -> 14 a 18."
+  ],
+  "teamColors": [
+    { "id": "red",    "icon": "/icons/teams/red.png",    "color": "#f87171" },
+    { "id": "blue",   "icon": "/icons/teams/blue.png",   "color": "#60a5fa" },
+    { "id": "green",  "icon": "/icons/teams/green.png",  "color": "#4ade80" },
+    { "id": "yellow", "icon": "/icons/teams/yellow.png", "color": "#facc15" },
+    { "id": "orange", "icon": "/icons/teams/orange.png", "color": "#fb923c" },
+    { "id": "purple", "icon": "/icons/teams/purple.png", "color": "#a78bfa" },
+    { "id": "pink",   "icon": "/icons/teams/pink.png",   "color": "#f472b6" },
+    { "id": "grey",   "icon": "/icons/teams/grey.png",   "color": "#9ca3af" },
+    { "id": "tls",    "icon": "/icons/teams/tls.png",    "color": "#e8863c" }
+  ],
+  "players": [
+    { "rank": 1,  "nick": "Morgadinho",    "display": "Morga" },
+    { "rank": 2,  "nick": "Mirandappt",    "display": "Miranda" },
+    { "rank": 3,  "nick": "Nunorr",        "display": "Nuno" },
+    { "rank": 4,  "nick": "Peter_PT",      "display": "Peter" },
+    { "rank": 5,  "nick": "Hoyuro",        "display": "Hoyuro" },
+    { "rank": 6,  "nick": "ysn00p",        "display": "Snoop" },
+    { "rank": 7,  "nick": "mcaeiroo",      "display": "Mcaeiro" },
+    { "rank": 8,  "nick": "di0g0gamespt",  "display": "Diogo" },
+    { "rank": 9,  "nick": "ArrozNaTwitch", "display": "Arroz" },
+
+    { "rank": 10, "nick": "Brine16",       "display": "Brine" },
+    { "rank": 11, "nick": "IvanDaEscola",  "display": "Ivan" },
+    { "rank": 12, "nick": "GrysHGG",       "display": "GrysHGG" },
+    { "rank": 13, "nick": "Jo4na_",        "display": "Jo4na", "uuid": "bcc04a775e344246a989fa89fdbda5ab" },
+    { "rank": 14, "nick": "Blubxxx",       "display": "Blub" },
+    { "rank": 15, "nick": "CunhaDosMores", "display": "Cunhamore" },
+    { "rank": 16, "nick": "Rick0PT",       "display": "Rick0" },
+    { "rank": 17, "nick": "cozysafira",    "display": "Safira" },
+    { "rank": 18, "nick": "KenanX",        "display": "KenanX" },
+
+    { "rank": 19, "nick": "EiGuerreiro",   "display": "eiGuerreiro" },
+    { "rank": 20, "nick": "Digast",        "display": "Digast" },
+    { "rank": 21, "nick": "Miguel_31",     "display": "Lideude" },
+    { "rank": 22, "nick": "GhostedMK_",    "display": "Ghosted" },
+    { "rank": 23, "nick": "elParreira",    "display": "elParreira" },
+    { "rank": 24, "nick": "FieryFox653",   "display": "FieryFox" }
+  ]
+}

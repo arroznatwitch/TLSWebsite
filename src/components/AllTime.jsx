@@ -1,84 +1,16 @@
 import { useState } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import { SwordIcon, ArrowIcon, ClockIcon, GoldenAppleIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
 import McHead from "./McHead";
-import { playerPoints, playerStats } from "../utils/points";
+import { aggregatePlayers } from "../utils/ranking";
 
 const medals = ["🥇","🥈","🥉"];
 
-// Só conta como "participou" se tiver alguma stat real. Isto é independente
-// da tag (ex.: alguém pode estar marcado "absent" para a final mas ter
-// jogado o play-off — nesse caso continua a contar como edição jogada).
-function hasParticipation(s) {
-  return s.kills > 0 || s.deaths > 0 || s.assists > 0 || s.timeLive > 0
-      || s.revives > 0 || s.damageDealt > 0 || s.damageTaken > 0;
-}
-
 export default function AllTime({ seasons }) {
-  const { t } = useLang();
   const [mode, setMode] = useState("normal");
-
-  const playerMap = {};
-
-  function ensure(nick, channel) {
-    if (!playerMap[nick]) {
-      playerMap[nick] = { nick, channel: null, points: 0, kills: 0, deaths: 0, assists: 0, timeLive: 0, revives: 0, editions: 0 };
-    }
-    if (channel) playerMap[nick].channel = channel;
-  }
-
-  for (const season of seasons) {
-    const autoPoints = season.autoPoints === true;
-    const nicksInSeason = new Set();
-
-    if (season.type === "solo") {
-      for (const p of season.players) {
-        ensure(p.nick, p.twitch);
-        const pts = autoPoints ? playerPoints(p) : (p.points ?? 0);
-        const s = playerStats(p);
-        playerMap[p.nick].points   += pts;
-        playerMap[p.nick].kills    += s.kills;
-        playerMap[p.nick].deaths   += s.deaths;
-        playerMap[p.nick].assists  += s.assists;
-        playerMap[p.nick].timeLive += s.timeLive;
-        playerMap[p.nick].revives  += s.revives;
-        if (hasParticipation(s)) nicksInSeason.add(p.nick);
-      }
-    } else {
-      for (const team of season.teams) {
-        const n = team.players.length;
-        for (const p of team.players) {
-          ensure(p.nick, p.twitch);
-          const s = playerStats(p);
-          const hasIndividual = p.kills !== undefined || Array.isArray(p.phases);
-
-          const pts = autoPoints
-            ? playerPoints(p)
-            : Math.round((team.points ?? 0) / n);
-          playerMap[p.nick].points   += pts;
-
-          playerMap[p.nick].kills    += hasIndividual ? s.kills    : Math.round((team.kills    ?? 0) / n);
-          playerMap[p.nick].deaths   += hasIndividual ? s.deaths   : Math.round((team.deaths  ?? 0) / n);
-          playerMap[p.nick].assists  += hasIndividual ? s.assists  : Math.round((team.assists ?? 0) / n);
-          playerMap[p.nick].timeLive += hasIndividual ? s.timeLive : 0; // só conta se tiver individual
-          playerMap[p.nick].revives  += hasIndividual ? s.revives  : Math.round((team.revives ?? 0) / n);
-          if (!hasIndividual || hasParticipation(s)) nicksInSeason.add(p.nick);
-        }
-      }
-    }
-
-    // Conta a época apenas uma vez por jogador, mesmo que apareça 2x nela.
-    for (const nick of nicksInSeason) playerMap[nick].editions += 1;
-  }
-
-  // Normal: pontos totais. Complexo: pontos ÷ nº de edições, sempre arredondado
-  // para cima (nunca decimais) — nivela quem jogou mais épocas.
-  const players = Object.values(playerMap).map(p => ({
-    ...p,
-    _avg: p.editions > 0 ? Math.ceil(p.points / p.editions) : 0,
-  }));
+  const players = Object.values(aggregatePlayers(seasons)).map(p => ({ ...p, _avg: p.avg }));
   const rows = [...players].sort((a, b) =>
     mode === "complex" ? b._avg - a._avg : b.points - a.points
   );

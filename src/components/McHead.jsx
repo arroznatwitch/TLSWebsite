@@ -13,13 +13,16 @@ const buildSources = (nick, uuid, size) => {
   ];
 };
 
-export default function McHead({ nick, uuid, size = 32, className = "mc-head", alt }) {
+// Por defeito a cabeça é decorativa (alt vazio), porque quase sempre o nick já
+// está escrito ao lado e o leitor de ecrã iria dizê-lo duas vezes. Onde a
+// cabeça aparece sozinha, passa-se alt={nick}.
+export default function McHead({ nick, uuid, size = 32, className = "mc-head", alt = "" }) {
   const sources = buildSources(nick, uuid, size);
   const [idx, setIdx] = useState(0);
   return (
     <img
       src={sources[idx]}
-      alt={alt ?? nick}
+      alt={alt}
       className={className}
       loading="lazy"
       onError={() => setIdx(i => (i < sources.length - 1 ? i + 1 : i))}

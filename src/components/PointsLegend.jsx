@@ -1,8 +1,7 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import { SwordIcon, ArrowIcon, ClockIcon, StrengthIcon, BarrierIcon, GoldenAppleIcon } from "./McIcons";
 
 export default function PointsLegend({ showRevives = false, showDmg = false, note = null }) {
-  const { t } = useLang();
   return (
     <div className="points-legend">
       <p className="pl-title">{t("howPointsWork")}</p>

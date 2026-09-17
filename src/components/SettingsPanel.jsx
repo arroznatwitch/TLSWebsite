@@ -1,9 +1,8 @@
 import { useTheme } from "../hooks/useTheme";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 
-export default function SettingsPanel({ open, onClose }) {
+export default function SettingsPanel({ open, onClose, drawEnabled, setDrawEnabled }) {
   const { dark, setDark } = useTheme();
-  const { lang, setLang, t } = useLang();
   if (!open) return null;
   return (
     <div className="overlay" onClick={onClose}>
@@ -14,19 +13,19 @@ export default function SettingsPanel({ open, onClose }) {
         </div>
         <div className="sp-row">
           <span>{dark ? t("darkMode") : t("lightMode")}</span>
-          <button className={`toggle ${dark ? "on" : ""}`} onClick={() => setDark(!dark)}>
+          <button className={`toggle ${dark ? "on" : ""}`}
+            aria-pressed={dark}
+            onClick={() => setDark(!dark)}>
             <span className="toggle-knob" />
           </button>
         </div>
         <div className="sp-row">
-          <span>{t("language")}</span>
-          <div className="lang-group">
-            {["pt","en","es"].map(l => (
-              <button key={l} className={`lang-pill ${lang===l?"on":""}`} onClick={() => setLang(l)}>
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
+          <span>{t("drawToggle")}</span>
+          <button className={`toggle ${drawEnabled ? "on" : ""}`}
+            aria-pressed={drawEnabled}
+            onClick={() => setDrawEnabled(!drawEnabled)}>
+            <span className="toggle-knob" />
+          </button>
         </div>
       </div>
     </div>

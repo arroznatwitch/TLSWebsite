@@ -1,7 +1,6 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 
 export default function PlayerTag({ tag }) {
-  const { t } = useLang();
   if (!tag) return null;
 
   const PRESETS = {

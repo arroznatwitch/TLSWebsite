@@ -1,18 +1,14 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import McHead from "./McHead";
 import { StreamLink } from "./StreamIcon";
 import awardsData from "../data/awards.json";
 
-// Ícone e chave de tradução de cada tipo de prémio.
 const AWARD_TYPES = {
   mvp:          { icon: "🏆", labelKey: "awardMvp" },
   revelation:   { icon: "✨", labelKey: "awardRevelation" },
   fanFavourite: { icon: "❤️", labelKey: "awardFanFavourite" },
 };
 
-// Procura o jogador em todas as épocas (solo e equipas) para reaproveitar o
-// uuid e o link da plataforma que já estão no seasons.json — assim os prémios
-// não duplicam dados.
 function findPlayer(seasons, nick) {
   if (!nick) return null;
   const key = nick.toLowerCase();
@@ -32,11 +28,7 @@ function findPlayer(seasons, nick) {
   return null;
 }
 
-export default function Awards({ seasons }) {
-  const { t } = useLang();
-
-  // Junta cada edição de prémios com a época correspondente, mais recente
-  // primeiro, e ignora prémios que ainda não tenham vencedor definido.
+export default function Awards({ seasons, embedded = false }) {
   const editions = (awardsData.editions || [])
     .map(ed => ({
       ...ed,
@@ -48,10 +40,12 @@ export default function Awards({ seasons }) {
 
   return (
     <div className="awards">
-      <div className="aw-head">
-        <h2 className="aw-title">{t("awards")}</h2>
-        <p className="aw-sub">{t("awardsSub")}</p>
-      </div>
+      {!embedded && (
+        <div className="aw-head">
+          <h2 className="aw-title">{t("awards")}</h2>
+          <p className="aw-sub">{t("awardsSub")}</p>
+        </div>
+      )}
 
       {editions.length === 0 && <p className="wp-empty">{t("awardsEmpty")}</p>}
 

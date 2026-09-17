@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ThemeProvider } from "./hooks/useTheme";
-import { LangProvider, useLang } from "./hooks/useLang";
+import { t } from "./textos";
 import LoadingScreen from "./components/LoadingScreen";
 import MaintenanceScreen from "./components/MaintenanceScreen";
 import { MAINTENANCE, WATCH_PARTY } from "./config";
@@ -11,8 +11,9 @@ import AllTime from "./components/AllTime";
 import data from "./data/seasons.json";
 import EventCountdown from "./components/EventCountdown";
 import Supporters from "./components/Supporters";
-import Champions from "./components/Champions";
-import Awards from "./components/Awards";
+import Highlights from "./components/Highlights";
+import Draw from "./components/Draw";
+import Privacy from "./components/Privacy";
 import Wiki from "./components/Wiki";
 import WatchParty from "./components/WatchParty";
 import "./App.css";
@@ -53,9 +54,10 @@ function YouTubeIcon() {
 }
 
 function Inner() {
-  const { t, lang } = useLang();
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [tab, setTab] = useState("alltime");
+  // O Sorteio é uma ferramenta interna: vem desligado e liga-se nas Definições.
+  const [drawEnabled, setDrawEnabled] = useState(false);
   const seasons = data.seasons;
   const active = seasons.find(s => s.id === tab);
   // Season com Watch Party = a mais recente com data de evento (TLS III)
@@ -80,15 +82,17 @@ function Inner() {
         <button className={`nav-tab nav-tab-rank ${tab==="alltime"?"active":""}`} onClick={() => setTab("alltime")} style={{marginLeft:"auto"}}>
           {t("ranking")}
         </button>
-        <button className={`nav-tab nav-tab-champ ${tab==="champions"?"active":""}`} onClick={() => setTab("champions")}>
-          {t("champions")}
-        </button>
         <button className={`nav-tab nav-tab-aw ${tab==="awards"?"active":""}`} onClick={() => setTab("awards")}>
           {t("awards")}
         </button>
         <button className={`nav-tab nav-tab-wiki ${tab==="wiki"?"active":""}`} onClick={() => setTab("wiki")}>
           {t("wiki")}
         </button>
+        {drawEnabled && (
+          <button className={`nav-tab nav-tab-draw ${tab==="draw"?"active":""}`} onClick={() => setTab("draw")}>
+            {t("draw")}
+          </button>
+        )}
         {WATCH_PARTY && wpSeason && (
           <button className={`nav-tab nav-tab-wp ${tab==="watchparty"?"active":""}`} onClick={() => setTab("watchparty")}>
             {t("watchParty")}
@@ -103,9 +107,10 @@ function Inner() {
       <div className="content-with-sidebar">
         <main className="main">
           {tab === "alltime"      ? <AllTime seasons={seasons} />
-           : tab === "champions"  ? <Champions seasons={seasons} />
-           : tab === "awards"     ? <Awards seasons={seasons} />
+           : tab === "awards"     ? <Highlights seasons={seasons} />
            : tab === "wiki"       ? <Wiki />
+           : tab === "draw" && drawEnabled ? <Draw seasons={seasons} />
+           : tab === "privacy"    ? <Privacy />
            : tab === "supporters" ? <Supporters />
            : WATCH_PARTY && tab === "watchparty" ? <WatchParty season={wpSeason} />
            : active?.type === "solo" ? <SoloLeaderboard season={active} />
@@ -157,7 +162,13 @@ function Inner() {
             <YouTubeIcon />
           </a>
         </div>
-        <p className="footer-copy">© 2024 – 2026 · The Last Survivor</p>
+        <p className="footer-copy">
+          © 2026 · The Last Survivor ·{" "}
+          <button type="button" className="footer-link"
+            onClick={() => { setTab("privacy"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+            {t("privacy")}
+          </button>
+        </p>
         <p className="footer-disclaimer footer-disclaimer-strong">
           {t("footerDisclaimer")}
         </p>
@@ -167,7 +178,12 @@ function Inner() {
         </p>
       </footer>
 
-      <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <SettingsPanel
+        open={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+        drawEnabled={drawEnabled}
+        setDrawEnabled={v => { setDrawEnabled(v); if (!v && tab === "draw") setTab("alltime"); }}
+      />
     </div>
   );
 }
@@ -177,10 +193,8 @@ export default function App() {
   if (MAINTENANCE) return <MaintenanceScreen />;
   return (
     <ThemeProvider>
-      <LangProvider>
-        {loading && <LoadingScreen onDone={() => setLoading(false)} />}
+      {loading && <LoadingScreen onDone={() => setLoading(false)} />}
         <Inner />
-      </LangProvider>
     </ThemeProvider>
   );
 }

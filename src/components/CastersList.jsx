@@ -1,9 +1,8 @@
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import { StreamLink } from "./StreamIcon";
 import McHead from "./McHead";
 
 export default function CastersList({ casters }) {
-  const { t } = useLang();
   if (!casters || casters.length === 0) return null;
 
   return (

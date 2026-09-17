@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import { SwordIcon, ArrowIcon, ClockIcon, StrengthIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
@@ -11,7 +11,6 @@ import { playerPoints, playerStats } from "../utils/points";
 const medals = ["🥇","🥈","🥉"];
 
 export default function SoloLeaderboard({ season }) {
-  const { t } = useLang();
   const showDmg    = season.showDmg    === true;
   const autoPoints = season.autoPoints === true;
   const [sortMode, setSortMode] = useState("death");

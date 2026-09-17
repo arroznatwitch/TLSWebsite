@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import data from "../data/wiki.json";
 
-// Wiki do TLS. O conteúdo vem de src/data/wiki.json, com título e corpo em
-// PT/EN/ES. Cada parágrafo é uma entrada do array "body" — quebras de linha
-// dentro do texto são respeitadas (útil para listas).
-//
-// O "icon" de cada artigo pode ser um emoji ("📖") ou uma imagem.
-// Para imagens usa o caminho a partir da RAIZ do site, porque o conteúdo da
-// pasta public é servido na raiz — ex.: o ficheiro public/icons/mc/barrier.png
-// fica em "/icons/mc/barrier.png". Links http(s) também funcionam.
-//
-// Para evitar enganos comuns, isto também aceita barras invertidas do Windows
-// e um "public/" à frente, corrigindo automaticamente.
 const IMAGE_EXT = /\.(png|jpe?g|gif|webp|svg|ico)$/i;
 
 function normalizeIconPath(icon) {
@@ -47,10 +36,6 @@ function WikiIcon({ icon, className }) {
     />
   );
 }
-
-// Carrega uma textura e diz se conseguiu. Se falhar à primeira, repete uma vez
-// com um URL diferente para contornar uma resposta antiga guardada em cache
-// (acontece quando o ficheiro ainda não existia quando foi pedido pela 1.ª vez).
 function useTexture(src) {
   const [state, setState] = useState({ status: "loading", url: src, width: 0 });
 
@@ -78,13 +63,6 @@ function useTexture(src) {
 
   return state;
 }
-
-// Uma célula da grelha de craft.
-//  • Blocos (lã, bloco de ferro…) são desenhados como cubo isométrico, tal como
-//    aparecem no inventário do Minecraft — a mesma textura nas 3 faces, com o
-//    topo mais claro e os lados progressivamente mais escuros.
-//  • Itens (barras, paus, bússola…) ficam planos.
-//  • Se a textura não carregar, mostra-se um quadrado da cor do ingrediente.
 function CraftSlot({ ing, className = "" }) {
   const tex = useTexture(ing?.icon);
   if (!ing) return <span className={`craft-slot ${className}`} />;
@@ -201,7 +179,6 @@ function WikiBlock({ block }) {
 }
 
 export default function Wiki() {
-  const { t, lang } = useLang();
   const articles = data.articles || [];
   const [openId, setOpenId] = useState(articles[0]?.id ?? null);
 
@@ -209,15 +186,7 @@ export default function Wiki() {
     return <p className="wp-empty">{t("wikiEmpty")}</p>;
   }
 
-  // Enquanto uma tradução não estiver escrita (array/texto vazio), mostra o
-  // português em vez de deixar o artigo em branco.
-  const isEmpty = v => v == null || (Array.isArray(v) ? v.length === 0 : v === "");
-  const pick = (field) => {
-    for (const v of [field?.[lang], field?.pt, field?.en]) {
-      if (!isEmpty(v)) return v;
-    }
-    return "";
-  };
+  const pick = (field) => field?.pt ?? "";
 
   return (
     <div className="wiki">

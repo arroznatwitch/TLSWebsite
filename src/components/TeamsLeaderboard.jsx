@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import { SwordIcon, ArrowIcon, ClockIcon, GoldenAppleIcon, StrengthIcon, BarrierIcon } from "./McIcons";
 import { StreamMini } from "./StreamIcon";
 import PointsLegend from "./PointsLegend";
@@ -11,7 +11,6 @@ import { playerPoints, playerStats } from "../utils/points";
 const medals = ["🥇","🥈","🥉"];
 
 export default function TeamsLeaderboard({ season }) {
-  const { t } = useLang();
   const [expanded, setExpanded] = useState(null);
   const showDmg    = season.showDmg    === true;
   const autoPoints = season.autoPoints === true;
@@ -70,13 +69,13 @@ export default function TeamsLeaderboard({ season }) {
                   {i < 3 ? <span className="medal">{medals[i]}</span> : <span className="pos-num">{i+1}</span>}
                 </span>
                 <span className="c-name player-name">
-                  <img src={team.icon} alt={team.nameKey ? t(team.nameKey) : team.name} className="team-icon-img" loading="lazy"/>
+                  <img src={team.icon} alt="" className="team-icon-img" loading="lazy"/>
                   <span>{team.nameKey ? t(team.nameKey) : team.name}</span>
                 </span>
                 <span className="c-twitches">
                   {team.players.map(p => (
                     <span key={p.nick} title={p.nick} className="twitch-avatar-wrap">
-                      <McHead nick={p.nick} uuid={p.uuid} size={24} className="mc-head-sm" />
+                      <McHead nick={p.nick} uuid={p.uuid} size={24} className="mc-head-sm" alt={p.nick} />
                     </span>
                   ))}
                 </span>

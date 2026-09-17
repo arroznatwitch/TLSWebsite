@@ -27,7 +27,6 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
-      // Este projeto não usa PropTypes — desligado para o lint refletir isso.
       'react/prop-types': 'off',
     },
   },

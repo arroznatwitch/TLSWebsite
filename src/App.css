@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* A fonte Inter é carregada localmente (ver main.jsx), sem pedidos à Google. */
 
 /* ── Tokens ── */
 :root {
@@ -952,6 +952,154 @@ body {
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
+/* ── Sorteio de equipas ── */
+.draw { width: 100%; }
+.draw-head { margin-bottom: 18px; }
+.draw-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.draw-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+
+.draw-setup {
+  display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-radius: var(--rl); padding: 14px 16px; margin-bottom: 14px;
+}
+.draw-field { display: flex; flex-direction: column; gap: 5px; }
+.draw-field span {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.draw-field input {
+  width: 90px; padding: 7px 10px;
+  background: var(--bg2); border: 1px solid var(--bdr2);
+  border-radius: var(--r); color: var(--txt);
+  font-family: inherit; font-size: 14px; font-weight: 600;
+}
+/* Escolha da origem da ordenação (lista do ficheiro vs ranking sazonal) */
+.draw-source { display: flex; gap: 4px; }
+.draw-src-btn {
+  padding: 7px 12px; border-radius: var(--r); cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--bdr2); color: var(--txt2);
+  font-family: inherit; font-size: 12.5px; font-weight: 600;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.draw-src-btn:hover { color: var(--txt); }
+.draw-src-btn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Pontuação sazonal mostrada ao lado do jogador */
+.draw-score {
+  font-size: 11px; font-weight: 700; color: var(--txt2);
+  background: var(--bg2); border-radius: 999px; padding: 1px 7px;
+  flex-shrink: 0;
+}
+.draw-score.zero { color: var(--txt3); opacity: .7; }
+
+.draw-count {
+  font-size: 12px; font-weight: 700;
+  padding: 7px 12px; border-radius: var(--r);
+  border: 1px solid var(--bdr2);
+}
+.draw-count.ok  { color: var(--pos); border-color: var(--pos); }
+.draw-count.bad { color: var(--neg); border-color: var(--neg); }
+
+.draw-btn {
+  padding: 8px 16px; border-radius: var(--r); cursor: pointer;
+  background: var(--sur2); border: 1px solid var(--bdr2); color: var(--txt2);
+  font-family: inherit; font-size: 13px; font-weight: 600;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.draw-btn:hover:not(:disabled) { color: var(--txt); border-color: var(--txt2); }
+.draw-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.draw-btn.primary:hover:not(:disabled) { filter: brightness(1.25); }
+.draw-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.draw-hint, .draw-error { font-size: 12px; line-height: 1.5; margin: 0 0 14px; }
+.draw-hint  { color: var(--txt3); font-style: italic; }
+.draw-error { color: var(--neg); font-weight: 600; }
+
+.draw-section-label {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  text-transform: uppercase; letter-spacing: .8px; margin: 0 0 8px;
+}
+.draw-pool { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 7px; }
+.draw-player {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-left: 3px solid var(--bdr2);
+  border-radius: var(--r); padding: 7px 10px;
+  cursor: pointer; text-align: left; font-family: inherit;
+  transition: opacity .2s, border-color .2s, background .2s;
+}
+.draw-player.tier-3 { border-left-color: #f0c040; }
+.draw-player.tier-2 { border-left-color: #8ab4f8; }
+.draw-player.tier-1 { border-left-color: var(--txt3); }
+.draw-player:hover { background: var(--sur2); }
+.draw-player.off { opacity: .3; text-decoration: line-through; }
+.draw-player-name {
+  font-size: 12.5px; font-weight: 600; color: var(--txt); flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.draw-tier { font-size: 10px; font-weight: 700; color: var(--txt3); flex-shrink: 0; }
+
+.draw-controls {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-bottom: 14px;
+}
+.draw-progress { font-size: 12px; font-weight: 700; color: var(--txt3); margin-left: auto; }
+
+.draw-teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.draw-team {
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-left: 3px solid var(--bdr2);
+  border-radius: var(--rl); padding: 12px 14px;
+}
+.draw-team-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.draw-team-name { font-size: 13px; font-weight: 800; letter-spacing: .3px; }
+.draw-team-players { display: flex; flex-direction: column; gap: 6px; }
+.draw-slot {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg2); border: 1px solid var(--bdr);
+  border-radius: var(--r); padding: 6px 9px; min-height: 36px;
+}
+.draw-slot.empty {
+  justify-content: center; color: var(--txt3);
+  font-size: 14px; font-weight: 700; border-style: dashed;
+}
+@keyframes draw-pop {
+  from { opacity: 0; transform: scale(.9) translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+.draw-slot.filled { animation: draw-pop .35s cubic-bezier(.22, 1, .36, 1) both; }
+
+/* Divisão dos níveis (muda conforme quem está ativo) */
+.draw-tiers { font-size: 12px; color: var(--txt2); margin: 0 0 12px; }
+.draw-tiers b { color: var(--txt); }
+
+/* Pool de quem ainda falta sortear */
+.draw-remaining-label { margin-top: 18px; }
+.draw-pool-remaining .draw-player { cursor: default; }
+.draw-pool-remaining .draw-player:hover { background: var(--surface); }
+.draw-player.leaving { opacity: .15; transform: scale(.94); transition: opacity .2s, transform .2s; }
+
+/* Cartão que voa do pool até à equipa */
+@keyframes draw-fly {
+  0%   { transform: translate(0, 0) scale(1); }
+  35%  { transform: translate(calc(var(--dx) * .35), calc(var(--dy) * .35 - 18px)) scale(1.18); }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1); }
+}
+.draw-flying {
+  position: fixed; z-index: 300; pointer-events: none;
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; border-radius: var(--r);
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  box-shadow: 0 10px 26px -8px rgba(0,0,0,.7), 0 0 0 2px var(--accent);
+  animation: draw-fly .62s cubic-bezier(.5, 0, .25, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-slot.filled, .draw-flying { animation: none; }
+  .draw-flying { display: none; }
+}
+
 /* ── Wiki ── */
 .wiki { width: 100%; }
 .wiki-head { margin-bottom: 18px; }
@@ -1387,3 +1535,24 @@ img.wiki-item-icon { image-rendering: pixelated; }
 .crafthead-link:hover { color: var(--txt); }
 .footer-brand { text-decoration: underline; text-underline-offset: 2px; }
 .footer-disclaimer-strong { font-weight: 700; opacity: 0.9; }
+/* ── Política de privacidade ── */
+.privacy { max-width: 640px; }
+.privacy-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 12px; letter-spacing: -.3px; }
+.privacy-lead { font-size: 14px; line-height: 1.7; color: var(--txt); margin: 0 0 16px; }
+.privacy-para { font-size: 13px; line-height: 1.7; color: var(--txt2); margin: 0 0 12px; }
+.privacy-updated { font-size: 11px; color: var(--txt3); margin: 18px 0 0; }
+
+/* Link do rodapé feito com <button> para funcionar com teclado */
+.footer-link {
+  background: none; border: none; padding: 0; cursor: pointer;
+  font: inherit; color: inherit;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.footer-link:hover { color: var(--txt); }
+
+/* ── Destaques: Campeões + Prémios + Recordes numa aba só ── */
+.highlights { width: 100%; }
+.hl-head { margin-bottom: 14px; }
+.hl-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
+.hl-sub { font-size: 13px; color: var(--txt2); margin: 0; }
+.highlights .lb-toolbar { margin-bottom: 16px; }

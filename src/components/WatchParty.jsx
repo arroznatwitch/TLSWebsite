@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useLang } from "../hooks/useLang";
+import { t } from "../textos";
 import McHead from "./McHead";
 
 function getParents() {
@@ -67,7 +67,6 @@ function StreamFrame({ stream, muted }) {
 }
 
 export default function WatchParty({ season }) {
-  const { t } = useLang();
 
   const streamers = useMemo(() => {
     const all = [...(season?.players || []), ...(season?.casters || [])];

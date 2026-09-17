@@ -1,5 +1,4 @@
 {
-  "_comment": "Prémios por edição. O 'nick' tem de bater certo com o nick em seasons.json — a foto (cabeça) e o link da plataforma são procurados automaticamente a partir daí. Tipos disponíveis: mvp, revelation, fanFavourite.",
   "editions": [
     {
       "seasonId": "tls1",
