@@ -1,0 +1,151 @@
+{
+  "_comment": "Recordes mostrados em Prémios > Recordes. Cada categoria usa 'records' com até 3 marcas ('game' = num só jogo, 'edition' = numa só edição, 'allTime' = de sempre), ou 'rows' com linhas livres (cada uma com o seu 'label'). 'nick' tem de bater com o seasons.json para aparecer a cabeça; 'display' é o nome mostrado; 'tied' lista quem empatou; sem 'nick' não aparece jogador.",
+  "categories": [
+    {
+      "id": "kills",
+      "title": "Kills",
+      "icon": "/icons/mc/sword.png",
+      "unit": "kills",
+      "unitOne": "kill",
+      "records": {
+        "game": {
+          "value": 3,
+          "nick": "Morgadinho",
+          "season": "TLS III"
+        },
+        "edition": {
+          "value": 6,
+          "nick": "Morgadinho",
+          "season": "TLS III"
+        },
+        "allTime": {
+          "value": 6,
+          "nick": "Morgadinho"
+        }
+      }
+    },
+    {
+      "id": "time",
+      "title": "Tempo vivo",
+      "icon": "/icons/mc/clock.png",
+      "unit": "min",
+      "unitOne": "min",
+      "records": {
+        "game": {
+          "value": 132,
+          "nick": "Morgadinho",
+          "season": "TLS III"
+        },
+        "edition": {
+          "value": 222,
+          "nick": "Morgadinho",
+          "season": "TLS III"
+        },
+        "allTime": {
+          "value": 296,
+          "nick": "mcaeiroo"
+        }
+      }
+    },
+    {
+      "id": "points",
+      "title": "Pontos",
+      "icon": "/icons/mc/gold_ingot.png",
+      "unit": "pontos",
+      "unitOne": "ponto",
+      "records": {
+        "game": {
+          "value": 116,
+          "nick": "ysn00p",
+          "season": "TLS II"
+        },
+        "edition": {
+          "value": 153,
+          "nick": "Morgadinho",
+          "season": "TLS III"
+        },
+        "allTime": {
+          "value": 246,
+          "nick": "Mirandappt",
+          "display": "Miranda"
+        }
+      }
+    },
+    {
+      "id": "assists",
+      "title": "Assistências",
+      "icon": "/icons/mc/arrow.png",
+      "unit": "assists",
+      "unitOne": "assist",
+      "records": {
+        "game": {
+          "value": 1,
+          "nick": "Mirandappt",
+          "display": "Miranda",
+          "season": "TLS II"
+        },
+        "edition": {
+          "value": 1,
+          "nick": "Mirandappt",
+          "display": "Miranda",
+          "season": "TLS II"
+        },
+        "allTime": {
+          "value": 1,
+          "nick": "Mirandappt",
+          "display": "Miranda"
+        }
+      }
+    },
+    {
+      "id": "revives",
+      "title": "Revives",
+      "icon": "/icons/mc/golden_apple.png",
+      "unit": "revives",
+      "unitOne": "revive",
+      "records": {
+        "game": {
+          "value": 0,
+          "nick": null
+        },
+        "edition": {
+          "value": 0,
+          "nick": null
+        },
+        "allTime": {
+          "value": 0,
+          "nick": null
+        }
+      }
+    },
+    {
+      "id": "deaths",
+      "title": "Mortes",
+      "icon": "/icons/mc/barrier.png",
+      "unit": "mortes",
+      "unitOne": "morte",
+      "rows": [
+        {
+          "label": "Menos mortes",
+          "value": 0,
+          "nick": "GrysHGG"
+        },
+        {
+          "label": "Mais mortes",
+          "value": 3,
+          "nick": "mcaeiroo",
+          "tied": [
+            "Hoyuro",
+            "Rick0PT",
+            "KenanX"
+          ]
+        },
+        {
+          "label": "Mortes totais",
+          "value": 33,
+          "highlight": true
+        }
+      ]
+    }
+  ]
+}

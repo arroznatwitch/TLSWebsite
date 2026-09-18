@@ -23,6 +23,8 @@ function getPodium(season) {
     .filter(Boolean);
 }
 
+const PLACES = ["1.º lugar", "2.º lugar", "3.º lugar"];
+
 export default function Champions({ seasons, embedded = false }) {
   const withPodium = (seasons || [])
     .map(s => ({ season: s, podium: getPodium(s) }))
@@ -40,42 +42,55 @@ export default function Champions({ seasons, embedded = false }) {
 
       {withPodium.length === 0 && <p className="wp-empty">{t("championsEmpty")}</p>}
 
-      {withPodium.map(({ season, podium }) => (
-        <div key={season.id} className="champ-season">
-          <p className="champ-season-label">{season.label}</p>
-          <div className="champ-podium">
-            {podium.map((entry, i) => (
-              <div key={entry.nick || entry.name} className={`champ-card champ-${i + 1}`}>
-                <span className="champ-medal">{medals[i]}</span>
+      {/* Mesmo desenho dos Recordes: um cartão por edição, uma linha por lugar */}
+      <div className="records">
+        {withPodium.map(({ season, podium }) => (
+          <section key={season.id} className="rec-card">
+            <header className="rec-head">
+              <span className="rec-icon"><img src="/icons/teams/tls.png" alt="" /></span>
+              <h3 className="rec-title">{season.label}</h3>
+              <span className="rec-season champ-type">
+                {season.type === "solo" ? "Solo" : "Equipas"}
+              </span>
+            </header>
+            <div className="rec-rows">
+              {podium.map((entry, i) => (
+                <div key={entry.nick || entry.name} className={`rec-row aw-row champ-row champ-row-${i + 1}`}>
+                  <span className="aw-row-label">
+                    <span className="aw-row-icon" aria-hidden="true">{medals[i]}</span>
+                    {PLACES[i]}
+                  </span>
 
-                {season.type === "solo" ? (
-                  <div className="champ-player">
-                    <McHead nick={entry.nick} uuid={entry.uuid} size={32} className="mc-head" />
-                    <span className="champ-nick">{entry.nick}</span>
-                    <StreamLink channel={entry.twitch} size={14} />
-                  </div>
-                ) : (
-                  <div className="champ-team">
-                    <div className="champ-team-top">
-                      <img src={entry.icon} alt="" className="team-icon-img" loading="lazy" />
-                      <span className="champ-nick">{entry.nameKey ? t(entry.nameKey) : entry.name}</span>
-                    </div>
-                    <div className="champ-team-members">
-                      {(entry.players || []).map(p => (
-                        <div key={p.nick} className="champ-member">
-                          <McHead nick={p.nick} uuid={p.uuid} size={24} className="mc-head-sm" />
-                          <span className="champ-member-nick">{p.nick}</span>
-                          <StreamLink channel={p.twitch} size={12} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+                  {season.type === "solo" ? (
+                    <>
+                      <span className="rec-holder">
+                        <McHead nick={entry.nick} uuid={entry.uuid} size={24} className="mc-head-sm" />
+                        <span className="rec-nick">{entry.nick}</span>
+                      </span>
+                      <span className="aw-row-link"><StreamLink channel={entry.twitch} size={14} /></span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="rec-holder">
+                        <img src={entry.icon} alt="" className="team-icon-img" />
+                        <span className="rec-nick">{entry.nameKey ? t(entry.nameKey) : entry.name}</span>
+                        <span className="rec-tied"
+                          title={(entry.players || []).map(p => p.nick).join(", ")}>
+                          {(entry.players || []).map(p => (
+                            <McHead key={p.nick} nick={p.nick} uuid={p.uuid} size={18}
+                              className="rec-tied-head" alt={p.nick} />
+                          ))}
+                        </span>
+                      </span>
+                      <span className="aw-row-link" />
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

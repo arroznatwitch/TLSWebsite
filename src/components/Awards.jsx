@@ -28,14 +28,17 @@ function findPlayer(seasons, nick) {
   return null;
 }
 
+// "-" no awards.json quer dizer que o prémio não existiu nessa edição.
+const isEmpty = nick => !nick || nick.trim() === "-";
+
 export default function Awards({ seasons, embedded = false }) {
   const editions = (awardsData.editions || [])
     .map(ed => ({
       ...ed,
       season: (seasons || []).find(s => s.id === ed.seasonId),
-      awards: (ed.awards || []).filter(a => a.nick && AWARD_TYPES[a.type]),
+      awards: (ed.awards || []).filter(a => AWARD_TYPES[a.type]),
     }))
-    .filter(ed => ed.season && ed.awards.length > 0)
+    .filter(ed => ed.season && ed.awards.some(a => !isEmpty(a.nick)))
     .reverse();
 
   return (
@@ -49,30 +52,45 @@ export default function Awards({ seasons, embedded = false }) {
 
       {editions.length === 0 && <p className="wp-empty">{t("awardsEmpty")}</p>}
 
-      {editions.map(ed => (
-        <div key={ed.seasonId} className="aw-season">
-          <p className="aw-season-label">{ed.season.label}</p>
-          <div className="aw-grid">
-            {ed.awards.map(a => {
-              const meta = AWARD_TYPES[a.type];
-              const player = findPlayer(seasons, a.nick);
-              return (
-                <div key={`${a.type}-${a.nick}`} className={`aw-card aw-${a.type}`}>
-                  <div className="aw-card-top">
-                    <span className="aw-icon" aria-hidden="true">{meta.icon}</span>
-                    <span className="aw-label">{t(meta.labelKey)}</span>
+      {/* Mesmo desenho dos Recordes: um cartão por edição, uma linha por prémio */}
+      <div className="records">
+        {editions.map(ed => (
+          <section key={ed.seasonId} className="rec-card">
+            <header className="rec-head">
+              <span className="rec-icon"><img src="/icons/teams/tls.png" alt="" /></span>
+              <h3 className="rec-title">{ed.season.label}</h3>
+            </header>
+            <div className="rec-rows">
+              {ed.awards.map(a => {
+                const meta = AWARD_TYPES[a.type];
+                const empty = isEmpty(a.nick);
+                const player = empty ? null : findPlayer(seasons, a.nick);
+                return (
+                  <div key={a.type} className={`rec-row aw-row aw-${a.type}`}>
+                    <span className="aw-row-label">
+                      <span className="aw-row-icon" aria-hidden="true">{meta.icon}</span>
+                      {t(meta.labelKey)}
+                    </span>
+                    <span className="rec-holder">
+                      {empty ? (
+                        <span className="rec-nobody">Não atribuído</span>
+                      ) : (
+                        <>
+                          <McHead nick={a.nick} uuid={player?.uuid} size={24} className="mc-head-sm" />
+                          <span className="rec-nick">{a.nick}</span>
+                        </>
+                      )}
+                    </span>
+                    <span className="aw-row-link">
+                      {!empty && <StreamLink channel={player?.twitch} size={14} />}
+                    </span>
                   </div>
-                  <div className="aw-winner">
-                    <McHead nick={a.nick} uuid={player?.uuid} size={32} className="mc-head" />
-                    <span className="aw-nick">{a.nick}</span>
-                    <StreamLink channel={player?.twitch} size={14} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

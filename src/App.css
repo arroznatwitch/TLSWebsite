@@ -1554,4 +1554,135 @@ img.wiki-item-icon { image-rendering: pixelated; }
 .hl-head { margin-bottom: 14px; }
 .hl-title { font-size: 22px; font-weight: 800; color: var(--txt); margin: 0 0 4px; letter-spacing: -.3px; }
 .hl-sub { font-size: 13px; color: var(--txt2); margin: 0; }
-.highlights .lb-toolbar { margin-bottom: 16px; }
+.hl-head { margin-bottom: 16px; }
+
+/* Seletor segmentado: Campeões / Prémios / Recordes */
+.hl-tabs {
+  display: inline-flex; gap: 4px; padding: 4px;
+  background: var(--bg2); border: 1px solid var(--bdr);
+  border-radius: 999px; max-width: 100%; overflow-x: auto;
+}
+.hl-tab {
+  padding: 8px 18px; border-radius: 999px; border: none; cursor: pointer;
+  background: none; color: var(--txt2);
+  font-family: inherit; font-size: 13px; font-weight: 700; white-space: nowrap;
+  transition: background .25s cubic-bezier(.22,1,.36,1), color .25s;
+}
+.hl-tab:hover { color: var(--txt); }
+.hl-tab.active { background: var(--accent); color: #fff; box-shadow: 0 2px 10px -3px rgba(0,0,0,.5); }
+.hl-intro { font-size: 12.5px; color: var(--txt2); margin: 12px 0 16px; }
+
+@keyframes hl-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.hl-panel { animation: hl-in .4s cubic-bezier(.22,1,.36,1) both; }
+
+/* ── Recordes ── */
+.records {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+.rec-card {
+  background: var(--surface); border: 1px solid var(--bdr);
+  border-radius: var(--rl); overflow: hidden;
+}
+.rec-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, var(--sur2), transparent);
+  border-bottom: 1px solid var(--bdr);
+}
+.rec-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--sur2); border: 1px solid var(--bdr2); border-radius: 8px;
+}
+.rec-icon img { width: 22px; height: 22px; image-rendering: pixelated; }
+.rec-title {
+  margin: 0; font-size: 13px; font-weight: 800; color: var(--txt);
+  text-transform: uppercase; letter-spacing: .8px;
+}
+.rec-rows { display: flex; flex-direction: column; }
+.rec-row {
+  display: grid; align-items: center; gap: 10px;
+  grid-template-columns: 100px 86px 1fr auto;
+  padding: 10px 14px; border-bottom: 1px solid var(--bdr);
+}
+.rec-row:last-child { border-bottom: none; }
+.rec-row.all-time { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.rec-scope {
+  font-size: 10px; font-weight: 700; color: var(--txt2);
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.rec-value { white-space: nowrap; }
+.rec-value b { font-size: 18px; font-weight: 800; color: var(--txt); }
+.rec-value small { font-size: 11px; color: var(--txt2); font-weight: 600; }
+.rec-row.all-time .rec-value b { color: #f0c040; }
+.rec-holder { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.rec-nick {
+  font-size: 13px; font-weight: 600; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.rec-nobody { font-size: 12px; color: var(--txt2); font-style: italic; }
+.rec-season {
+  font-size: 10px; font-weight: 700; color: var(--txt2);
+  background: var(--bg2); border: 1px solid var(--bdr2);
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap;
+}
+[data-theme="light"] .rec-row.all-time .rec-value b { color: #96690a; }
+
+@media (max-width: 660px) {
+  .records { grid-template-columns: 1fr; }
+  .rec-row { grid-template-columns: 56px max-content 1fr auto; gap: 8px; padding: 9px 10px; }
+  .rec-scope { font-size: 9px; letter-spacing: .3px; }
+  .rec-value b { font-size: 16px; }
+  .rec-value small { font-size: 10px; }
+  .rec-holder { gap: 6px; }
+  .rec-season { font-size: 9px; padding: 1px 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .hl-panel { animation: none; } }
+
+/* Prémios no mesmo desenho dos Recordes */
+.rec-row.aw-row { grid-template-columns: minmax(150px, 190px) 1fr auto; }
+.aw-row-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; color: var(--txt2);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.aw-row-icon { font-size: 15px; }
+.aw-row.aw-mvp .aw-row-label          { color: #f0c040; }
+.aw-row.aw-revelation .aw-row-label   { color: #d9d02b; }
+.aw-row.aw-fanFavourite .aw-row-label { color: #d05555; }
+[data-theme="light"] .aw-row.aw-mvp .aw-row-label          { color: #96690a; }
+[data-theme="light"] .aw-row.aw-revelation .aw-row-label   { color: #6f6900; }
+[data-theme="light"] .aw-row.aw-fanFavourite .aw-row-label { color: #a83232; }
+.aw-row-link { display: flex; justify-content: flex-end; min-width: 16px; }
+
+/* Empates nos recordes: cabeças pequenas ao lado do jogador principal */
+.rec-tied { display: inline-flex; margin-left: 2px; }
+.rec-tied-head {
+  width: 18px; height: 18px; border-radius: 3px; image-rendering: pixelated;
+  border: 2px solid var(--surface); margin-left: -5px; flex-shrink: 0;
+}
+.rec-tied-head:first-child { margin-left: 0; }
+/* Membros das equipas nos Campeões: lado a lado, sem se sobreporem */
+.champ-row .rec-tied { gap: 5px; margin-left: 8px; }
+.champ-row .rec-tied-head {
+  width: 20px; height: 20px; margin-left: 0;
+  border: 1px solid var(--bdr2);
+}
+
+@media (max-width: 660px) {
+  .rec-row.aw-row { grid-template-columns: 1fr auto; }
+  .rec-row.aw-row .aw-row-label { grid-column: 1 / -1; }
+}
+
+/* Campeões no mesmo desenho dos Recordes */
+.rec-head .champ-type { margin-left: auto; }
+.champ-row-1 .aw-row-label { color: var(--gold); }
+.champ-row-2 .aw-row-label { color: var(--silver); }
+.champ-row-3 .aw-row-label { color: var(--bronze); }
+[data-theme="light"] .champ-row-1 .aw-row-label { color: #96690a; }
+[data-theme="light"] .champ-row-2 .aw-row-label { color: #5f676e; }
+[data-theme="light"] .champ-row-3 .aw-row-label { color: #8a5020; }
+.champ-row .team-icon-img { height: 16px; width: auto; image-rendering: pixelated; flex-shrink: 0; }
+.rec-row.champ-row { grid-template-columns: 96px 1fr auto; }
+.champ-row .rec-nick { flex-shrink: 0; }
